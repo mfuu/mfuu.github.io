@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>使用hexo搭建博客问题总结</title>
+      <link href="/2020/03/03/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"/>
+      <url>/2020/03/03/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第一次使用Hexo-GitHub搭建个人博客时遇到的问题总结"><a href="#第一次使用Hexo-GitHub搭建个人博客时遇到的问题总结" class="headerlink" title="第一次使用Hexo+GitHub搭建个人博客时遇到的问题总结"></a>第一次使用Hexo+GitHub搭建个人博客时遇到的问题总结</h1><h3 id="1-从Github上clone时提示错误"><a href="#1-从Github上clone时提示错误" class="headerlink" title="1.从Github上clone时提示错误"></a>1.从Github上clone时提示错误</h3><p>  <code>error: RPC failed; curl 18 transfer closed with outstanding read data remaining</code>  </p><h6 id="出现上述情况是因为大小限制，在bash命令中输入"><a href="#出现上述情况是因为大小限制，在bash命令中输入" class="headerlink" title="出现上述情况是因为大小限制，在bash命令中输入"></a>出现上述情况是因为大小限制，在bash命令中输入</h6><pre><code>git config --global http.postBuffer 524288000  </code></pre><h6 id="完成后可进行查看"><a href="#完成后可进行查看" class="headerlink" title="完成后可进行查看"></a>完成后可进行查看</h6><pre><code>git config --list  </code></pre><h3 id="2-同样出现在clone操作时的错误"><a href="#2-同样出现在clone操作时的错误" class="headerlink" title="2.同样出现在clone操作时的错误"></a>2.同样出现在clone操作时的错误</h3><p>  <code>error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</code>  </p><h6 id="主要原因是安全设置问题"><a href="#主要原因是安全设置问题" class="headerlink" title="主要原因是安全设置问题"></a>主要原因是安全设置问题</h6><pre><code>git config --global http.sslVerify "false"  </code></pre><h6 id="若上述方法不能解决，google上找到的方法可以尝试"><a href="#若上述方法不能解决，google上找到的方法可以尝试" class="headerlink" title="若上述方法不能解决，google上找到的方法可以尝试"></a>若上述方法不能解决，google上找到的方法可以尝试</h6><pre><code>git config --global pack.windowMemory "100m"git config --global pack.SizeLimit "100m" git config --global pack.threads "1"git config --global pack.window "0"  </code></pre><h3 id="3-使用cnpm命令时返回错误"><a href="#3-使用cnpm命令时返回错误" class="headerlink" title="3.使用cnpm命令时返回错误"></a>3.使用cnpm命令时返回错误</h3><p>  <code>[fsevents@^1.0.0] optional install error: Package require os(darwin) not compatible with your platform(win32)</code></p><h6 id="这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令："><a href="#这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令：" class="headerlink" title="这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令："></a>这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令：</h6><pre><code>cnpm rebuild node-sasscnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-its-original-line-endings-in-your-working-directory-quot"><a href="#4-关于循环出现-quot-The-file-will-have-its-original-line-endings-in-your-working-directory-quot" class="headerlink" title="4.关于循环出现&quot;The file will have its original line endings in your working directory&quot;"></a>4.关于循环出现"<code>The file will have its original line endings in your working directory</code>"</h3><h6 id="由于路径中存在-的符号转义问题，解决方法："><a href="#由于路径中存在-的符号转义问题，解决方法：" class="headerlink" title="由于路径中存在/的符号转义问题，解决方法："></a>由于路径中存在/的符号转义问题，解决方法：</h6><pre><code>git config --global core.autocrlf false</code></pre><h3 id="5-Spawn-failed"><a href="#5-Spawn-failed" class="headerlink" title="5.Spawn-failed"></a>5.Spawn-failed</h3><h6 id="在hexo-d的时候提示错误"><a href="#在hexo-d的时候提示错误" class="headerlink" title="在hexo d的时候提示错误"></a>在<code>hexo d</code>的时候提示错误</h6>  <pre>Error: Spawn failed    at ChildProcess.&lt;anonymous&gt; (M:\Blog\myblog\node_modules\hexo-util\lib\spawn.js:51:21)    at ChildProcess.emit (events.js:311:20)    at ChildProcess.cp.emit (M:\Blog\myblog\node_modules\cross-spawn\lib\enoent.js:34:29)    at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)</pre>  <h6 id="一般情况只需要重新hexo-d就能解决，出现错误的原因可能是因为网络不稳定"><a href="#一般情况只需要重新hexo-d就能解决，出现错误的原因可能是因为网络不稳定" class="headerlink" title="一般情况只需要重新hexo d就能解决，出现错误的原因可能是因为网络不稳定"></a>一般情况只需要重新<code>hexo d</code>就能解决，出现错误的原因可能是因为网络不稳定</h6><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
