@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用hexo搭建博客问题总结, MF">
+    <meta name="keywords" content="SQL数据库语言, MF">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用hexo搭建博客问题总结 | MF</title>
+    <title>SQL数据库语言 | MF</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用hexo搭建博客问题总结</h1>
+                    <h1 class="description center-align post-title">SQL数据库语言</h1>
                 </div>
             </div>
         </div>
@@ -425,8 +425,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
                     </div>
@@ -441,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-17
                 </div>
                 
 
@@ -458,20 +458,111 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第一次使用Hexo-GitHub搭建个人博客时遇到的问题总结"><a href="#第一次使用Hexo-GitHub搭建个人博客时遇到的问题总结" class="headerlink" title="第一次使用Hexo+GitHub搭建个人博客时遇到的问题总结"></a>第一次使用Hexo+GitHub搭建个人博客时遇到的问题总结</h1><h3 id="1-从Github上clone时提示错误"><a href="#1-从Github上clone时提示错误" class="headerlink" title="1.从Github上clone时提示错误"></a>1.从Github上clone时提示错误</h3><p><code>error: RPC failed; curl 18 transfer closed with outstanding read data remaining</code>  </p>
-<h6 id="出现上述情况是因为大小限制，在bash命令中输入"><a href="#出现上述情况是因为大小限制，在bash命令中输入" class="headerlink" title="出现上述情况是因为大小限制，在bash命令中输入"></a>出现上述情况是因为大小限制，在bash命令中输入</h6><pre><code>git config --global http.postBuffer 524288000  </code></pre><h6 id="完成后可进行查看"><a href="#完成后可进行查看" class="headerlink" title="完成后可进行查看"></a>完成后可进行查看</h6><pre><code>git config --list  </code></pre><h3 id="2-同样出现在clone操作时的错误"><a href="#2-同样出现在clone操作时的错误" class="headerlink" title="2.同样出现在clone操作时的错误"></a>2.同样出现在clone操作时的错误</h3><p>  <code>error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</code>  </p>
-<h6 id="主要原因是安全设置问题"><a href="#主要原因是安全设置问题" class="headerlink" title="主要原因是安全设置问题"></a>主要原因是安全设置问题</h6><pre><code>git config --global http.sslVerify &quot;false&quot;  </code></pre><h6 id="若上述方法不能解决，google上找到的方法可以尝试"><a href="#若上述方法不能解决，google上找到的方法可以尝试" class="headerlink" title="若上述方法不能解决，google上找到的方法可以尝试"></a>若上述方法不能解决，google上找到的方法可以尝试</h6><pre><code>git config --global pack.windowMemory &quot;100m&quot;
-git config --global pack.SizeLimit &quot;100m&quot; 
-git config --global pack.threads &quot;1&quot;
-git config --global pack.window &quot;0&quot;  </code></pre><h3 id="3-使用cnpm命令时返回错误"><a href="#3-使用cnpm命令时返回错误" class="headerlink" title="3.使用cnpm命令时返回错误"></a>3.使用cnpm命令时返回错误</h3><p>  <code>[fsevents@^1.0.0] optional install error: Package require os(darwin) not compatible with your platform(win32)</code></p>
-<h6 id="这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令："><a href="#这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令：" class="headerlink" title="这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令："></a>这是一个可忽略的错误，fsevents不适用于Windows（本小白目前架设在windows上的），可通过以下命令：</h6><pre><code>cnpm rebuild node-sass
-cnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-its-original-line-endings-in-your-working-directory-quot"><a href="#4-关于循环出现-quot-The-file-will-have-its-original-line-endings-in-your-working-directory-quot" class="headerlink" title="4.关于循环出现&quot;The file will have its original line endings in your working directory&quot;"></a>4.关于循环出现&quot;<code>The file will have its original line endings in your working directory</code>&quot;</h3><h6 id="由于路径中存在-的符号转义问题，解决方法："><a href="#由于路径中存在-的符号转义问题，解决方法：" class="headerlink" title="由于路径中存在/的符号转义问题，解决方法："></a>由于路径中存在/的符号转义问题，解决方法：</h6><pre><code>git config --global core.autocrlf false</code></pre><h3 id="5-Spawn-failed"><a href="#5-Spawn-failed" class="headerlink" title="5.Spawn-failed"></a>5.Spawn-failed</h3><h6 id="在hexo-d的时候提示错误"><a href="#在hexo-d的时候提示错误" class="headerlink" title="在hexo d的时候提示错误"></a>在<code>hexo d</code>的时候提示错误</h6><pre>Error: Spawn failed
-    at ChildProcess.&lt;anonymous&gt; (M:\Blog\myblog\node_modules\hexo-util\lib\spawn.js:51:21)
-    at ChildProcess.emit (events.js:311:20)
-    at ChildProcess.cp.emit (M:\Blog\myblog\node_modules\cross-spawn\lib\enoent.js:34:29)
-    at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
-</pre>  
-<h6 id="一般情况只需要重新hexo-d就能解决，出现错误的原因可能是因为网络不稳定"><a href="#一般情况只需要重新hexo-d就能解决，出现错误的原因可能是因为网络不稳定" class="headerlink" title="一般情况只需要重新hexo d就能解决，出现错误的原因可能是因为网络不稳定"></a>一般情况只需要重新<code>hexo d</code>就能解决，出现错误的原因可能是因为网络不稳定</h6>
+                <h1 id="数据库基础知识总结"><a href="#数据库基础知识总结" class="headerlink" title="数据库基础知识总结"></a>数据库基础知识总结</h1><h3 id="一、重要知识点"><a href="#一、重要知识点" class="headerlink" title="一、重要知识点"></a>一、重要知识点</h3><h6 id="1-SQL数据定义语句的操作对象：模式、表、视图、索引；"><a href="#1-SQL数据定义语句的操作对象：模式、表、视图、索引；" class="headerlink" title="1.SQL数据定义语句的操作对象：模式、表、视图、索引；"></a>1.SQL数据定义语句的操作对象：模式、表、视图、索引；</h6><h6 id="2-SQL数据定义语句的命令：CREATE、DROP、ALTER；"><a href="#2-SQL数据定义语句的命令：CREATE、DROP、ALTER；" class="headerlink" title="2.SQL数据定义语句的命令：CREATE、DROP、ALTER；"></a>2.SQL数据定义语句的命令：CREATE、DROP、ALTER；</h6><h6 id="3-索引类型：唯一索引、非唯一索引、聚簇索引。"><a href="#3-索引类型：唯一索引、非唯一索引、聚簇索引。" class="headerlink" title="3.索引类型：唯一索引、非唯一索引、聚簇索引。"></a>3.索引类型：唯一索引、非唯一索引、聚簇索引。</h6><h3 id="二、SQL语句操作示例"><a href="#二、SQL语句操作示例" class="headerlink" title="二、SQL语句操作示例"></a>二、SQL语句操作示例</h3><h4 id="1-SQL中常用的关键词及其功能表："><a href="#1-SQL中常用的关键词及其功能表：" class="headerlink" title="1.SQL中常用的关键词及其功能表："></a>1.SQL中常用的关键词及其功能表：</h4><table>
+    <tr>
+           <th>模块</th>
+      <th>关键词</th>
+      <th>功能</th>
+   </tr>
+   <tr>
+           <td rowspan="11">数据定义</td>
+      <td>CREATE TABLE</td>
+      <td>创建数据库表</td>
+   </tr>
+   <tr>
+        <td>DROP TABLE</td>
+      <td>从数据库删除表</td>
+   </tr>
+   <tr>
+        <td>ALTER TABLE</td>
+      <td>修改数据库表结构</td>
+   </tr>
+   <tr>
+        <td>CREATE VIEW</td>
+      <td>创建视图</td>
+   </tr>
+   <tr>
+        <td>DROP VIEW</td>
+      <td>从数据库表删除视图</td>
+   </tr>
+   <tr>
+        <td>CREATE INDEX</td>
+      <td>为数据库表创建一个索引</td>
+   </tr>
+   <tr>
+        <td>DROP INDEX</td>
+      <td>从数据库删除索引</td>
+   </tr>
+   <tr>
+        <td>CREATE PROCEDURE</td>
+      <td>创建一个存储过程</td>
+   </tr>
+   <tr>
+        <td>DROP PROCEDURE</td>
+      <td>从数据库删除存储过程</td>
+   </tr>
+   <tr>
+        <td>CREATE TRIGGER</td>
+      <td>创建触发器</td>
+   </tr>
+   <tr>
+        <td>DROP TRIGGER</td>
+      <td>从数据库删除触发器</td>
+   </tr>
+   <tr>
+           <td rowspan="4">数据操作</td>
+      <td>SELECT</td>
+      <td>从数据库表中吉纳索数据行和列</td>
+   </tr>
+   <tr>
+        <td>INSERT</td>
+      <td>向数据库表中添加新数据行</td>
+   </tr>
+   <tr>
+        <td>DELETE</td>
+      <td>从数据库中删除数据行</td>
+   </tr>
+   <tr>
+        <td>UPDATE</td>
+      <td>更新数据库表中数据</td>
+   </tr>
+   <tr>
+        <td rowspan="3">数据控制</td>
+      <td>GRANT</td>
+      <td>授予用户访问权限</td>
+   </tr>
+   <tr>
+        <td>DENY</td>
+      <td>拒接用户访问</td>
+   </tr>
+   <tr>
+        <td>REVOKE</td>
+      <td>接触用户访问权限</td>
+   </tr>
+   <tr>
+        <td rowspan="3">事务控制</td>
+      <td>COMMIT</td>
+      <td>提交当前事务</td>
+   </tr>
+   <tr>
+        <td>ROLLBACK</td>
+      <td>回滚当前事务</td>
+   </tr>
+   <tr>
+        <td>SET TRANSACTION</td>
+      <td>定义当前事务访问特征</td>
+   </tr>
+</table>
+
+
+<h4 id="2-CREATE-TABLE"><a href="#2-CREATE-TABLE" class="headerlink" title="2.CREATE TABLE"></a>2.CREATE TABLE</h4><pre><code>CREATE TABLE user(
+    &#39;id&#39; INT AUTO_INCREMENT,  
+    &#39;name&#39; VARCHAR (20),  
+    PRIMARY KEY (&#39;id&#39;)  
+);</code></pre><h4 id="3-UPDATE"><a href="#3-UPDATE" class="headerlink" title="3.UPDATE"></a>3.UPDATE</h4><pre><code>UPDATE 表名 SET 列名 = 新值 WHERE 列名 = 某值</code></pre><h4 id="4-INSERT"><a href="#4-INSERT" class="headerlink" title="4.INSERT"></a>4.INSERT</h4><pre><code>INSERT INTO TABLE_NAME VALUES (VALUE1,VALUE2,...)
+
+INSERT INTO TABLE_NAME (列1,列2,...) VALUES (value1,value2,...)</code></pre><h4 id="5-DELETE"><a href="#5-DELETE" class="headerlink" title="5.DELETE"></a>5.DELETE</h4><pre><code>DELETE FROM TABLE_NAME WHERE 列名 = 值</code></pre><h4 id="6-权限分配"><a href="#6-权限分配" class="headerlink" title="6.权限分配"></a>6.权限分配</h4><pre><code>grant select,insert on &#39; &#39; to &#39;username&#39;</code></pre><h4 id="7-模糊查询"><a href="#7-模糊查询" class="headerlink" title="7.模糊查询"></a>7.模糊查询</h4><h6 id="：表示任意0个或多个字符。可匹配任意类型和长度的字符，中文情况下，使用两个（-）表示"><a href="#：表示任意0个或多个字符。可匹配任意类型和长度的字符，中文情况下，使用两个（-）表示" class="headerlink" title="%：表示任意0个或多个字符。可匹配任意类型和长度的字符，中文情况下，使用两个（%%）表示"></a>%：表示任意0个或多个字符。可匹配任意类型和长度的字符，中文情况下，使用两个（%%）表示</h6><pre><code>select * from test where text like &#39;%1%&#39;;</code></pre><h6 id="：表示任意单个字符。匹配单个任意字符，常用来限制表达式的字符长度语句"><a href="#：表示任意单个字符。匹配单个任意字符，常用来限制表达式的字符长度语句" class="headerlink" title="_：表示任意单个字符。匹配单个任意字符，常用来限制表达式的字符长度语句"></a>_：表示任意单个字符。匹配单个任意字符，常用来限制表达式的字符长度语句</h6><pre><code>select * from test where text like &#39;_%1_&#39;;</code></pre><h4 id="8-JOIN"><a href="#8-JOIN" class="headerlink" title="8.JOIN"></a>8.JOIN</h4><h3 id="三、主键与外键"><a href="#三、主键与外键" class="headerlink" title="三、主键与外键"></a>三、主键与外键</h3><h6 id="SQL主键与外键的作用："><a href="#SQL主键与外键的作用：" class="headerlink" title="SQL主键与外键的作用："></a>SQL主键与外键的作用：</h6><p><code>1.外键取值规则：空置或参照的主键值<br>2.插入非空值时，如果主键中没有这个值，则不能插入<br>3.更新时，不能改为主键表中没有的值<br>4.删除主键表记录时，可以在键外时选定外键记录一起删除还是拒绝删除<br>5.更新主键记录时，同样有级联更新和拒绝执行的选择</code></p>
+
             </div>
             <hr/>
 
@@ -484,8 +575,8 @@ cnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-it
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
                         </div>
@@ -914,9 +1005,56 @@ cnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-it
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/17/SQL%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="SQL数据库语言">
+                        
+                        <span class="card-title">SQL数据库语言</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据库基础知识总结一、重要知识点1.SQL数据定义语句的操作对象：模式、表、视图、索引；2.SQL数据定义语句的命令：CREATE、DROP、ALTER；3.索引类型：唯一索引、非唯一索引、聚簇索引。二、SQL语句操作示例1.SQL中常用的
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            m-f-home
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/03/06/Vue-Js%E9%A1%B9%E7%9B%AE-1/">
                     <div class="card-image">
@@ -934,9 +1072,9 @@ cnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-it
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -950,52 +1088,6 @@ cnpm install</code></pre><h3 id="4-关于循环出现-quot-The-file-will-have-it
                     
                     <a href="/tags/vue/">
                         <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/03/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/m-f-home/m-f-home.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="使用hexo搭建博客问题总结">
-                        
-                        <span class="card-title">使用hexo搭建博客问题总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            第一次使用Hexo+GitHub搭建个人博客时遇到的问题总结1.从Github上clone时提示错误error: RPC failed; curl 18 transfer closed with outstanding read data 
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            m-f-home
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
