@@ -1,3 +1,10 @@
+---
+layout: post
+title: css
+categories: [vue, JavaScript]
+description: vue实现一个可拖拽排序的虚拟滚动列表
+keywords: vue, JavaScript
+---
 
 # 1. 背景
 在工作中，有时候会遇到单个列表渲染成百上千条数据的情况，并且不能使用分页减少渲染的数据量。这种情况下网站的性能肯定会大打折扣，导致页面频繁出现卡顿。所以我们有必要了解对于一次性插入大量数据，如何提升渲染效率。
