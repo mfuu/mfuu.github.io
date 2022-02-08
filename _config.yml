@@ -10,6 +10,7 @@ description: "A blog site that records everything"
 keywords: blog
 timezone: Asia/Chongqing
 encoding: "utf-8"
+repository: mf-note/mf-note.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
