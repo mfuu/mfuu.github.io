@@ -748,7 +748,7 @@
   display: inline-block;
   width: 1em;
   height: 1em;
-  vertical-align: sub;
+  vertical-align: text-top;
 }
 .gt-container .gt-svg svg {
   width: 100%;
