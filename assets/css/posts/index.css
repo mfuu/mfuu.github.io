@@ -31,7 +31,9 @@
 .post-directory a:hover,
 .post-directory a:active,
 .post-directory a.on {
-    color: #4183c4;
+    color: #42b983;
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 .posts-list {
