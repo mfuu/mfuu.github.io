@@ -1,9 +1,15 @@
-_site/
-*.sw[po]
-*.~vsd
-\#*\#
-*~
-.DS_Store
+# Global
+*.DS_Store
+Desktop.ini
+Thumbs.db
+
+# Project
+!.keep
+*.sass-cache
+/_assets/yarn/
+/_site/
+/.jekyll-cache/
 Gemfile.lock
-.vscode/
-.jekyll-metadata
+package-lock.json
+yarn.lock
+.idea

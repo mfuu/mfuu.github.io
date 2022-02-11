@@ -1,172 +1,84 @@
-# ---------------- #
-#   Main Configs   #
-# ---------------- #
-baseurl:
-url: 
-date_format: "ordinal"
-title: mf-note
-subtitle: ""
-description: "A blog site that records everything"
-keywords: blog
-timezone: Asia/Chongqing
-encoding: "utf-8"
-repository: mf-note/mf-note.github.io
-# 对 css 和 js 资源的 cdn 加速配置
-cdn:
-    jsdelivr:
-        enabled: true
-# 可选组件配置
-components:
-    # 分享
-    # weibo,qq,wechat,douban,qzone,linkedin,facebook,twitter
-    share:
-        enabled: true
-        hide-platforms: douban,linkedin
-    # 不蒜子访问统计
-    busuanzi:
-        enabled: false
-        start_date: 2020-05-03
-    # My Popular Repositories
-    side_bar_repo:
-        enabled: true
-        limit: 5
-    # 文章字数统计
-    word_count:
-        enabled: true
-    # 页面右上角，以及「关于」页面的二维码
-    # 修改图片请替换 assets/images/qrcode.jpg
-    qrcode:
-        enabled: false
-        image_alt: ""
-    # 维基索引页使用哪种视图，支持 列表（list）/分类（cate）
-    wiki:
-        view: cate
-# 压缩页面内容
-compress_html:
-  clippings: all
-  comments: ["<!--", "-->"]
-# 代码高亮风格，支持的 theme 列表见 https://github.com/mzlogin/rouge-themes
-highlight_theme: github
+# Mandatory settings
 
-# ---------------- #
-#      Author      #
-# ---------------- #
-author: mf note
-organization: 
-organization_url: 
-github_username: mf-note
-location: Chongqing, China
-email: mf.loading@gmail.com
+blog_theme: light # Or use dark
+name: MF
+paginate: 25
+url: https://mf-note.github.io
 
-# ---------------- #
-#    Navigation    #
-# ---------------- #
-navs:
-  -
-    href: /
-    label: 首页
 
-  -
-    href: /categories/
-    label: 分类
+# Optional settings
 
-#   -
-#     href: /archives/
-#     label: 归档
+about_enabled: true # Change to true if you wish to show an icon in the navigation that redirects to the about page
+discus_identifier: chalk-1 # Add your Disqus identifier
+ga_analytics: UA-28631876-6 # Add your GA Tracking Id
+local_fonts: false # Change to true if you wish to use local fonts
+rss_enabled: true # Change to false if not
+scrollappear_enabled: true # Change to false to disable
+tag_nav_enabled: true # Change to true if you wish to show an additional 'tag-list' navigation below the header
+theme_toggle: true # Change to true if you wish to show an icon in the navigation for dynamic theme toggling
+social:
+  dribbble: # Add your Dribbble handle
+  facebook: # Add your Facebook handle
+  flickr: # Add your Flickr handle
+  github: mf-note # Add your GitHub handle
+  linkedin: # Add your LinkedIn handle
+  twitter: # Add your Twitter handle
+  email: # Add your Email address
+  bitcoin: # Add your Bitcoin link or address
+  ethereum: # Add your Ethereum link or address
+  gitlab: # Add your GitLab handle
+  youtube: # Add your Youtube handle
+  twitch: # Add your Twitch handle
+  discord: # Add you Discord server invitation ID
+  tumblr: # Add your Tumblr handle
+  bitbucket: # Add your Bitbucket handle
+  docker: # Add your Docker Hub handle
+  instagram: # Add your Instagram handle
+  keybase: # Add your Keybase handle
+  medium: # Add your Medium handle
+  spotify: # Add your Spotify handle
+  stackoverflow: # Add your Stack Overflow ID number
+  steam: # Add your Steam handle
 
-#   -
-#     href: /open-source/
-#     label: 开源
 
-#   -
-#     href: /wiki/
-#     label: 维基
+# Important settings (change at own risk)
 
-  # -
-  #   href: /links/
-  #   label: 链接
-
-  -
-    href: /about/
-    label: 关于
-
-# ---------------- #
-#       RSS        #
-# ---------------- #
-subscribe_rss: /feed.xml
-
-# ---------------- #
-#      Jekyll      #
-# ---------------- #
-markdown: kramdown
-kramdown:
-    input: GFM
-highlighter: rouge
-paginate: 10
-lsi: false
-quiet: false
-excerpt_separator: "\n\n"
-permalink: /:year/:month/:day/:title/
-plugins:
-    - jekyll-github-metadata
-    - rouge
-#     - jekyll-html-pipeline
-    - jekyll-paginate
-    - jekyll-sitemap
-    - jekyll-feed
-    - jemoji
-#     - jekyll-mentions
+assets:
+  plugins:
+    css: { autoprefixer: {}}
+    img: { optim: {}}
+  source_maps: false
+  sources:
+    - _assets/icons
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/yarn
 collections:
-    wiki:
-        output: true
-        permalink: /wiki/:path/
-
-# ---------------- #
-#      Comments    #
-# ---------------- #
-# support provider: disqus, gitment, gitalk, utterances
-comments_provider: gitalk
-# !!!重要!!! 请修改下面这些信息为你自己申请的
-# !!!Important!!! Please modify infos below to yours
-# https://disqus.com
-disqus:
-    username: 
-# https://imsun.net/posts/gitment-introduction/
-gitment:
-    owner: mf-note
-    repo: blog-comments
-    oauth:
-        client_id: 425281566fa2c21accf0
-        client_secret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
-# https://github.com/gitalk/gitalk#install
-gitalk:
-    owner: mf-note
-    repo: blog-comments
-    clientID: 425281566fa2c21accf0
-    clientSecret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
-# https://utteranc.es/
-utterances:
-    repo: mf-note/blog-comments
-# 在使用其它评论组件时可点击显示 Disqus
-lazy_load_disqus : false
-
-# ---------------- #
-#      Search      #
-# ---------------- #
-simple_jekyll_search:
-    # 是否支持全文搜索
-    fulltext: false
-    # 最多显示多少条搜索结果
-    limit: 10
-
-# ---------------- #
-#      Google      #
-# ---------------- #
-google:
-    analytics_id: UA-80669434-1
-    adsense:
-        footer: true
-        sidebar: true 
-        sidebar-detail: true 
-        content_header: false
-        content_footer: false
+  my_tags:
+    output: true
+    permalink: /tag/:slug/
+defaults:
+  -
+    scope:
+      path: ""
+      type: my_tags
+    values:
+      layout: articles_by_tag
+exclude:
+  - .travis.yml
+  - bin/*
+  - circle.yml
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - README.md
+  - vendor/
+  - yarn.lock
+plugins:
+  - jekyll-assets
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
+paginate_path: /posts/page/:num/
+permalink: posts/:slug
