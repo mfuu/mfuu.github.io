@@ -27,8 +27,8 @@
                 <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
               </li>
             {% endfor %}
+            <a class="rss" href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a>
           </ul>
-          <a class="rss" href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a>
 
           {% include visit-stat.html %}
         </div>
