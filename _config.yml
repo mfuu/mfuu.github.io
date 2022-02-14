@@ -4,7 +4,7 @@
 baseurl:
 url: 
 date_format: "ordinal"
-title: mf-note
+title: Blog
 subtitle: ""
 description: "A blog site that records everything"
 keywords: blog
@@ -45,7 +45,7 @@ components:
 compress_html:
   clippings: all
   comments: ["<!--", "-->"]
-# 代码高亮风格，支持的 theme 列表见 https://github.com/mzlogin/rouge-themes
+# 代码高亮风格
 highlight_theme: github
 
 # ---------------- #
@@ -126,18 +126,6 @@ collections:
 # ---------------- #
 # support provider: disqus, gitment, gitalk, utterances
 comments_provider: gitalk
-# !!!重要!!! 请修改下面这些信息为你自己申请的
-# !!!Important!!! Please modify infos below to yours
-# https://disqus.com
-disqus:
-    username: 
-# https://imsun.net/posts/gitment-introduction/
-gitment:
-    owner: mf-note
-    repo: blog-comments
-    oauth:
-        client_id: 425281566fa2c21accf0
-        client_secret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: mf-note
