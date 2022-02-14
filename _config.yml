@@ -24,7 +24,7 @@ components:
         hide-platforms: douban,linkedin
     # 不蒜子访问统计
     busuanzi:
-        enabled: false
+        enabled: true
         start_date: 2020-05-03
     # My Popular Repositories
     side_bar_repo:
@@ -158,3 +158,6 @@ google:
         sidebar-detail: true 
         content_header: false
         content_footer: false
+
+ad:
+
