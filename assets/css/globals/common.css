@@ -216,13 +216,18 @@
     list-style: none
 }
 
+.site-footer-links .rss {
+    margin-left: 10px;
+}
+
 .site-footer-links li {
     display: inline-block;
     line-height: 16px
 }
 
-.site-footer-links li:last-child {
-    margin-left: 10px
+.site-footer-links li:not(:last-child)::after {
+    content: '•';
+    margin: 0 10px;
 }
 
 .site-footer-links li a{
