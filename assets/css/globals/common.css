@@ -225,6 +225,10 @@
     margin-left: 10px
 }
 
+.site-footer-links li a{
+    color: hsla(0,0%,100%,.8)
+}
+
 .share {
     margin: 20px 0
 }
