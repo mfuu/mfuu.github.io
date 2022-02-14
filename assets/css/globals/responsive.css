@@ -5,6 +5,10 @@
   padding-right: 20px
 }
 
+.footer {
+  background: #000;
+}
+
 .mobile-visible {
   display: none
 }
