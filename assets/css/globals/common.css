@@ -177,13 +177,13 @@
 
 .site-footer {
     position: relative;
-    margin-top: 40px;
+    margin: 20px auto 0;
     padding-top: 40px;
     padding-bottom: 40px;
     font-size: 12px;
     line-height: 1.5;
-    color: #777;
-    border-top: 1px solid #eee
+    color: #fff;
+    max-width: 1020px;
 }
 
 .markdown-body h1,.markdown-body h2 {
@@ -696,7 +696,7 @@ pre {
 .tools-wrapper {
   position: fixed;
   right: 1em;
-  bottom: 3.4375em;
+  bottom: 8.4375em;
   z-index: 9;
   width: 2.5em;
 }
