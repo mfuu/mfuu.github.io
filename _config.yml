@@ -129,7 +129,7 @@ comments_provider: gitalk
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: mf-note
-    repo: blog-comments
+    repo: g-p-comments
     clientID: 425281566fa2c21accf0
     clientSecret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
 # https://utteranc.es/
