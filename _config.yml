@@ -45,13 +45,13 @@ components:
 compress_html:
   clippings: all
   comments: ["<!--", "-->"]
-# 代码高亮风格
-highlight_theme: github
+# 代码高亮风格，支持theme列表可见 assets/css/markdown
+highlight_theme: base16.solarized.light
 
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: mf note
+author: mf-note
 organization: 
 organization_url: 
 github_username: mf-note
