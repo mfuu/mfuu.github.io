@@ -5,6 +5,10 @@
   padding-right: 20px
 }
 
+.content {
+  min-height: calc(100% - 318px);
+}
+
 .footer {
   background: #000;
 }
