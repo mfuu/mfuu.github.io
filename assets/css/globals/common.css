@@ -225,8 +225,13 @@ html,body {
     list-style: none
 }
 
-.site-footer-links .rss {
-    margin-left: 10px;
+.site-footer-links .rss::before {
+    content: '';
+    width: 10px;
+    height: 15px;
+    position: absolute;
+    right: 40px;
+    background: #000;
 }
 
 .site-footer-links li {
@@ -234,7 +239,7 @@ html,body {
     line-height: 16px
 }
 
-.site-footer-links li:not(:last-child)::after {
+.site-footer-links li::after {
     content: '•';
     margin: 0 10px;
 }
