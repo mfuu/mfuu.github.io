@@ -51,6 +51,9 @@
     width: 100%!important;
     float: none;
   }
+  .collection-head {
+    height: auto;
+  }
   .home .banner .collection-head {
     padding: 1rem 1rem 1rem 0;
   }

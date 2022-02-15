@@ -3,7 +3,7 @@
       {% include footer-ad.html %}
 
       <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
+        <div class="copyright left">
           <br />
           © 2015
           <span title="{{ site.author}}">{{ site.author }}</span>
@@ -21,7 +21,7 @@
         {% endif %}
 
         <div class="right text-align-right">
-          <ul class="site-footer-links mobile-hidden">
+          <ul class="site-footer-links">
             {% for nav in site.navs %}
               <li>
                 <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
