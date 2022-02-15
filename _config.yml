@@ -46,7 +46,7 @@ compress_html:
   clippings: all
   comments: ["<!--", "-->"]
 # 代码高亮风格，支持theme列表可见 assets/css/markdown
-highlight_theme: base16.solarized.light
+highlight_theme: github
 
 # ---------------- #
 #      Author      #
