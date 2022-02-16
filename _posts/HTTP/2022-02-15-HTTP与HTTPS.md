@@ -1,3 +1,11 @@
+---
+layout: post
+title: HTTP与HTTPS
+categories: [网络]
+description: HTTP与HTTPS
+keywords: HTTP
+---
+
 https的SSL加密是在传输层实现的。
   
 ### 1.http和https的基本概念
