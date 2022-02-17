@@ -52,7 +52,7 @@
     </script>
 
     <script>
-      $(function(){
+      jQuery(document).ready(function($) {
         function footerPosition(){
           $("footer").removeClass("fixed-bottom");
           //网页正文全文高度
@@ -68,7 +68,7 @@
         }
         footerPosition();
         $(window).resize(footerPosition);
-      });
+      }
     </script>
 
     {% if page.mermaid %}
