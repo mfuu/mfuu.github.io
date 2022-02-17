@@ -74,17 +74,19 @@
 
       } else if (this_level <= level){ // higher level than before; end parent ol
         for(i = this_level; i < level; i++) {
-          html += "</li>"
+          // html += "</li>"
+          html += "</li></"+settings.listType+">"
         }
-        html += "</"+settings.listType+">"
+        // html += "</"+settings.listType+">"
         html += "<li class='toc-item toc-level-" + this_level + "'><a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
         html += "</a>";
       }
       else if (this_level > level) { // lower level than before; expand the previous to contain a ol
-        html += "<"+settings.listType+" class='toc-child'>"
+        // html += "<"+settings.listType+" class='toc-child'>"
         for(i = this_level; i > level; i--) {
-          html += "<li class='toc-item toc-level-" + i + "'>"
+          // html += "<li class='toc-item toc-level-" + i + "'>"
+          html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + i + "'>"
         }
         html += "<a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
