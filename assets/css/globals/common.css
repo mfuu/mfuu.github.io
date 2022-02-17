@@ -71,7 +71,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    padding: 20px 0;
+    padding: 18px 0;
     margin-bottom: 20px;
     background: #fff;
     border-bottom: 1px solid #eee;
@@ -167,7 +167,7 @@
 
 .site-header-nav-item {
     display: inline-block;
-    padding: 6px 10px 15px;
+    padding: 2px 10px 18px;
     margin-left: 1.25rem;
     font-size: 1rem;
     color: #777
@@ -185,7 +185,7 @@
 
 .site-header-nav-item.selected {
     color: #333;
-    padding: 6px 10px 13px;
+    padding: 2px 10px 16px;
     border-bottom: 2px solid #d26911
 }
 
