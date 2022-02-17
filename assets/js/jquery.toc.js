@@ -52,6 +52,7 @@
     var return_to_top = '<i class="icon-arrow-up back-to-top"> </i>';
 
     var level = get_level(headers[0]),
+    flag = 1,
     this_level,
     html = "<p><strong class=\"toc-title\">" + settings.title + "</strong></p>\n";
     html += " <"+settings.listType+" class=\"toc\">";
@@ -74,17 +75,22 @@
 
       } else if (this_level <= level){ // higher level than before; end parent ol
         for(i = this_level; i < level; i++) {
-          html += "</li></"+settings.listType+">"
+          html += "</li>"
+        }
+        html += "</"+settings.listType+">"
+        if (flag > 0 && this_level == get_level(headers[0])) {
+          html += "</"+settings.listType+">"
+          flag--
         }
         html += "<li class='toc-item toc-level-" + this_level + "'><a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
         html += "</a>";
       }
       else if (this_level > level) { // lower level than before; expand the previous to contain a ol
-        // for(i = this_level; i > level; i--) {
-          // html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + i + "'>"
-        // }
-        html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + this_level + "'>"
+        html += "<"+settings.listType+" class='toc-child'>"
+        for(i = this_level; i > level; i--) {
+          html += "<li class='toc-item toc-level-" + i + "'>"
+        }
         html += "<a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
         html += "</a>";
