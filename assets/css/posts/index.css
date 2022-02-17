@@ -10,6 +10,8 @@
     padding-bottom: 1em;
     border: 1px solid #efefef;
     color: #999;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%);
 }
 
 .post-directory ul,
