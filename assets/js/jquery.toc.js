@@ -52,7 +52,6 @@
     var return_to_top = '<i class="icon-arrow-up back-to-top"> </i>';
 
     var level = get_level(headers[0]),
-    flag = 1,
     this_level,
     html = "<p><strong class=\"toc-title\">" + settings.title + "</strong></p>\n";
     html += " <"+settings.listType+" class=\"toc\">";
@@ -78,10 +77,6 @@
           html += "</li>"
         }
         html += "</"+settings.listType+">"
-        if (flag > 0 && this_level == get_level(headers[0])) {
-          html += "</"+settings.listType+">"
-          flag--
-        }
         html += "<li class='toc-item toc-level-" + this_level + "'><a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
         html += "</a>";
