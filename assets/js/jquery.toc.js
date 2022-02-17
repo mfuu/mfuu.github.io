@@ -82,8 +82,9 @@
       }
       else if (this_level > level) { // lower level than before; expand the previous to contain a ol
         // for(i = this_level; i > level; i--) {
-          html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + i + "'>"
+          // html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + i + "'>"
         // }
+        html += "<"+settings.listType+" class='toc-child'><li class='toc-item toc-level-" + this_level + "'>"
         html += "<a class=\"jumper\" href='#" + fixedEncodeURIComponent(header.id) + "'>";
         html += "<span class='toc-text'>" + header.innerHTML + "</span>";
         html += "</a>";
