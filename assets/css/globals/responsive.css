@@ -78,7 +78,7 @@
     font-size: 1em;
   }
   .site-header .site-header-nav {
-    float: right;
+    float: left;
     display: none;
     margin-bottom: 0;
   }

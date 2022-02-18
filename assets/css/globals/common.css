@@ -104,6 +104,11 @@
     margin: 0 .25em
 }
 
+.site-header .right {
+    display: flex;
+    align-items: center;
+}
+
 .site-header .right .octicon {
     margin-top: 0;
     margin-bottom: 0;
@@ -250,6 +255,32 @@
 
 .site-footer-links li a{
     color: hsla(0,0%,100%,.8)
+}
+
+.site-search {
+    position: relative;
+    margin: -4px 10px;
+}
+
+.site-search input {
+    width: 100%;
+}
+.site-search ul {
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+    list-style-type: none;
+    padding-top: 10px;
+    padding-left: 10px;
+    background: #fff;
+    box-shadow: 2px 2px 8px 0px #ddd;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.site-search ul li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .share {
