@@ -153,11 +153,9 @@ simple_jekyll_search:
 google:
     analytics_id: 
     adsense:
-        footer: true
-        sidebar: true 
-        sidebar-detail: true 
+        footer: false
+        sidebar: false 
+        sidebar-detail: false 
         content_header: false
         content_footer: false
 
-ad:
-    footer: false

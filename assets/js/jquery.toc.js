@@ -1,5 +1,4 @@
 // https://github.com/ghiculescu/jekyll-table-of-contents
-// Updated by https://mazhuang.org
 (function($){
   $.fn.toc = function(options) {
     var defaults = {
@@ -107,6 +106,7 @@
 })(jQuery);
 
 $(document).ready(function(){
+  $(window).off('scroll');
   $('.post-directory').toc();
 
   var fixmeTop = $('#post-directory-module').offset().top;

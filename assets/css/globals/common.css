@@ -751,6 +751,15 @@ pre {
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
 }
 
+.progress-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    z-index: 1000;
+    background-color: #0A74DA;
+}
+
 .tools-wrapper {
   position: fixed;
   right: 1em;
