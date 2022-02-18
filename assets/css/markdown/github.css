@@ -204,3 +204,6 @@
 .highlight .w {
   color: #bbbbbb;
 }
+.highlight pre {
+  background: #f6f8fa;
+}
