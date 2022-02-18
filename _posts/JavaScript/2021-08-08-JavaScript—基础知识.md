@@ -1,8 +1,8 @@
 ---
 layout: post
-title: es6基础知识
+title: JavaScript—基础知识
 categories: [JavaScript]
-description: es6基础知识记录
+description: JavaScript—基础知识
 keywords: JavaScript
 ---
 
