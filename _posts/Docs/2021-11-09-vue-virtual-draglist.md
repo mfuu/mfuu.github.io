@@ -189,6 +189,7 @@ handleBehind(overs) {
  2. 如果 offset = middle，匹配成功，查找结束
  3. 如果 offset > middle，则 low = mid + 1，只需要在数组的后一半元素中继续查找
  4. 如果 while 循环结束后都没有找到 value，返回 0
+
 ```js
 getScrollOvers() {
   // 如果有header插槽，需要减去header的高度，offset为当前滚动高度
