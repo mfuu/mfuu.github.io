@@ -6,7 +6,6 @@ description: TypeScript—数据类型
 keywords: TypeScript
 ---
 
-## TypeScript 基础类型
 ### 1. Boolean 类型
 ```ts
 let bool: boolean = false

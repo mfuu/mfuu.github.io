@@ -6,8 +6,6 @@ description: JavaScript—基础知识
 keywords: JavaScript
 ---
 
-# JavaScript
-js相关知识内容记录
 
 ### 一.变量数据类型和检测方式
 js数据类型  
