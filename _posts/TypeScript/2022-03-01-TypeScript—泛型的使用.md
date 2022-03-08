@@ -7,7 +7,6 @@ keywords: TypeScript
 ---
 
 
-## 泛型的变量
 
 ### 泛型变量
 
