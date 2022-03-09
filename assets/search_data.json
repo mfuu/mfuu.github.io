@@ -2,15 +2,15 @@
 ---
 {% capture json %}
 [
-  // {% for pg in site.pages %}
-  // {% if pg.title != nil %}
-  //   {
-  //     "title"    : "{{ pg.title | escape }}",
-  //     "url"      : "{{ site.url }}{{ pg.url }}",
-  //     "keywords" : "{{ pg.keywords | escape }}"
-  //   } ,
-  // {% endif %}
-  // {% endfor %}
+  {% for pg in site.pages %}
+  {% if pg.title != nil and false %}
+    {
+      "title"    : "{{ pg.title | escape }}",
+      "url"      : "{{ site.url }}{{ pg.url }}",
+      "keywords" : "{{ pg.keywords | escape }}"
+    } ,
+  {% endif %}
+  {% endfor %}
 
   {% for doc in site.documents %}
     {
