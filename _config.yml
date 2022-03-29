@@ -10,7 +10,7 @@ description: "A blog site that records everything"
 keywords: blog
 timezone: Asia/Chongqing
 encoding: "utf-8"
-repository: mf-note/mf-note.github.io
+repository: mfuu/mfuu.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
@@ -51,12 +51,12 @@ highlight_theme: github
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: mf-note
+author: mfuu
 organization: 
 organization_url: 
-github_username: mf-note
+github_username: mfuu
 location: Chongqing, China
-email: mf.loading@gmail.com
+email: mfuu1998@gmail.com
 
 # ---------------- #
 #    Navigation    #
@@ -128,13 +128,13 @@ collections:
 comments_provider: gitalk
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: mf-note
+    owner: mfuu
     repo: g-p-comments
     clientID: 425281566fa2c21accf0
     clientSecret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
 # https://utteranc.es/
 utterances:
-    repo: mf-note/blog-comments
+    repo: mfuu/blog-comments
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
