@@ -30,5 +30,8 @@ jQuery(function() {
     });
   }
 
-  toTop();
+  setTimeout(() => {
+    toTop();
+  }, 0);
+
 });
