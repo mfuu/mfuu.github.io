@@ -10,10 +10,10 @@ keywords: JavaScript
 ## 一.数据类型和检测方式
 ### 数据类型
 
-```js
-基本类型：空值（null）、未定义（undefined）、布尔值（Boolean）、数值（Number）、字符串（String）、符号（Symbol，ES6新增）
-引用类型：对象（Object）（还有Function、Array、RegExp、Date等）
-```
+
+* 基本类型：空值（null）、未定义（undefined）、布尔值（Boolean）、数值（Number）、字符串（String）、符号（Symbol，ES6新增）
+* 引用类型：对象（Object）（还有Function、Array、RegExp、Date等）
+
 
 ### typeof
 
@@ -47,6 +47,7 @@ typeof检测数据类型的原理：
 * null：
 
 在<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#null" target="_blank">MDN</a>中对于typeof null === 'object'也有介绍：
+
 >在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 null 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签是 0，typeof null 也因此返回 "object"
 
 补充：function其实是object的一个子类型，具体来说，函数是“可调用对象”，它有一个内部属性[[call]]，该属性可以使其被调用。  
@@ -87,6 +88,7 @@ console.log(f instanceof Father) // true
 ### constructor
 
 <a href="https://www.w3school.com.cn/jsref/jsref_constructor_array.asp" target="_blank">W3C</a>中对 constructor 定义：
+
 > constructor 属性返回对象的构造函数。其返回值是对函数的引用，而不是函数的名称。
 
 从定义上来说和 instanceof 不太一致，但效果都是一样的。constructor 可以区分数组和对象。
