@@ -6,13 +6,6 @@ description: vue-virtual-drag-list demo
 permalink: /vue-virtual-drag-list/
 ---
 
-
-<html lang="en-us">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>拖动排序</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-virtual-draglist@2.5.1/dist/draglist.min.js"></script>
   <script src="../assets/github/mock.js"></script>
@@ -57,50 +50,29 @@ permalink: /vue-virtual-drag-list/
     }
   </style>
 </head>
-
 <body>
   <div id="app">
     <div class="header">
       <button @click="reset">reset</button>
       <button @click="editing = !editing">change editing</button>
       <button @click="toBottom">bottom</button>
-
-      allow drag: {{ editing }}
     </div>
-    <div id="v-draggable-virtual-list">
-      <virtual-list ref="list" :data-source="dataSource" :data-key="'id'" :keeps="50" :size="60" :draggable="editing" @top="handleTop" @bottom="handleBottom" @ondragend="ondragend">
-        <template slot="item" slot-scope="{ record, index, dataKey }">
-          <div class="test-item">
-            <div class="sort index" draggable="true" v-if="editing" @click="handleClick">
-              <i class="f7-icons">sort_ios {{ index }}</i>
-            </div>
-            <span>{{ record.id }}</span>
-            <span>{{ record.desc }}</span>
-          </div>
-        </template>
-        <template slot="header">
-          <div class="loading">header</div>
-        </template>
-        <template slot="footer">
-          <div class="loading">footer</div>
-        </template>
-      </virtual-list>
-    </div>
+    <visible-list :editing="editing"></visible-list>
   </div>
   <script type="text/javascript">
-    new Vue({
-      el: '#app',
+    Vue.component('visible-list', {
+      props: {
+        editing: {}
+      },
       data() {
         return {
-          editing: true,
           dataSource: getPageData(60, 0),
         }
       },
-      components: { virtualList: VirtualDragList },
+      mounted() {
+        console.log(this)
+      },
       methods: {
-        reset() {
-          this.$refs.list.reset()
-        },
         handleTop() {
           console.log('is to top')
         },
@@ -110,16 +82,72 @@ permalink: /vue-virtual-drag-list/
         ondragend(arr) {
           console.log('new arr after drag end', arr)
         },
-        toBottom() {
-          this.$refs.list.scrollToBottom()
-        },
         handleClick() {
           console.log('click')
         }
+      },
+      render(h) {
+        return h('div', {
+          attrs: {
+            id: 'v-draggable-virtual-list',
+          }
+        }, 
+        [
+          h(VirtualDragList, {
+            ref: 'list',
+            props: {
+              dataSource: this.dataSource,
+              dataKey: 'id',
+              keeps: 20,
+              size: 60,
+              draggable: this.editing,
+            },
+            on: {
+              top: this.handleTop,
+              bottom: this.handleBottom,
+              ondragend: this.ondragend
+            },
+            scopedSlots: {
+              item: props => {
+                return h('div', {
+                  class: 'test-item',
+                }, 
+                [
+                  this.editing ? h('div', {
+                    attrs: {
+                      draggable: true
+                    },
+                    class: 'sort index',
+                    on: {
+                      click: this.handleClick
+                    }
+                  }, 'drag ' + props.record.name) : null,
+                  h('span', {}, props.record.desc)
+                ])
+              }
+            }
+          },[
+            h('div', { slot: 'header', class: 'loading' }, 'header'),
+            h('div', { slot: 'footer', class: 'loading' }, 'footer')
+          ])
+        ])
       }
-    })
+    });
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          editing: true
+        }
+      },
+      methods: {
+        reset() {
+          this.$children[0].$refs.list.reset();
+        },
+        toBottom() {
+          this.$children[0].$refs.list.scrollToBottom();
+        },
+      }
+    });
   </script>
 </body>
-
-</html>
-
