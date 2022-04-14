@@ -15,8 +15,8 @@ permalink: /vue-virtual-drag-list/
   <title>拖动排序</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-virtual-draglist@2.5.1/dist/draglist.min.js"></script>
-  <script src="../assets/js/mock.js"></script>
-  <script src="../assets/js/sentences.js"></script>
+  <script src="{{ assets_base_url }}/assets/js/mock.js"></script>
+  <script src="{{ assets_base_url }}/assets/js/sentences.js"></script>
   <style>
     html, body {
       height: 100%;

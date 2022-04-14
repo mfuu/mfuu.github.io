@@ -70,9 +70,9 @@ navs:
     href: /categories/
     label: 分类
 
-#   -
-#     href: /archives/
-#     label: 归档
+  -
+    href: /archives/
+    label: 归档
 
 #   -
 #     href: /open-source/
@@ -90,9 +90,6 @@ navs:
     href: /about/
     label: 关于
 
-#   —
-#     href: /open-source/
-#     label: 开源项目
 
 # ---------------- #
 #       RSS        #
