@@ -8,7 +8,7 @@ title: MF
 subtitle: ""
 description: "A blog site that records everything"
 keywords: blog
-timezone: Asia/Chongqing
+timezone: 
 encoding: "utf-8"
 repository: mfuu/mfuu.github.io
 # 对 css 和 js 资源的 cdn 加速配置
