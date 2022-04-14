@@ -30,13 +30,11 @@ layout: default
 <!-- / .banner -->
  <section class="container content">
     <div class="columns">
-      <div class="column">
-        <article class="article-content markdown-body">
-          {{ content }}
-        </article>
-        <div class="comment">
-          {% include comments.html %}
-        </div>
+      <article class="article-content markdown-body">
+        {{ content }}
+      </article>
+      <div class="comment">
+        {% include comments.html %}
       </div>
     </div>
   </section>
