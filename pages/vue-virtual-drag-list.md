@@ -28,11 +28,16 @@ permalink: /vue-virtual-drag-list/
     #app {
       height: 100%;
     }
+    .header {
+      padding: 20px;
+    }
     #v-draggable-virtual-list {
-      height: 100%;
-      /* height: 500px; */
+      /* height: 100%; */
+      height: 80%;
       /* overflow: hidden; */
       position: relative;
+      border: 1px solid #37ff19;
+      background: #84ff1914;
     }
     .content {
       height: 100%;
@@ -56,13 +61,14 @@ permalink: /vue-virtual-drag-list/
 
 <body>
   <div id="app">
-    <div id="v-draggable-virtual-list">
+    <div class="header">
       <button @click="reset">reset</button>
       <button @click="editing = !editing">change editing</button>
       <button @click="toBottom">bottom</button>
 
       allow drag: {{ editing }}
-
+    </div>
+    <div id="v-draggable-virtual-list">
       <virtual-list ref="list" :data-source="dataSource" :data-key="'id'" :keeps="50" :size="60" :draggable="editing" @top="handleTop" @bottom="handleBottom" @ondragend="ondragend">
         <template slot="item" slot-scope="{ record, index, dataKey }">
           <div class="test-item">
