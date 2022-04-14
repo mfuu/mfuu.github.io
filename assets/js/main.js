@@ -30,8 +30,8 @@ jQuery(function() {
     });
   }
 
-  setTimeout(() => {
-    toTop();
-  }, 0);
+  toTop();
+
+  window.toTop = toTop
 
 });
