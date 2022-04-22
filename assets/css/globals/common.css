@@ -282,6 +282,11 @@
     padding: 3px 10px;
 }
 
+.site-search ul p {
+    text-align: center;
+    color: #aaa;
+}
+
 .share {
     margin: 20px 0
 }
