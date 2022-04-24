@@ -766,27 +766,42 @@ pre {
 }
 
 .tools-wrapper {
-  position: fixed;
-  right: 1em;
-  bottom: 7.4375em;
-  z-index: 9;
-  width: 2.5em;
-  box-shadow: 0px 1px 8px 0px #bbb;
+    position: fixed;
+    right: 1em;
+    bottom: 7.4375em;
+    z-index: 9;
+    width: 2.5em;
+    box-shadow: 0px 1px 8px 0px #bbb;
 }
 
 .tools-wrapper a {
-  color: #999;
-  text-align: center;
-  margin-bottom: -1px;
-  background: rgba(255, 255, 255, 32);
+    color: #999;
+    text-align: center;
+    margin-bottom: -1px;
+    background: rgba(255, 255, 255, 32);
 }
 
 .tools-wrapper span.octicon {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .tools-wrapper .gotop {
-  display: none;
+    display: none;
+    position: relative;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+}
+
+.tools-wrapper .gotop .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 26px;
+    height: 26px;
+    fill: #3178c6;
 }
 
 .top-most-flag {
