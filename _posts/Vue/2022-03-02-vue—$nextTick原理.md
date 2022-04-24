@@ -235,7 +235,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
 * 以上两者都不支持，则判断是否支持 setImmediate
 * 如果都不支持，则利用 setTimeout 设置延时为 0
 
-有关 setImmediate 和 setTimeout 的区别可以查看 [深入理解js事件循环机制（Node.js）](https://github.com/mf-note/Blog/issues/2)
+有关 setImmediate 和 setTimeout 的区别可以查看 [深入理解js事件循环机制（Node.js）](https://github.com/mfuu/Blog/issues/2)
 
 降级处理的目的都是将 flushCallbacks 放入到微任务或宏任务，等待下一次事件循环来执行。最后看 flushCallbacks 到底做了什么：
 
