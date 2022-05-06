@@ -6,69 +6,82 @@ description: react-virtual-drag-list demo
 permalink: /react-virtual-drag-list/
 ---
 
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-virtual-drag-list@2.3.0/dist/draglist.js"></script>
-    <script src="../assets/github/mock.js"></script>
-    <script src="../assets/github/sentences.js"></script>
-    <style>
-      html, body {
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        color: rgba(0, 0, 0, 0.65);
-        font-size: 14px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-        font-variant: tabular-nums;
-        line-height: 1.5;
-        background-color: #fff;
-        font-feature-settings: 'tnum';
-      }
-      #app {
-        height: 100%;
-        overflow: auto;
-      }
-      .drag {
-        color: #1984ff;
-        cursor: grab;
-      }
-      .item {
-        padding: 16px;
-        border-bottom: 1px solid #1984ff;
-      }
-      .loading {
-        font-size: 16px;
-        height: 20px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script>
-      const domContainer = document.querySelector('#app');
-      const root = ReactDOM.createRoot(domContainer);
-      function Virtual() {
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-virtual-drag-list@2.3.0/dist/draglist.js"></script>
+  <script src="../../assets/github/mock.js"></script>
+  <script src="../../assets/github/sentences.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      font-variant: tabular-nums;
+      line-height: 1.5;
+      background-color: #fff;
+      font-feature-settings: 'tnum';
+    }
+    #app {
+      height: 100%;
+    }
+    .virtual-list {
+      height: 100%;
+      overflow: auto;
+    }
+    .drag {
+      color: #1984ff;
+      cursor: grab;
+    }
+    .item {
+      padding: 16px;
+      border-bottom: 1px solid #1984ff;
+    }
+    .loading {
+      font-size: 16px;
+      height: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    const VirtualList = virtualDragList['default']
+    function Virtual() {
 
-        const list = getPageData(60, 0);
+      const list = getPageData(60, 0);
 
-        const virtualRef = React.useRef();
+      const virtualRef = React.useRef();
 
-        const handleToTop = () => {
-          console.log('istop');
-        };
-        const handleToBottom = () => {
-          console.log('isbottom');
-        };
-        const handleDragEnd = (arr, _old, _new, changed) => {
-          console.log(arr, _old, _new, changed, 'new state after drag end');
-        };
+      const toBottom = () => {
+        console.log(virtualRef.current);
+        virtualRef.current.scrollToBottom();
+      };
+      const changeEdit = () => {
 
-        console.log(virtualDragList, window);
+      };
+      const handleToTop = () => {
+        console.log('istop');
+      };
+      const handleToBottom = () => {
+        console.log('isbottom');
+      };
+      const handleDragEnd = (arr, _old, _new, changed) => {
+        console.log(arr, _old, _new, changed, 'new state after drag end');
+      };
 
-        return (
-          <virtualDragList
+      return (
+        <div className="virtual-list">
+          <div>
+            <button onClick={ toBottom }>to bottom</button>
+            <button onClick={ changeEdit }>change editing</button>
+          </div>
+          <VirtualList
             ref={ virtualRef }
             dataKey="id"
             dataSource={ list }
@@ -82,17 +95,18 @@ permalink: /react-virtual-drag-list/
             {
               (record, index, uniqueKey) => {
                 return (
-                  <div class="item">
-                    <span class=".drag">{ index }</span>
-                    { record.text }
+                  <div className="item">
+                    <div className="drag">{ uniqueKey }</div>
+                    { record.desc }
                   </div>
                 );
               }
             }
-          </virtualDragList>
-        )
-      };
-      root.render(<Virtual />);
-      console.log(this, window);
-    </script>
-  </body>
+          </VirtualList>
+        </div>
+      )
+    };
+    const root = ReactDOM.createRoot(document.getElementById('app'));
+    root.render(<Virtual />);
+  </script>
+</body>
