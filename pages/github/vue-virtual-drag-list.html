@@ -1,13 +1,13 @@
 ---
 layout: github
 title: vue-virtual-drag-list
-keywords: virtual,vue,list,drag,sort,big-data
+keywords: virtual,vue,list,drag,drop,sort,big-data,infinite
 description: vue-virtual-drag-list demo
 permalink: /vue-virtual-drag-list/
 ---
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue-virtual-draglist@2.5.2/dist/draglist.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-virtual-draglist@2.6.0/dist/draglist.min.js"></script>
   <script src="../assets/github/mock.js"></script>
   <script src="../assets/github/sentences.js"></script>
   <style>
@@ -107,7 +107,8 @@ permalink: /vue-virtual-drag-list/
               dataKey: 'id',
               keeps: 20,
               size: 60,
-              draggable: this.editing,
+              disabled: !this.editing,
+              draggable: '.drag',
             },
             on: {
               top: this.handleTop,
@@ -121,10 +122,7 @@ permalink: /vue-virtual-drag-list/
                 }, 
                 [
                   this.editing ? h('div', {
-                    attrs: {
-                      draggable: true
-                    },
-                    class: 'sort index',
+                    class: 'drag index',
                     on: {
                       click: this.handleClick
                     }
