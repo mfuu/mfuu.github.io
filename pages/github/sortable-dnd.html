@@ -6,7 +6,7 @@ description: sortable-dnd demo
 permalink: /sortable-dnd/
 ---
 
-  <script src="https://cdn.jsdelivr.net/npm/sortable-dnd@0.1.0/dist/sortable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortable-dnd@0.1.1/dist/sortable.min.js"></script>
   <style>
     ul {
       padding: 0;
@@ -74,6 +74,7 @@ permalink: /sortable-dnd/
     new Sortable(
       document.getElementById('group'),
       {
+        ghostAnimation: 500,
         ghostStyle: { border: '1px solid #aaa', textAlign: 'center' },
         chosenClass: 'chosen',
         dragEnd: (pre, cur) => {
@@ -93,6 +94,7 @@ permalink: /sortable-dnd/
     new Sortable(
       document.getElementById('flexgroup'),
       {
+        ghostAnimation: 500,
         ghostStyle: { border: '1px solid #aaa', textAlign: 'center' },
         chosenClass: 'chosen',
         dragEnd: (pre, cur) => {
@@ -112,6 +114,7 @@ permalink: /sortable-dnd/
     new Sortable(
       document.getElementById('flexdrag'),
       {
+        ghostAnimation: 500,
         ghostStyle: { border: '1px solid #aaa', textAlign: 'center' },
         chosenClass: 'chosen',
         draggable: 'i',
