@@ -59,11 +59,10 @@ permalink: /react-virtual-drag-list/
       const virtualRef = React.useRef();
 
       const toBottom = () => {
-        console.log(virtualRef.current);
         virtualRef.current.scrollToBottom();
       };
-      const changeEdit = () => {
-
+      const toTop = () => {
+        virtualRef.current.scrollToTop();
       };
       const handleToTop = () => {
         console.log('istop');
@@ -79,7 +78,7 @@ permalink: /react-virtual-drag-list/
         <div className="virtual-list">
           <div>
             <button onClick={ toBottom }>to bottom</button>
-            <button onClick={ changeEdit }>change editing</button>
+            <button onClick={ toTop }>to top</button>
           </div>
           <VirtualList
             ref={ virtualRef }
