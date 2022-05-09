@@ -86,8 +86,8 @@ permalink: /vue-virtual-drag-list/
         handleBottom() {
           console.log('is to bottom')
         },
-        ondragend(arr) {
-          console.log('new arr after drag end', arr)
+        ondragend(arr, _old, _new, chnaged) {
+          console.log(arr, _old, _new, chnaged, 'new states after drag end')
         },
         handleClick() {
           console.log('click')
