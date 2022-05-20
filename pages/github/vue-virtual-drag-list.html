@@ -28,21 +28,28 @@ permalink: /vue-virtual-drag-list/
       height: 100%;
     }
     .header {
-      padding: 20px;
+      height: 50px;
+      line-height: 48px;
+      background: antiquewhite;
+      text-align: center;
     }
-    #v-draggable-virtual-list {
-      /* height: 100%; */
-      height: 80%;
-      /* overflow: hidden; */
-      position: relative;
-      border: 1px solid #19e1ff;
-      background: #19ffed05;
+    .draggable-virtual-list {
+      width: 500px;
+      height: 500px;
+      margin: 20px auto 50px;
+      border: 1px solid #ccc;
+    }
+    .horizontal-draggable-virtual-list {
+      width: 1000px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
     }
     .content {
       height: 100%;
       overflow: auto;
     }
     .index {
+      min-width: 30px;
       color: #1984ff;
       cursor: grab;
     }
@@ -50,10 +57,25 @@ permalink: /vue-virtual-drag-list/
       padding: 16px;
       border-bottom: 1px solid #1984ff;
     }
+    .horizontal {
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      width: 100px;
+      margin: 10px;
+      overflow: hidden;
+      border: 1px dashed #1984ff;
+    }
+    .horizontal span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .loading {
       font-size: 16px;
       height: 20px;
       text-align: center;
+      -webkit-text-stroke-width: thick;
     }
   </style>
 </head>
@@ -63,21 +85,30 @@ permalink: /vue-virtual-drag-list/
       <button @click="reset">reset</button>
       <button @click="editing = !editing">change editing</button>
       <button @click="toBottom">bottom</button>
+      <button @click="toIndex">toIndex30</button>
+      <button @click="toOffset">toOffset500</button>
     </div>
-    <visible-list :editing="editing"></visible-list>
+    <vertical-list :editing="editing" :data-source="dataSource"></vertical-list>
+
+    <div class="header">
+      <button @click="horizontalreset">reset</button>
+      <button @click="horizontalediting = !horizontalediting">change editing</button>
+      <button @click="horizontaltoBottom">bottom</button>
+      <button @click="horizontaltoIndex">toIndex30</button>
+      <button @click="horizontaltoOffset">toOffset500</button>
+    </div>
+    <horizontal-list :editing="horizontalediting" :data-source="dataSource"></horizontal-list>
   </div>
   <script type="text/javascript">
-    Vue.component('visible-list', {
+    Vue.component('vertical-list', {
       props: {
-        editing: {}
-      },
-      data() {
-        return {
-          dataSource: getPageData(60, 0),
+        editing: {},
+        dataSource: {
+          type: Array,
+          default: () => {
+            return []
+          }
         }
-      },
-      mounted() {
-        console.log(this)
       },
       methods: {
         handleTop() {
@@ -96,7 +127,7 @@ permalink: /vue-virtual-drag-list/
       render(h) {
         return h('div', {
           attrs: {
-            id: 'v-draggable-virtual-list',
+            class: 'draggable-virtual-list',
           }
         }, 
         [
@@ -126,7 +157,79 @@ permalink: /vue-virtual-drag-list/
                     on: {
                       click: this.handleClick
                     }
-                  }, 'drag ' + props.record.name) : null,
+                  }, props.record.id) : null,
+                  h('span', {}, props.record.desc)
+                ])
+              }
+            }
+          },[
+            h('div', { slot: 'header', class: 'loading' }, 'header'),
+            h('div', { slot: 'footer', class: 'loading' }, 'footer')
+          ])
+        ])
+      }
+    });
+    Vue.component('horizontal-list', {
+      props: {
+        editing: {},
+        dataSource: {
+          type: Array,
+          default: () => {
+            return []
+          }
+        }
+      },
+      methods: {
+        handleTop() {
+          console.log('is to top')
+        },
+        handleBottom() {
+          console.log('is to bottom')
+        },
+        ondragend(arr, _old, _new, chnaged) {
+          console.log(arr, _old, _new, chnaged, 'new states after drag end')
+        },
+        handleClick() {
+          console.log('click')
+        }
+      },
+      render(h) {
+        return h('div', {
+          attrs: {
+            class: 'horizontal-draggable-virtual-list',
+          }
+        }, 
+        [
+          h(VirtualDragList, {
+            ref: 'list',
+            props: {
+              dataSource: this.dataSource,
+              dataKey: 'id',
+              keeps: 20,
+              size: 110,
+              disabled: !this.editing,
+              draggable: '.drag',
+              direction: 'horizontal',
+              wrapStyle: { display: 'flex' },
+              rootStyle: { display: 'flex' }
+            },
+            on: {
+              top: this.handleTop,
+              bottom: this.handleBottom,
+              ondragend: this.ondragend
+            },
+            scopedSlots: {
+              item: props => {
+                return h('div', {
+                  class: 'test-item horizontal',
+                }, 
+                [
+                  this.editing ? h('div', {
+                    class: 'drag index',
+                    on: {
+                      click: this.handleClick
+                    }
+                  }, props.record.id) : null,
                   h('span', {}, props.record.desc)
                 ])
               }
@@ -142,7 +245,9 @@ permalink: /vue-virtual-drag-list/
       el: '#app',
       data() {
         return {
-          editing: true
+          editing: true,
+          horizontalediting: true,
+          dataSource: getPageData(60, 0),
         }
       },
       methods: {
@@ -152,6 +257,24 @@ permalink: /vue-virtual-drag-list/
         toBottom() {
           this.$children[0].$refs.list.scrollToBottom();
         },
+        toIndex() {
+          this.$children[0].$refs.list.scrollToIndex(30);
+        },
+        toOffset() {
+          this.$children[0].$refs.list.scrollToOffset(500);
+        },
+        horizontalreset() {
+          this.$children[1].$refs.list.reset();
+        },
+        horizontaltoBottom() {
+          this.$children[1].$refs.list.scrollToBottom();
+        },
+        horizontaltoIndex() {
+          this.$children[1].$refs.list.scrollToIndex(30);
+        },
+        horizontaltoOffset() {
+          this.$children[1].$refs.list.scrollToOffset(500);
+        }
       }
     });
   </script>
