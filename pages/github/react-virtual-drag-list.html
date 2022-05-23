@@ -9,7 +9,7 @@ permalink: /react-virtual-drag-list/
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-virtual-drag-list@2.3.0/dist/draglist.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-virtual-drag-list@2.4.0/dist/draglist.js"></script>
   <script src="../assets/github/mock.js"></script>
   <script src="../assets/github/sentences.js"></script>
   <style>
@@ -29,9 +29,36 @@ permalink: /react-virtual-drag-list/
     #app {
       height: 100%;
     }
+    .header {
+      height: 50px;
+      line-height: 48px;
+      background: antiquewhite;
+      text-align: center;
+    }
     .virtual-list {
-      height: 100%;
-      overflow: auto;
+      width: 1000px;
+      height: 500px;
+      margin: 20px auto 50px;
+      border: 1px solid #ccc;
+    }
+    .horizontal-virtual-list {
+      width: 1000px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+    }
+    .horizontal {
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      width: 100px;
+      margin: 10px;
+      overflow: hidden;
+      border: 1px dashed #1984ff;
+    }
+    .horizontal span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .drag {
       color: #1984ff;
@@ -45,24 +72,32 @@ permalink: /react-virtual-drag-list/
       font-size: 16px;
       height: 20px;
       text-align: center;
+      -webkit-text-stroke-width: thick;
     }
   </style>
 </head>
 <body>
   <div id="app"></div>
   <script type="text/babel">
-    const VirtualList = virtualDragList['default'];
+    const VirtualList = VirtualDragList['default'];
     function Virtual() {
 
       const list = getPageData(60, 0);
 
       const virtualRef = React.useRef();
+      const horizontalRef = React.useRef();
 
+      const reset = () => {
+        virtualRef.current.reset();
+      };
       const toBottom = () => {
         virtualRef.current.scrollToBottom();
       };
       const toTop = () => {
         virtualRef.current.scrollToTop();
+      };
+      const toIndex = () => {
+        virtualRef.current.scrollToIndex(30);
       };
       const handleToTop = () => {
         console.log('istop');
@@ -74,34 +109,95 @@ permalink: /react-virtual-drag-list/
         console.log(arr, _old, _new, changed, 'new states after drag end');
       };
 
+      // horizontalRef
+      const horizontalreset = () => {
+        horizontalRef.current.reset();
+      };
+      const horizontaltoBottom = () => {
+        horizontalRef.current.scrollToBottom();
+      };
+      const horizontaltoTop = () => {
+        horizontalRef.current.scrollToTop();
+      };
+      const horizontaltoIndex = () => {
+        horizontalRef.current.scrollToIndex(30);
+      };
+      const horizontalhandleToTop = () => {
+        console.log('istop');
+      };
+      const horizontalhandleToBottom = () => {
+        console.log('isbottom');
+      };
+      const horizontalhandleDragEnd = (arr, _old, _new, changed) => {
+        console.log(arr, _old, _new, changed, 'new states after drag end');
+      };
+
       return (
-        <div className="virtual-list">
-          <div>
+        <div>
+          <div className="header">
+            <button onClick={ reset }>reset</button>
             <button onClick={ toBottom }>to bottom</button>
             <button onClick={ toTop }>to top</button>
+            <button onClick={ toIndex }>toIndex30</button>
           </div>
-          <VirtualList
-            ref={ virtualRef }
-            dataKey="id"
-            dataSource={ list }
-            draggable=".drag"
-            header={ <div className="loading">top loading...</div> }
-            footer={ <div className="loading">bottom loading...</div> }
-            v-top={ handleToTop }
-            v-bottom={ handleToBottom }
-            v-dragend={ handleDragEnd }
-          >
-            {
-              (record, index, uniqueKey) => {
-                return (
-                  <div className="item">
-                    <div className="drag">{ uniqueKey }</div>
-                    { record.desc }
-                  </div>
-                );
+          <div className="virtual-list">
+            <VirtualList
+              ref={ virtualRef }
+              dataKey="id"
+              dataSource={ list }
+              draggable=".drag"
+              header={ <div className="loading">header</div> }
+              footer={ <div className="loading">footer</div> }
+              v-top={ handleToTop }
+              v-bottom={ handleToBottom }
+              v-dragend={ handleDragEnd }
+            >
+              {
+                (record, index, uniqueKey) => {
+                  return (
+                    <div className="item">
+                      <div className="drag">{ uniqueKey }</div>
+                      { record.desc }
+                    </div>
+                  );
+                }
               }
-            }
-          </VirtualList>
+            </VirtualList>
+          </div>
+
+          <div className="header">
+            <button onClick={ horizontalreset }>reset</button>
+            <button onClick={ horizontaltoBottom }>to bottom</button>
+            <button onClick={ horizontaltoTop }>to top</button>
+            <button onClick={ horizontaltoIndex }>toIndex30</button>
+          </div>
+          <div className="horizontal-virtual-list">
+            <VirtualList
+              ref={ horizontalRef }
+              dataKey="id"
+              dataSource={ list }
+              draggable=".drag"
+              direction="horizontal"
+              wrapStyle={{ display: "flex" }}
+              rootStyle={{ display: "flex" }}
+              header={ <div className="loading">header</div> }
+              footer={ <div className="loading">footer</div> }
+              v-top={ horizontalhandleToTop }
+              v-bottom={ horizontalhandleToBottom }
+              v-dragend={ horizontalhandleDragEnd }
+            >
+              {
+                (record, index, uniqueKey) => {
+                  return (
+                    <div className="item horizontal">
+                      <div className="drag">{ uniqueKey }</div>
+                      { record.desc }
+                    </div>
+                  );
+                }
+              }
+            </VirtualList>
+          </div>
         </div>
       )
     };
