@@ -14,7 +14,7 @@ repository: mfuu/mfuu.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
-        enabled: false
+        enabled: true
 # 可选组件配置
 components:
     # 分享
@@ -125,17 +125,18 @@ collections:
 # ---------------- #
 #      Comments    #
 # ---------------- #
-# support provider: disqus, gitment, gitalk, utterances
+# support provider: gitalk, utterances
 comments_provider: gitalk
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: mfuu
-    repo: gpc
+    repo: mfuu.github.io
     clientID: 425281566fa2c21accf0
     clientSecret: cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63
 # https://utteranc.es/
 utterances:
-    repo: mfuu/blog-comments
+    repo: mfuu/mfuu.github.io
+    theme: github-light
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
