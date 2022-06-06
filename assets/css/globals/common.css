@@ -112,10 +112,10 @@
 .site-header .right .octicon {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 400;
     line-height: 28px;
-    vertical-align: top
+    vertical-align: top;
 }
 
 .markdown-body dl dt,.markdown-body table th,.pl-mb,.pl-mdr,.pl-mh,.pl-mh .pl-en,.pl-ms,.pl-sr .pl-cce,.site-header h1 strong {
@@ -129,7 +129,7 @@
 
 .site-header .right a:hover {
     text-decoration: none;
-    color: #1984ff;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .site-header .right .avatar {
@@ -769,7 +769,7 @@ pre {
     position: fixed;
     right: 1em;
     bottom: 7.4375em;
-    z-index: 9;
+    z-index: 100000;
     width: 2.5em;
     box-shadow: 0px 1px 8px 0px #bbb;
 }

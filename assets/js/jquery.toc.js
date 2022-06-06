@@ -147,9 +147,9 @@ $(document).ready(function(){
   highlightTocSection();
 
   var updateTocHeight = function() {
-      var height = document.documentElement.clientHeight;
-      height = height || 'auto';
-      $('.post-directory').css('max-height', height);
+    var height = document.documentElement.clientHeight / 2;
+    height = height || 'auto';
+    $('.post-directory').css('max-height', height);
   }
 
   $(window).scroll(function() {
