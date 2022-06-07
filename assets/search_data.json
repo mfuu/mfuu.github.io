@@ -59,27 +59,27 @@
     } ,
   
     {
-      "title"    : "css基础知识",
-      "category" : "css",
+      "title"    : "CSS-基础知识",
+      "category" : "CSS",
       
       "url"      : "/2021/10/15/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
-      "keywords" : "css"
+      "keywords" : "CSS"
     } ,
   
     {
-      "title"    : "html基础知识",
-      "category" : "html",
+      "title"    : "HTML-基础知识",
+      "category" : "HTML",
       
       "url"      : "/2021/10/15/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
-      "keywords" : "html"
+      "keywords" : "HTML"
     } ,
   
     {
       "title"    : "实现一个可拖拽排序的虚拟滚动列表",
-      "category" : "vue",
+      "category" : "Vue",
       
       "url"      : "/2021/11/09/vue-virtual-draglist/",
-      "keywords" : "vue, JavaScript"
+      "keywords" : "Vue, JavaScript"
     } ,
   
     {
@@ -111,7 +111,7 @@
       "category" : "网络",
       
       "url"      : "/2022/02/15/HTTP%E4%B8%8EHTTPS/",
-      "keywords" : "HTTP"
+      "keywords" : "HTTP, HTTPS"
     } ,
   
     {
@@ -119,7 +119,7 @@
       "category" : "网络",
       
       "url"      : "/2022/02/16/TCP%E4%B8%8EUDP/",
-      "keywords" : "HTTP"
+      "keywords" : "HTTP, TCP, UDP"
     } ,
   
     {
@@ -147,19 +147,19 @@
     } ,
   
     {
-      "title"    : "vue—双向绑定原理",
-      "category" : "vue",
+      "title"    : "Vue—双向绑定原理",
+      "category" : "Vue",
       
       "url"      : "/2022/03/01/vue-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/",
-      "keywords" : "vue"
+      "keywords" : "Vue"
     } ,
   
     {
-      "title"    : "vue—$nextTick原理",
-      "category" : "vue",
+      "title"    : "Vue—$nextTick原理",
+      "category" : "Vue",
       
       "url"      : "/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/",
-      "keywords" : "vue"
+      "keywords" : "Vue"
     } ,
   
     {
@@ -188,10 +188,10 @@
   
     {
       "title"    : "解决 GitHub Page 构建失败的问题",
-      "category" : "GitHub page",
+      "category" : "GitHub Page",
       
       "url"      : "/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/",
-      "keywords" : "GitHub"
+      "keywords" : "GitHub Page"
     } 
   
 ]
