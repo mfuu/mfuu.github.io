@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><title>vue—$nextTick原理 &mdash; MF</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/primer-css/css/primer.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/collection.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/repo-card.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/sections/repo-list.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/boxed-group.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/globals/common.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/globals/responsive.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/posts/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/octicons/octicons/octicons.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/markdown/github.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/share.js/dist/css/share.min.css"><link rel="canonical" href="/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/"><link rel="alternate" type="application/atom+xml" title="MF" href="/feed.xml"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/favicon.ico"><meta property="og:title" content="vue—$nextTick原理"><meta name="keywords" content="vue"><meta name="og:keywords" content="vue"><meta name="description" content="vue2"><meta name="og:description" content="vue2"><meta property="og:url" content="/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/"><meta property="og:site_name" content="MF"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN" /><meta property="article:published_time" content="2022-03-02"> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/jquery-ui.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/main.js"></script></head><body class="" data-mz=""><header class="site-header"><div class="container"> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button><nav class="site-header-nav" role="navigation"> <a href="/" class=" site-header-nav-item" target="" title="首页">首页</a> <a href="/categories/" class=" site-header-nav-item" target="" title="分类">分类</a> <a href="/archives/" class=" site-header-nav-item" target="" title="归档">归档</a> <a href="/about/" class=" site-header-nav-item" target="" title="关于">关于</a></nav><div class="right"><div class="site-search mobile-hidden"> <input id="search_box" type="text" placeholder="Search" ><ul id="search_results"></ul></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: '/assets/search_data.json?v=1654567530', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: '<p>No results found</p>', limit: '10', fuzzy: false, exclude: ['Welcome'] }) </script> <a href="https://github.com/mfuu" title="github" class="octicon octicon-mark-github"></a></div></div></header><section class="collection-head small" data-pattern-id="vue—$nextTick原理"><div class="container"><div class="columns"><div class="column three-fourths"><div class="collection-title"><h1 class="collection-header">vue—$nextTick原理</h1><div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2022/03/02 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="/categories/#vue" title="vue">vue</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 6053 字，约 18 分钟 </span></div></div></div><div class="column one-fourth mobile-hidden"><div class="collection-title"></div></div></div></div></section><section class="container content"><div class="columns"><div class="column three-fourths" ><article class="article-content markdown-body"><h2 id="vue2">vue2</h2><h3 id="示例">示例</h3><div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"handleChange"</span><span class="nt">&gt;</span>click<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">ref=</span><span class="s">"msg"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">"msg1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">"msg2"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">"msg3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+...
+data() {
+  return {
+    msg: 'aaa',
+    msg1: '',
+    msg2: '',
+    msg3: ''
+  }
+},
+methods: {
+  handleChange() {
+    this.msg = 'bbb'
+    this.msg1 = this.$refs,msg.innerHTML
+    this.$nextTick(() =&gt; {
+      this.msg2 = this.$refs,msg.innerHTML
+    })
+    this.msg3 = this.$refs,msg.innerHTML
+  }
+}
+</code></pre></div></div><p><img src="https://user-images.githubusercontent.com/51625532/156286813-5b10608f-46cb-47e1-8f7f-49be89b3a8a4.gif" alt="nextTick" /></p><p>从图中可以清楚的看到，msg1 和 msg3 显示的内容还是变更前的数据，而 msg2 显示的时变更后的数据。因为 vue 中的 DOM 更新是异步的。</p><h3 id="源码解析">源码解析</h3><p>源码目录 <code class="language-plaintext highlighter-rouge">src/core/util/next-tick.js</code>，源码版本 <code class="language-plaintext highlighter-rouge">2.6.11</code>，我们来逐步分析。</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* @flow */</span>
+<span class="cm">/* globals MutationObserver */</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">noop</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">shared/util</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">handleError</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./error</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">isIE</span><span class="p">,</span> <span class="nx">isIOS</span><span class="p">,</span> <span class="nx">isNative</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./env</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="kd">let</span> <span class="nx">isUsingMicroTask</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="kd">const</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="kd">let</span> <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="kd">function</span> <span class="nx">flushCallbacks</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="kd">const</span> <span class="nx">copies</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">copies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">copies</span><span class="p">[</span><span class="nx">i</span><span class="p">]()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Here we have async deferring wrappers using microtasks.</span>
+<span class="c1">// In 2.5 we used (macro) tasks (in combination with microtasks).</span>
+<span class="c1">// However, it has subtle problems when state is changed right before repaint</span>
+<span class="c1">// (e.g. #6813, out-in transitions).</span>
+<span class="c1">// Also, using (macro) tasks in event handler would cause some weird behaviors</span>
+<span class="c1">// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).</span>
+<span class="c1">// So we now use microtasks everywhere, again.</span>
+<span class="c1">// A major drawback of this tradeoff is that there are some scenarios</span>
+<span class="c1">// where microtasks have too high a priority and fire in between supposedly</span>
+<span class="c1">// sequential events (e.g. #4521, #6690, which have workarounds)</span>
+<span class="c1">// or even between bubbling of the same event (#6566).</span>
+<span class="kd">let</span> <span class="nx">timerFunc</span>
+
+<span class="c1">// The nextTick behavior leverages the microtask queue, which can be accessed</span>
+<span class="c1">// via either native Promise.then or MutationObserver.</span>
+<span class="c1">// MutationObserver has wider support, however it is seriously bugged in</span>
+<span class="c1">// UIWebView in iOS &gt;= 9.3.3 when triggered in touch event handlers. It</span>
+<span class="c1">// completely stops working after triggering a few times... so, if native</span>
+<span class="c1">// Promise is available, we will use it:</span>
+<span class="cm">/* istanbul ignore next, $flow-disable-line */</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nb">Promise</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+    <span class="c1">// In problematic UIWebViews, Promise.then doesn't completely break, but</span>
+    <span class="c1">// it can get stuck in a weird state where callbacks are pushed into the</span>
+    <span class="c1">// microtask queue but the queue isn't being flushed, until the browser</span>
+    <span class="c1">// needs to do some other work, e.g. handle a timer. Therefore we can</span>
+    <span class="c1">// "force" the microtask queue to be flushed by adding an empty timer.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isIOS</span><span class="p">)</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">noop</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">isUsingMicroTask</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isIE</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">MutationObserver</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+  <span class="nx">isNative</span><span class="p">(</span><span class="nx">MutationObserver</span><span class="p">)</span> <span class="o">||</span>
+  <span class="c1">// PhantomJS and iOS 7.x</span>
+  <span class="nx">MutationObserver</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">[object MutationObserverConstructor]</span><span class="dl">'</span>
+<span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// Use MutationObserver where native Promise is not available,</span>
+  <span class="c1">// e.g. PhantomJS, iOS7, Android 4.4</span>
+  <span class="c1">// (#6466 MutationObserver is unreliable in IE11)</span>
+  <span class="kd">let</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="kd">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">textNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">counter</span><span class="p">))</span>
+  <span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">textNode</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">characterData</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">})</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">counter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="nx">textNode</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">counter</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">isUsingMicroTask</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">setImmediate</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nx">setImmediate</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// Fallback to setImmediate.</span>
+  <span class="c1">// Technically it leverages the (macro) task queue,</span>
+  <span class="c1">// but it is still a better choice than setTimeout.</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setImmediate</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Fallback to setTimeout.</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">nextTick</span> <span class="p">(</span><span class="nx">cb</span><span class="p">?:</span> <span class="nb">Function</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">?:</span> <span class="nb">Object</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">_resolve</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">handleError</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="dl">'</span><span class="s1">nextTick</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">_resolve</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">_resolve</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">pending</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">pending</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">timerFunc</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="c1">// $flow-disable-line</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cb</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">_resolve</span> <span class="o">=</span> <span class="nx">resolve</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>首先找到定义 <code class="language-plaintext highlighter-rouge">nextTick</code> 函数的地方，看看它具体做了什么操作：</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="kd">let</span> <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="kd">let</span> <span class="nx">timerFunc</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">nextTick</span> <span class="p">(</span><span class="nx">cb</span><span class="p">?:</span> <span class="nb">Function</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">?:</span> <span class="nb">Object</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">_resolve</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">})</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">pending</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">pending</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">timerFunc</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="c1">// $flow-disable-line</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cb</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">_resolve</span> <span class="o">=</span> <span class="nx">resolve</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>首先定义了三个重要的变量：</p><ul><li>callbacks：用来存储所有需要执行的回调函数</li><li>pending：用来标致是否正在执行回调函数</li><li>timerFunc：用来触发执行回调函数</li></ul><p>在 nextTick 的外层定义变量形成一个闭包，我们每次调用 <code class="language-plaintext highlighter-rouge">$nextTick()</code> 的过程其实就是在向 callbacks 新增回调函数的过程</p><p>callbacks 新增回调函数后又执行了 timerFunc 函数，pending 标致表示同一个时间只能执行一次。</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nb">Promise</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isIOS</span><span class="p">)</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">noop</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">isUsingMicroTask</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isIE</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">MutationObserver</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+  <span class="nx">isNative</span><span class="p">(</span><span class="nx">MutationObserver</span><span class="p">)</span> <span class="o">||</span>
+  <span class="nx">MutationObserver</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">[object MutationObserverConstructor]</span><span class="dl">'</span>
+<span class="p">))</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="kd">const</span> <span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MutationObserver</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">textNode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">counter</span><span class="p">))</span>
+  <span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">textNode</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">characterData</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">})</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">counter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="nx">textNode</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">counter</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">isUsingMicroTask</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">setImmediate</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nx">setImmediate</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setImmediate</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">timerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>我们来看一下 timerFunc 的赋值过程（降级处理）：</p><ul><li>先判断是否支持 promise，如果支持，则利用 promise 来触发执行回调函数</li><li>如果不支持 promise，判断是否支持 MurationObserver，如果支持，则实例化一个观察者对象，观察文本节点发生变化时触发执行所有回调函数</li><li>以上两者都不支持，则判断是否支持 setImmediate</li><li>如果都不支持，则利用 setTimeout 设置延时为 0</li></ul><p>有关 setImmediate 和 setTimeout 的区别可以查看 <a href="https://github.com/mfuu/Blog/issues/2">深入理解js事件循环机制（Node.js）</a></p><p>降级处理的目的都是将 flushCallbacks 放入到微任务或宏任务，等待下一次事件循环来执行。最后看 flushCallbacks 到底做了什么：</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">flushCallbacks</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="kd">const</span> <span class="nx">copies</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">copies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">copies</span><span class="p">[</span><span class="nx">i</span><span class="p">]()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>通过代码可以看出，flushCallbacks 做的事非常简单：将 callbacks 数组复制一份，然后把 callbacks 置为空，最后把复制的数组中的每个函数依次执行一次。</p><h2 id="vue3">vue3</h2><h3 id="示例-1">示例</h3><div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">ref=</span><span class="s">"msgRef"</span><span class="nt">&gt;&lt;/div&gt;</span>
+ <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"handleClick"</span><span class="nt">&gt;</span>click<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+<span class="nt">&lt;</span><span class="k">script</span> <span class="na">setup</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">nextTick</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+  <span class="kd">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="dl">'</span><span class="s1">aaa</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">msgRef</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+  <span class="k">async</span> <span class="kd">function</span> <span class="nx">handleClick</span><span class="p">(){</span>
+     <span class="nx">msg</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">bbb</span><span class="dl">'</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msgRef</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">innerText</span><span class="p">)</span> <span class="c1">// aaa</span>
+     <span class="k">await</span> <span class="nx">nextTick</span><span class="p">()</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msgRef</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">innerText</span><span class="p">)</span> <span class="c1">// bbb</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">msg</span><span class="p">,</span> <span class="nx">test</span><span class="p">,</span> <span class="nx">handleClick</span> <span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+</code></pre></div></div><h3 id="源码解析-1">源码解析</h3><p><code class="language-plaintext highlighter-rouge">nextTick()</code>方法源码目录 <code class="language-plaintext highlighter-rouge">runtime-core/src/scheduler.ts</code></p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">function</span> <span class="nx">nextTick</span><span class="o">&lt;</span><span class="nx">T</span> <span class="o">=</span> <span class="k">void</span><span class="o">&gt;</span><span class="p">(</span>
+  <span class="k">this</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span>
+  <span class="nx">fn</span><span class="p">?:</span> <span class="p">(</span><span class="k">this</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span>
+<span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nx">currentFlushPromise</span> <span class="o">||</span> <span class="nx">resolvedPromise</span>
+  <span class="k">return</span> <span class="nx">fn</span> <span class="p">?</span> <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">this</span> <span class="p">?</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">:</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">:</span> <span class="nx">p</span>
+<span class="p">}</span>
+</code></pre></div></div><p>可以看出，nextTick 接收一个函数作为参数，同时会创建一个微任务</p><p>在页面调用 nextTick 的时候，会执行该函数，把参数 <code class="language-plaintext highlighter-rouge">fn</code> 赋值给 <code class="language-plaintext highlighter-rouge">p.then()</code>，在队列的任务完成后，fn 就执行了</p></article><div class="share"><div class="share-component" data-disabled='douban,linkedin'></div></div><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/gitalk/gitalk.css"> <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> <script> var gitalk = new Gitalk({ id: '/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/', clientID: '425281566fa2c21accf0', clientSecret: 'cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63', repo: 'mfuu.github.io', owner: 'mfuu', admin: ['mfuu'], labels: ['gitalk'], perPage: 50, }); gitalk.render('gitalk-container'); </script></div></div><div class="column one-fourth"><div id="post-directory-module" class="mobile-hidden"><section class="post-directory"><dl></dl></section></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/jquery.toc.js"></script></div></div></section><footer class="footer container"><div class="site-footer" role="contentinfo"><div class="copyright left"> <br /> © 2019 <a href="https://github.com/mfuu" title="mfuu">mfuu</a></div><div class="right text-align-right"><ul class="site-footer-links"><li> <a href="/" title="首页" target="">首页</a></li><li> <a href="/categories/" title="分类" target="">分类</a></li><li> <a href="/archives/" title="归档" target="">归档</a></li><li> <a href="/about/" title="关于" target="">关于</a></li><a class="rss" href="/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></ul><script async src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script><div style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> <span id="busuanzi_value_site_pv"></span>浏览 </span> <span id="busuanzi_container_site_uv" style="display:none"> &nbsp;/&nbsp; <span id="busuanzi_value_site_uv"></span>访客 </span></div></div></div></footer><div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"> <svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8=""><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8=""></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8=""></path></svg> </a></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> <script> jQuery(document).ready(function($) { function footerPosition(){ $("footer").removeClass("fixed-bottom"); var contentHeight = document.body.scrollHeight; var winHeight = window.innerHeight; if(!(contentHeight > winHeight)){ $("footer").addClass("fixed-bottom"); } else { $("footer").removeClass("fixed-bottom"); } } footerPosition(); $(window).resize(footerPosition); }); </script></body></html><div class="progress-indicator"></div><script> jQuery(document).ready(function($) { var $w = $(window); var $prog2 = $('.progress-indicator'); var wh = $w.height(); var h = $('body').height(); var sHeight = h - wh; $w.on('scroll', function() { window.requestAnimationFrame(function(){ var perc = Math.max(0, Math.min(1, $w.scrollTop() / sHeight)); updateProgress(perc); }); }); function updateProgress(perc) { $prog2.css({width: perc * 100 + '%'}); } setTimeout(() => { window.toTop && window.toTop() }, 0) }); </script>

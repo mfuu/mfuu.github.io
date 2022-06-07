@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /><title>TypeScript—类的使用 &mdash; MF</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/primer-css/css/primer.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/collection.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/repo-card.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/sections/repo-list.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/components/boxed-group.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/globals/common.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/globals/responsive.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/posts/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/octicons/octicons/octicons.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/css/markdown/github.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/share.js/dist/css/share.min.css"><link rel="canonical" href="/2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/"><link rel="alternate" type="application/atom+xml" title="MF" href="/feed.xml"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/favicon.ico"><meta property="og:title" content="TypeScript—类的使用"><meta name="keywords" content="TypeScript"><meta name="og:keywords" content="TypeScript"><meta name="description" content="类的使用"><meta name="og:description" content="类的使用"><meta property="og:url" content="/2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/"><meta property="og:site_name" content="MF"><meta property="og:type" content="article"><meta property="og:locale" content="zh_CN" /><meta property="article:published_time" content="2022-02-28"> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/jquery-ui.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/main.js"></script></head><body class="" data-mz=""><header class="site-header"><div class="container"> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button><nav class="site-header-nav" role="navigation"> <a href="/" class=" site-header-nav-item" target="" title="首页">首页</a> <a href="/categories/" class=" site-header-nav-item" target="" title="分类">分类</a> <a href="/archives/" class=" site-header-nav-item" target="" title="归档">归档</a> <a href="/about/" class=" site-header-nav-item" target="" title="关于">关于</a></nav><div class="right"><div class="site-search mobile-hidden"> <input id="search_box" type="text" placeholder="Search" ><ul id="search_results"></ul></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: '/assets/search_data.json?v=1654567530', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: '<p>No results found</p>', limit: '10', fuzzy: false, exclude: ['Welcome'] }) </script> <a href="https://github.com/mfuu" title="github" class="octicon octicon-mark-github"></a></div></div></header><section class="collection-head small" data-pattern-id="TypeScript—类的使用"><div class="container"><div class="columns"><div class="column three-fourths"><div class="collection-title"><h1 class="collection-header">TypeScript—类的使用</h1><div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2022/02/28 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="/categories/#TypeScript" title="TypeScript">TypeScript</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 5344 字，约 16 分钟 </span></div></div></div><div class="column one-fourth mobile-hidden"><div class="collection-title"></div></div></div></div></section><section class="container content"><div class="columns"><div class="column three-fourths" ><article class="article-content markdown-body"><h2 id="类的使用">类的使用</h2><h3 id="1类的使用">1.类的使用</h3><p>首先需要理解面向对象的基础和概念</p><p>主要概念为：面向对象的思维、类、三大特性（封装、继承、多态）等知识点</p><p>在 JavaScript 中，我们要创建一个对象，具体如下：</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span> <span class="c1">// Hello World的年龄为：100</span>
+</code></pre></div></div><p>在 TypeScript 中支持类的创建，下面是包含成员的属性、构造方法以及普通方法（对于ES6的 class）</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span> <span class="p">:</span> <span class="kr">string</span>
+  <span class="nx">age</span> <span class="p">:</span> <span class="kr">number</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">P</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">P</span><span class="p">.</span><span class="nx">run</span><span class="p">())</span> <span class="c1">// Hello World的年龄为：100</span>
+</code></pre></div></div><h3 id="2类的继承">2.类的继承</h3><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 子类， Man 类</span>
+<span class="kd">class</span> <span class="nx">Man</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{}</span>
+
+<span class="c1">// 子类， Woman 类</span>
+<span class="kd">class</span> <span class="nx">Woman</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{}</span>
+
+<span class="c1">// 此时 Man 类将拥有父类的所有内容</span>
+<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Man</span><span class="p">(</span><span class="dl">'</span><span class="s1">男人</span><span class="dl">'</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1">// Woman 类也拥有父类的所有内容</span>
+<span class="kd">let</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Woman</span><span class="p">(</span><span class="dl">'</span><span class="s1">女人</span><span class="dl">'</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre></div></div><p>子类继承父类，拥有父类的属性和方法，也可以再创建自己独有的特性</p><div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 子类</span>
+<span class="kd">class</span> <span class="nx">Woman</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="c1">// 子类成员</span>
+  <span class="nl">food</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">早餐</span><span class="dl">'</span>
+  <span class="c1">// 子类方法</span>
+  <span class="nx">eat</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">吃</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">food</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">w</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Woman</span><span class="p">(</span><span class="dl">'</span><span class="s1">女人</span><span class="dl">'</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">eat</span><span class="p">())</span>
+</code></pre></div></div><p>TypeScript 支持多重继承，不支持多继承（一个子类继承多个父类）</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 不支持继承多个类</span>
+<span class="kd">class</span> <span class="nx">Woman</span> <span class="kd">extends</span> <span class="nx">Person1</span> <span class="kd">extends</span> <span class="nx">Person2</span> <span class="p">{}</span>
+
+<span class="c1">// 第一重继承</span>
+<span class="kd">class</span> <span class="nx">Woman</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{}</span>
+
+<span class="c1">// 第二重继承</span>
+<span class="kd">class</span> <span class="nx">OldWoman</span> <span class="kd">extends</span> <span class="nx">Woman</span> <span class="p">{}</span>
+</code></pre></div></div><h3 id="3类方法重写">3.类方法重写</h3><p>类方法分为构造方法和普通方法，这里我们都要实现一下重写机制</p><p>为什么要进行重写？因为父类只提供一个架构，更多子类细节需要自己实现</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Man</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="c1">// 重写构造方法</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span>
+  <span class="p">}</span>
+  <span class="c1">// 重写 run 方法</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="c1">// 普通方法采用 super. 方法进行调用</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">super</span><span class="p">.</span><span class="nx">run</span><span class="p">()}</span><span class="s2">，身高为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Man</span><span class="p">(</span><span class="dl">'</span><span class="s1">男人</span><span class="dl">'</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">1.80</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">run</span><span class="p">())</span>
+</code></pre></div></div><h2 id="类方法的重载">类方法的重载</h2><p>类方法的重载，即：方法相同但传递参数不同从而执行不同的一种操作</p><p>比如构造方法里，可能只传一个参数，也可能只传递两个参数来实现不同效果</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kc">undefined</span>
+  <span class="c1">// 构造方法    ?:语法为可选参数</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">的年龄为：保密</span><span class="dl">'</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">M</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">W</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Miss</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div><p>普通方法的重载和构造方法重载一个意思</p><h2 id="类成员的修饰符">类成员的修饰符</h2><p>在不加修饰符的情况下，成员字段和方法默认是公共 public 完全可见的状态</p><p>如果要在其设置一下不同的可见性，一共有三种方案：</p><ul><li>public：默认设置，公有可见性</li><li>protected：受保护的，自身和子类可访问</li><li>private：私有的，只能自身访问</li></ul><p>为什么要设置可访问性，主要是为了保护类中属性和方法避免被污染</p><p>在默认的情况下，成员字段是 public 修饰符，我们在类外可以直接赋值：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">lee</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="c1">// 修改</span>
+<span class="nx">lee</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Mr.Zhang</span><span class="dl">'</span>
+<span class="c1">// 也可以直接取值</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lee</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lee</span><span class="p">.</span><span class="nx">run</span><span class="p">())</span>
+</code></pre></div></div><p>如果设置了私有成员，那么就无法在类外进行取值赋值，进行有效的保护：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="k">private</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+<span class="p">}</span>
+</code></pre></div></div><p>在类外对 <code class="language-plaintext highlighter-rouge">p.name</code> 赋值取值会直接报错，但这种私有化，子类就无法直接访问了：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 成员字段私有化，子类如果要重写，就无法访问 this.name</span>
+<span class="kd">class</span> <span class="nx">Man</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="c1">// 报错 属性 "name" 为私有属性，只能在 "Person" 中访问</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>如果有子类，并且需要对子类开放权限，那么就使用 protected 受保护的：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">protected</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="k">protected</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+<span class="p">}</span>
+</code></pre></div></div><p>对于方法或构造方法，也可以使用这些修饰符，比如受保护的构造，就不能在外部调用了：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">protected</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="k">protected</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="c1">// 构造方法</span>
+  <span class="k">protected</span> <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Man</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">// 类 "Person" 的构造函数是受保护的，仅可在类声明中访问</span>
+</code></pre></div></div><h2 id="类成员的读取器">类成员的读取器</h2><h3 id="1成员字段访问">1.成员字段访问</h3><p>成员字段我们进行了封装保护，那么除了实例化的方案外，还怎么对外暴露接口呢？</p><p>可以通过 <code class="language-plaintext highlighter-rouge">setXXX()</code> 和 <code class="language-plaintext highlighter-rouge">getXXX()</code> 约定俗成的方法来实现对成员字段的取值赋值：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="c1">// 成员 name 赋值</span>
+  <span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+  <span class="p">}</span>
+  <span class="c1">// 成员 name 取值</span>
+  <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="nx">p</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Zhang</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getName</span><span class="p">())</span>
+</code></pre></div></div><p>这样就解决了私有成员的类外赋值取值的问题</p><p>但是我们一般调用很多框架或库的属性是不带花括号的，方法彩带。所以，TypeScript 提供了成员的存储器来实现对成员的取值赋值</p><h3 id="2成员字段存储器">2.成员字段存储器</h3><p>成员字段有专门的 <code class="language-plaintext highlighter-rouge">setter</code> 和 <code class="language-plaintext highlighter-rouge">getter</code> 方法来处理私有成员字段的取值赋值；只不过原有的成员字段最好相对应的改成固有名称让其一看就知道是私有成员</p><p>这样，类的内部都用 <code class="language-plaintext highlighter-rouge">this.私有成员</code>，外部用 <code class="language-plaintext highlighter-rouge">setter</code> 和 <code class="language-plaintext highlighter-rouge">getter</code> 的仿成员：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">_name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="k">private</span> <span class="nx">_age</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="c1">// 赋值</span>
+  <span class="kd">set</span> <span class="nx">name</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span>
+  <span class="p">}</span>
+  <span class="c1">// 取值</span>
+  <span class="kd">get</span> <span class="nx">name</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_name</span>
+  <span class="p">}</span>
+  <span class="c1">// 赋值</span>
+  <span class="kd">set</span> <span class="nx">age</span><span class="p">(</span><span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="c1">// 取值</span>
+  <span class="kd">get</span> <span class="nx">age</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_age</span>
+  <span class="p">}</span>
+  <span class="c1">// 普通方法</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nx">p</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Mr.Zhang</span><span class="dl">'</span>
+<span class="nx">p</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">run</span><span class="p">())</span>
+</code></pre></div></div><h2 id="静态成员和方法">静态成员和方法</h2><p><code class="language-plaintext highlighter-rouge">static</code> 关键字用于声明静态成员和方法，这是一种不需要实例化的调用方式。一般用于各种工具类，方便直接使用</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+  <span class="k">private</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="k">private</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+  <span class="k">static</span> <span class="nx">getPI</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">'</span><span class="s1">圆周率为：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">pi</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Person</span><span class="p">.</span><span class="nx">pi</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">lgo</span><span class="p">(</span><span class="nx">Person</span><span class="p">.</span><span class="nx">getPI</span><span class="p">())</span>
+</code></pre></div></div><p>如果想让静态成员设置为只读，可以加上 <code class="language-plaintext highlighter-rouge">readonly</code> 关键字防止被改写</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="k">readonly</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="p">}</span>
+</code></pre></div></div><p>static 结合 readonly 不可改变，类似常量</p><h2 id="抽象类的使用">抽象类的使用</h2><p>抽象类可以用于顶层指定和设计标准，让子类继承时去实现具体细节</p><p>抽象类设计相关成员和方法，不用于具体使用，所以无法实例化</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">protected</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="k">protected</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="c1">// 需要完成细节的方法</span>
+  <span class="kd">abstract</span> <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span>
+<span class="p">}</span>
+<span class="c1">// 无法实例化</span>
+<span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div><p>抽象类是不允许被实例化的，抽象类中的抽象方法必须被子类实现</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Man</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>所以，子类必须实现抽象类的方法，严格按照标准实现，否则会报错</p><p>抽象类虽然可以指定标准给子类实现，但自己也可以实现一些通用的公共行为</p><p>需要注意的是，即使是抽象方法，TypeScript 的编译结果中，仍然会存在这个类，知识这个类不会保留抽象方法</p><h2 id="接口的使用">接口的使用</h2><h3 id="1接口">1.接口</h3><p>接口类似于抽象类，只不过它更加彻底，只提供标准却完全不实现细节</p><p>具体表现在，成员字段不可以赋值初始化，方法不可以实现</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 不需要修饰符，都是 public</span>
+<span class="kr">interface</span> <span class="nx">Person</span>  <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 类实现接口</span>
+<span class="kd">class</span> <span class="nx">Man</span> <span class="k">implements</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span>
+  <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">100</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div><p>接口的成员和方法必须由子类实现，也可以设置为可选方案让子类自由实现</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 接口，实现可选</span>
+<span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">?:</span> <span class="kr">string</span>
+  <span class="nx">age</span><span class="p">?:</span> <span class="kr">number</span>
+  <span class="nx">run</span><span class="p">?():</span> <span class="kr">string</span>
+<span class="p">}</span>
+</code></pre></div></div><p>这样实现的子类就不必强制去初始化或实现接口中的成员和方法了</p><p>继承只能继承一个父类，是接口实现支持实现多个接口。并且，接口还可以继承另一个接口，从而进行合并</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Woman</span> <span class="kd">extends</span> <span class="nx">Person</span>
+</code></pre></div></div><h3 id="2接口类型">2.接口类型</h3><p>接口还有一个比较常用的使用场景，就是规范字面量对象的类型</p><p>比如一个字面量对象，规范它的属性和方法，就可以使用接口类型</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span>
+  <span class="nx">run</span><span class="p">():</span> <span class="kr">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 字面量对象</span>
+<span class="kd">let</span> <span class="nx">man</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">的年龄为：</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">man</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">man</span><span class="p">.</span><span class="nx">run</span><span class="p">())</span>
+</code></pre></div></div><p>当然，也是支持 <code class="language-plaintext highlighter-rouge">name ?: string</code> 这种可选字段属性</p><p>接口提供了规范后，字面量对象如果自行增加接口不存在的属性将报错</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">man</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mr.Lee</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="c1">// 接口中没有，这里将报错</span>
+  <span class="na">gender</span><span class="p">:</span> <span class="dl">'</span><span class="s1">男</span><span class="dl">'</span>
+<span class="p">}</span>
+</code></pre></div></div><p>接口的字段也可以设置任意属性，具体如下：</p><div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">attr</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="kr">any</span>
+<span class="p">}</span>
+</code></pre></div></div><p>此时，对应的对象可以自由添加各种属性和类型。左边的 <code class="language-plaintext highlighter-rouge">string</code> 表示属性(key)的类型，只支持 string 和 number。右边的 <code class="language-plaintext highlighter-rouge">any</code> 表示值(value)的类型，和普通类型限制一样</p></article><div class="share"><div class="share-component" data-disabled='douban,linkedin'></div></div><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/gitalk/gitalk.css"> <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> <script> var gitalk = new Gitalk({ id: '/2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF', clientID: '425281566fa2c21accf0', clientSecret: 'cc605a5d6af0c0564bbfe768ed4bebb2f4dd2a63', repo: 'mfuu.github.io', owner: 'mfuu', admin: ['mfuu'], labels: ['gitalk'], perPage: 50, }); gitalk.render('gitalk-container'); </script></div></div><div class="column one-fourth"><div id="post-directory-module" class="mobile-hidden"><section class="post-directory"><dl></dl></section></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/jquery.toc.js"></script></div></div></section><footer class="footer container"><div class="site-footer" role="contentinfo"><div class="copyright left"> <br /> © 2019 <a href="https://github.com/mfuu" title="mfuu">mfuu</a></div><div class="right text-align-right"><ul class="site-footer-links"><li> <a href="/" title="首页" target="">首页</a></li><li> <a href="/categories/" title="分类" target="">分类</a></li><li> <a href="/archives/" title="归档" target="">归档</a></li><li> <a href="/about/" title="关于" target="">关于</a></li><a class="rss" href="/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></ul><script async src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script><div style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> <span id="busuanzi_value_site_pv"></span>浏览 </span> <span id="busuanzi_container_site_uv" style="display:none"> &nbsp;/&nbsp; <span id="busuanzi_value_site_uv"></span>访客 </span></div></div></div></footer><div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"> <svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8=""><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8=""></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8=""></path></svg> </a></div><script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://cdn.jsdelivr.net/gh/mfuu/mfuu.github.io@master/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> <script> jQuery(document).ready(function($) { function footerPosition(){ $("footer").removeClass("fixed-bottom"); var contentHeight = document.body.scrollHeight; var winHeight = window.innerHeight; if(!(contentHeight > winHeight)){ $("footer").addClass("fixed-bottom"); } else { $("footer").removeClass("fixed-bottom"); } } footerPosition(); $(window).resize(footerPosition); }); </script></body></html><div class="progress-indicator"></div><script> jQuery(document).ready(function($) { var $w = $(window); var $prog2 = $('.progress-indicator'); var wh = $w.height(); var h = $('body').height(); var sHeight = h - wh; $w.on('scroll', function() { window.requestAnimationFrame(function(){ var perc = Math.max(0, Math.min(1, $w.scrollTop() / sHeight)); updateProgress(perc); }); }); function updateProgress(perc) { $prog2.css({width: perc * 100 + '%'}); } setTimeout(() => { window.toTop && window.toTop() }, 0) }); </script>
