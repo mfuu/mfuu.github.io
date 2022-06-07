@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-07T02:05:30+00:00</updated><id>/feed.xml</id><title type="html">MF</title><subtitle>A blog site that records everything</subtitle><author><name>mfuu</name></author><entry><title type="html">常见的算法</title><link href="/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="常见的算法" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95</id><content type="html" xml:base="/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/">&lt;h2 id=&quot;排序算法&quot;&gt;排序算法&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-07T02:18:46+00:00</updated><id>/feed.xml</id><title type="html">MF</title><subtitle>A blog site that records everything</subtitle><author><name>mfuu</name></author><entry><title type="html">GitHub Action：The process ‘/usr/bin/git’ failed with exit code 128</title><link href="/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/" rel="alternate" type="text/html" title="GitHub Action：The process ‘/usr/bin/git’ failed with exit code 128" /><published>2022-06-07T00:00:00+00:00</published><updated>2022-06-07T00:00:00+00:00</updated><id>/2022/06/07/%E8%A7%A3%E5%86%B3GitHub%20Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5</id><content type="html" xml:base="/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/">&lt;h2 id=&quot;问题&quot;&gt;问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;错误日志&quot;&gt;错误日志&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Running post deployment cleanup jobs… 🗑️
+/usr/bin/git worktree remove github-pages-deploy-action-temp-deployment-folder --force
+fatal: 'github-pages-deploy-action-temp-deployment-folder' is not a working tree
+Error: The process '/usr/bin/git' failed with exit code 128
+Deployment failed! ❌
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;脚本&quot;&gt;脚本&lt;/h3&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build and Deploy&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build-and-deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Checkout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2.3.1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+          &lt;span class=&quot;na&quot;&gt;persist-credentials&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Set Ruby &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2.7&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/setup-ruby@v1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ruby-version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.7&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install and Build&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gem install bundler&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;bundle install&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;bundle exec jekyll build&lt;/span&gt;
+        
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deploy&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;JamesIves/github-pages-deploy-action@3.6.2&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;BRANCH&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;built&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;FOLDER&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_site&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;CLEAN&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;处理&quot;&gt;处理&lt;/h2&gt;
+
+&lt;p&gt;修改&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ci.yml&lt;/code&gt;脚本&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build and Deploy&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build-and-deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Checkout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2.3.1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+          &lt;span class=&quot;na&quot;&gt;persist-credentials&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Set Ruby &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2.7&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/setup-ruby@v1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ruby-version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.7&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Install and Build&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gem install bundler&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;bundle install&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;bundle exec jekyll build&lt;/span&gt;
+        
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deploy&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;JamesIves/github-pages-deploy-action@3.6.2&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 新增内容&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;BRANCH&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;built&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;FOLDER&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_site&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;CLEAN&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>mfuu</name></author><category term="GitHub page" /><summary type="html">问题</summary></entry><entry><title type="html">常见的算法</title><link href="/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="常见的算法" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95</id><content type="html" xml:base="/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/">&lt;h2 id=&quot;排序算法&quot;&gt;排序算法&lt;/h2&gt;
 
 &lt;h3 id=&quot;冒泡排序&quot;&gt;冒泡排序&lt;/h3&gt;
 
@@ -2385,476 +2471,4 @@ methods: {
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/6844904079974465544#heading-39&quot;&gt;前端需要了解的计算机网络知识， 这一篇就够了！&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/yueminghai/p/6646043.html&quot;&gt;TCP详解&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>mfuu</name></author><category term="网络" /><summary type="html">UDP 面向报文   UDP 是一个面向报文（报文可以理解为一段段的数据）的协议。意思是 UDP 只是报文的搬运工，不会对报文进行任何拆分和拼接操作。 具体来说 在发送端，应用层将数据传递给传输层的 UDP 协议，UDP 只会给数据增加一个 UDP 头标识下是 UDP 协议，然后就传递给网络层了 在接收端，网络层将数据传递给传输层，UDP 只去除 IP 报文头就传递给应用层，不会有任何拼接操作</summary></entry><entry><title type="html">HTTP与HTTPS</title><link href="/2022/02/15/HTTP%E4%B8%8EHTTPS/" rel="alternate" type="text/html" title="HTTP与HTTPS" /><published>2022-02-15T00:00:00+00:00</published><updated>2022-02-15T00:00:00+00:00</updated><id>/2022/02/15/HTTP%E4%B8%8EHTTPS</id><content type="html" xml:base="/2022/02/15/HTTP%E4%B8%8EHTTPS/">&lt;h3 id=&quot;常见的状态码&quot;&gt;常见的状态码&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2xxx 成功
-    &lt;ul&gt;
-      &lt;li&gt;200 OK，表示从客户端发来的请求在服务端被正确处理&lt;/li&gt;
-      &lt;li&gt;204 No Content，表示请求成功，但响应报文不含实体的主体部分&lt;/li&gt;
-      &lt;li&gt;205 Reset Content，表示请求成功，但响应报文不含实体的主体部分，并且要求请求方重置内容&lt;/li&gt;
-      &lt;li&gt;206 Partial Content，进行范围请求&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;3xx 重定向
-    &lt;ul&gt;
-      &lt;li&gt;301 moved permanently，永久重定向，表示资源已被分配了新的 URL&lt;/li&gt;
-      &lt;li&gt;302 found，临时重定向，表示资源临时被分配了新的 URL&lt;/li&gt;
-      &lt;li&gt;303 see other，表示资源存在另一个 URL，应使用 GET 方法获取资源&lt;/li&gt;
-      &lt;li&gt;304 not modified，表示服务器允许访问资源，但因为发生请求未满足条件的情况&lt;/li&gt;
-      &lt;li&gt;307 temporary redirect，临时重定向，与 302 类似，但是期望客户端保持请求方法不变向新的地址发出请求&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;4xx 客户端错误
-    &lt;ul&gt;
-      &lt;li&gt;400 bad request，请求报文存在语法错误&lt;/li&gt;
-      &lt;li&gt;401 unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息&lt;/li&gt;
-      &lt;li&gt;403 forbidden，表示请求资源的访问被服务器拒绝&lt;/li&gt;
-      &lt;li&gt;404 not found，表示服务器上没有找到请求的资源&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;5xx 服务器错误
-    &lt;ul&gt;
-      &lt;li&gt;500 internal server error，表示服务器端在执行请求时发生了错误&lt;/li&gt;
-      &lt;li&gt;501 Not Implemented，表示服务器不支持当前请求所需要的某个功能&lt;/li&gt;
-      &lt;li&gt;503 service unavailable，表示服务器暂时处于超负载或正在停机维护，无法处理请求&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;http-首部&quot;&gt;HTTP 首部&lt;/h3&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;通用字段&lt;/th&gt;
-      &lt;th&gt;作用&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cache-Control&lt;/td&gt;
-      &lt;td&gt;控制缓存的行为&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Connection&lt;/td&gt;
-      &lt;td&gt;浏览器想要优先使用的连接类型&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Date&lt;/td&gt;
-      &lt;td&gt;创建报文时间&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Pragma&lt;/td&gt;
-      &lt;td&gt;报文指令&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Via&lt;/td&gt;
-      &lt;td&gt;代理服务器相关信息&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Transfer-Encoding&lt;/td&gt;
-      &lt;td&gt;传输编码方式&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Upgrade&lt;/td&gt;
-      &lt;td&gt;要求客户端升级协议&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Warning&lt;/td&gt;
-      &lt;td&gt;在内容中可能存在错误&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;请求字段&lt;/th&gt;
-      &lt;th&gt;作用&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accept&lt;/td&gt;
-      &lt;td&gt;能正确接收的媒体类型&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accept-Charset&lt;/td&gt;
-      &lt;td&gt;能正确接收的字符集&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accept-Encoding&lt;/td&gt;
-      &lt;td&gt;能正确接收的编码格式列表&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accept-Language&lt;/td&gt;
-      &lt;td&gt;能正确接收的语言列表&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Expect&lt;/td&gt;
-      &lt;td&gt;期待服务端的指定行为&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;From&lt;/td&gt;
-      &lt;td&gt;请求方邮箱地址&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Host&lt;/td&gt;
-      &lt;td&gt;服务器的域名&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;if-Match&lt;/td&gt;
-      &lt;td&gt;两端资源标记比较&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;if-Modified-Since&lt;/td&gt;
-      &lt;td&gt;本地资源未修改返回 304（比较时间）&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;if-None-Match&lt;/td&gt;
-      &lt;td&gt;本地资源未修改返回 304（比较标记）&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;User-Agent&lt;/td&gt;
-      &lt;td&gt;客户端信息&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max-Forwards&lt;/td&gt;
-      &lt;td&gt;限制可能被代理及网关转发的次数&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Proxy-Authorization&lt;/td&gt;
-      &lt;td&gt;向代理服务器发送验证信息&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Range&lt;/td&gt;
-      &lt;td&gt;请求某个内容的一部分&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Referer&lt;/td&gt;
-      &lt;td&gt;表示浏览器所访问的前一个页面&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;TE&lt;/td&gt;
-      &lt;td&gt;传输编码方式&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;响应字段&lt;/th&gt;
-      &lt;th&gt;作用&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Accept-Ranges&lt;/td&gt;
-      &lt;td&gt;是否支持某些种类的范围&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Age&lt;/td&gt;
-      &lt;td&gt;资源在代理缓存中存在的时间&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;ETag&lt;/td&gt;
-      &lt;td&gt;资源标识&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Location&lt;/td&gt;
-      &lt;td&gt;客户端重定向到某个 URL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Proxy-Authenticate&lt;/td&gt;
-      &lt;td&gt;向代理服务器发送验证信息&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Server&lt;/td&gt;
-      &lt;td&gt;服务器名字&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;WWW-Authenticate&lt;/td&gt;
-      &lt;td&gt;获取资源需要的验证信息&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;实体字段&lt;/th&gt;
-      &lt;th&gt;作用&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Allow&lt;/td&gt;
-      &lt;td&gt;资源的正确请求方式&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Encoding&lt;/td&gt;
-      &lt;td&gt;内容的编码格式&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Length&lt;/td&gt;
-      &lt;td&gt;request body 长度&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Language&lt;/td&gt;
-      &lt;td&gt;内容使用的语言&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Location&lt;/td&gt;
-      &lt;td&gt;返回数据的备用地址&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-MD5&lt;/td&gt;
-      &lt;td&gt;Base64 加密格式的内容 MD5 检验值&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Range&lt;/td&gt;
-      &lt;td&gt;内容的位置范围&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Content-Type&lt;/td&gt;
-      &lt;td&gt;内容的媒体类型&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Expires&lt;/td&gt;
-      &lt;td&gt;内容的过期时间&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Last-modified&lt;/td&gt;
-      &lt;td&gt;内容的最后修改时间&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;http和https的基本概念&quot;&gt;http和https的基本概念&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;http&lt;/strong&gt;：超文本传输协议，是互联网上应用最广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。
-&lt;strong&gt;https&lt;/strong&gt;：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
-&lt;strong&gt;htts协议的主要作用&lt;/strong&gt;：建立一个信息安全通道，来确保数组的传输，确保网站的真实性。&lt;/p&gt;
-
-&lt;h3 id=&quot;http和https的区别&quot;&gt;http和https的区别&lt;/h3&gt;
-&lt;p&gt;  http传输的数据都是未加密的，也就是明文。SSL协议就是对http协议传输的数据进行加密处理，简单来说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。&lt;/p&gt;
-
-&lt;p&gt;主要的区别如下：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;https协议需要ca证书，费用较高&lt;/li&gt;
-  &lt;li&gt;http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议&lt;/li&gt;
-  &lt;li&gt;使用不同的链接方式，端口也不同，一般而言，http协议的端口为80，https的端口为443&lt;/li&gt;
-  &lt;li&gt;http的连接很简单，是无状态的；https协议是由ssl + http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;https协议的工作原理&quot;&gt;https协议的工作原理&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;https的SSL加密是在传输层实现的。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;客户端使用https url访问服务器，则要求web服务器简历ssl链接&lt;/li&gt;
-  &lt;li&gt;web服务器接收到客户端的请求之后，会将网站的证书（证书中包含了公钥）返回或者说传输给客户端&lt;/li&gt;
-  &lt;li&gt;客户端和web服务器开始协商 ssl 链接的安全等级，也就是加密等级&lt;/li&gt;
-  &lt;li&gt;客户端浏览器通过双方协商一致的安全等级，建立会话密钥，然后通过网站的公钥来加密会话密钥，并传送给网站&lt;/li&gt;
-  &lt;li&gt;web服务器通过自己的私钥解密出会话密钥&lt;/li&gt;
-  &lt;li&gt;web服务器通过会话密钥加密与客户端之间的通信&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;https协议的优点&quot;&gt;https协议的优点&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;使用https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器&lt;/li&gt;
-  &lt;li&gt;https协议是由 ssl + http 协议构建的可进行加密传输、身份认证的网络协议，要比http协议更安全，可防止数据在传输过程中不被窃取、改变，确保数据的完整性&lt;/li&gt;
-  &lt;li&gt;https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;https协议的缺点&quot;&gt;https协议的缺点&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;https握手阶段比较费时，会使页面加载时间延长50%，增加10% ~ 20%的耗电&lt;/li&gt;
-  &lt;li&gt;https缓存不如http高效，会增加数据开销&lt;/li&gt;
-  &lt;li&gt;ssl证书也需要钱，功能越强大的证书费用越高&lt;/li&gt;
-  &lt;li&gt;ssl证书需要绑定IP，不能在同一个IP上绑定多个域名，ipv4资源支持不了这种消耗&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;tls&quot;&gt;TLS&lt;/h3&gt;
-
-&lt;p&gt;TLS 协议位于传输层之上，应用层之下。首次进行 TLS 协议传输需要两个 RTT，接下来可以通过 Session Resumption 减少到一个 RTT&lt;/p&gt;
-
-&lt;p&gt;在 TLS 中使用了两种加密技术，分别为：对称加密和非对称加密&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;对称加密：两边拥有相同的密钥，两边都直到如何将密文加密解密&lt;/li&gt;
-  &lt;li&gt;非对称加密：有公钥私钥之分，公钥所有人都可以知道，可以将数据用公钥加密，但是将数据解密必须使用私钥，私钥只有分发公钥的一方才知道&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;TLS 握手过程：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;1.客户端发送一个随机值，需要的协议和加密方式&lt;/li&gt;
-  &lt;li&gt;2.服务端收到客户端的随机值，自己也产生一个随机值，并根据客户端需求的协议和加密方式使用对应的方式，发送自己的证书（如果需要验证客户端证书需要说明）&lt;/li&gt;
-  &lt;li&gt;客户端收到服务端的证书并验证是否有效，验证通过会再生成一个随机值，通过服务端证书的公钥去加密这个随机值并发送给服务端，如果服务端需要验证客户端证书的话会附带证书&lt;/li&gt;
-  &lt;li&gt;服务端收到加密过的随机值并使用私钥解密获得第三个随机值，这时候两端都拥有了三个随机值，可以通过这三个随机值按照之前约定的加密方式生成密钥，接下来的通信就可以通过该密钥来加密解密&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;通过以上步骤可知，在 TLS 握手阶段，两端使用非对称加密的方式来通信，但是因为非对称加密损耗的性能比对称加密大，所以在正式传输数据时，两端使用对称加密的方式通信&lt;/p&gt;
-
-&lt;h3 id=&quot;http-20&quot;&gt;HTTP 2.0&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;二进制传输&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;HTTP 2.0 中所有加强性能的核心点在于此。在此之前的 HTTP 版本中，都是通过文本的方式传输数据，在 HTTP 2.0 中引入了新的编码机制，所有的传输数据都会被分割，并采用二进制格式编码。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;多路复用&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在 HTTP 2.0 中，有两个非常重要的概念，分别是帧（frame）和流（stream）&lt;/p&gt;
-
-&lt;p&gt;帧代表最小的数据单位，每个帧会标识出该帧属于哪个流，流也就是多个帧组成的数据流&lt;/p&gt;
-
-&lt;p&gt;多路复用，就是在一个 TCP 连接中可以存在多条流。换句话说，也就是可以发送多个请求，对端可以通过帧中的标识知道属于哪个请求。通过这种技术，可以避免 HTTP 旧版本中的对头阻塞问题，极大的提高传输性能&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Header 压缩&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在 HTTP 1.x 中，我们使用文本的形式传输 header，在 header 携带 cookie 的情况下，可能每次都需要重复传输几百到几千的字节&lt;/p&gt;
-
-&lt;p&gt;在 HTTP 2.0 中，使用了 HPACK 压缩格式对传输的 header 进行编码，减少了 header 的大小。并在两端维护了索引表，用于记录出现过的 header，后面在传输过程中就可以传输已经记录过的 header 的键名，对端收到数据后就可以通过键名找到对应的值&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;服务端 Push&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在 HTTP 2.0 中，服务端可以在客户端某个请求后，主动推送其他资源。&lt;/p&gt;
-
-&lt;h3 id=&quot;dns&quot;&gt;DNS&lt;/h3&gt;
-
-&lt;p&gt;DNS 的作用就是通过域名查询到具体的 IP（DNS 是基于 UDP 做的查询）&lt;/p&gt;
-
-&lt;p&gt;因为 IP 存在数字和英文的组合（IPv6），很不利于记忆，所以就出现了域名。你可以把域名看成是某个 IP 的别名，DNS 就是去查询这个别名的真正名称是什么。&lt;/p&gt;
-
-&lt;p&gt;在 TCP 握手之前就已经进行了 DNS 查询，这个查询是操作系统自己做的。当你在浏览器中想要访问 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.xxx.com&lt;/code&gt; 时，会进行以下操作：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1.操作系统会首先在本地缓存中查询&lt;/li&gt;
-  &lt;li&gt;2.没有的话会去系统配置的 DNS 服务器中查询&lt;/li&gt;
-  &lt;li&gt;3.还没有的话，会直接去 DNS 根服务器查询，这一步查询会找出谁负责 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;com&lt;/code&gt; 这个一级域名的服务器&lt;/li&gt;
-  &lt;li&gt;4.然后去该服务器查询 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xxx&lt;/code&gt; 这个二级域名&lt;/li&gt;
-  &lt;li&gt;5.接下来三级域名的查询其实是我们配置的，你可以给 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt; 这个域名配置一个 IP，然后还可以给别的三级域名配置一个 IP&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以上是 DNS 迭代查询，还有一种是递归查询，区别就是前者是由客户端去做请求，后者是由系统配置的 DNS 服务器做请求，得到结果后将数据返回给客户端&lt;/p&gt;
-
-&lt;h3 id=&quot;面试问题&quot;&gt;面试问题&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;POST 与 GET 的区别&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;从技术上说：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GET 请求能缓存，POST 不能&lt;/li&gt;
-  &lt;li&gt;POST 相对 GET 安全一点，因为 GET 请求都包含在 URL 里，且会被浏览器保存历史记录，POST 不会，但在抓包的情况下都是一样的&lt;/li&gt;
-  &lt;li&gt;POST 可以通过 request body 来传输比 GET 更多的数据&lt;/li&gt;
-  &lt;li&gt;URL 有长度限制，会影响 GET 请求，但是这个长度限制是浏览器规定的，不是 RFC 规定的&lt;/li&gt;
-  &lt;li&gt;POST 支持更多的编码类型且不对数据类型限制&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;从本质上说：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GET 与 POST 都是 TCP 链接，但 GET 产生一个 TCP 数据包，POST 产生两个 TCP 数据包。
-    &lt;ul&gt;
-      &lt;li&gt;对于 GET 方式的请求，浏览器会把 http header 和 data 一并发送出去，服务器响应 200（返回数据）&lt;/li&gt;
-      &lt;li&gt;对于 POST ，浏览器先发送 header，服务器响应 100，浏览器再发送 data，服务器响应 200 ok（返回数据）&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;POST 请求体格式&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;application/x-www-form-urlencoded&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;最常见的 POST 数据提交方式。使用浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt; 方式提交数据。请求结构如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;POST&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;com&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Control&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Postman&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;urlencoded&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;testKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;testValue&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;请求头中的 content-type 设置为 application/x-www-form-urlencoded，提交的数据请求 body 中按照 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key1=value1&amp;amp;key2=value2&lt;/code&gt; 进行编码，key 和 value 都要进行 urlencode&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;multipart/form-data&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;使用表单上传文件时，必须让 from 的 enctype 等于这个值。请求结构如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;POST&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;com&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Control&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Postman&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;multipart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boundary&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=----&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WebKitFormBoundary7MA4YWxkTrZu0gW&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WebKitFormBoundary7MA4YWxkTrZu0gW&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Disposition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WebKitFormBoundary7MA4YWxkTrZu0gW&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Disposition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;testKey&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;testValue&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WebKitFormBoundary7MA4YWxkTrZu0gW&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Disposition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;imgFile&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;no-file&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;octet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stream&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;here&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WebKitFormBoundary7MA4YWxkTrZu0gW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;首先请求头中的 content-type 是 multipart/form-data，并且会随机生成一个 boundary，用于区分请求 body 中的各个数据，每个数据以 –boundary 开始，以 –boundary– 结尾&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;application/json&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;application/json 作为响应头用来告诉服务端消息主体是序列化后的 JSON 字符串。由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 JSON.stringify，服务端语言也都有处理 JSON 的函数。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;application/octet-stream&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;只可以上传二进制数据，通常用来上传文件。由于没有键值，所以一次只能上传一个文件&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;text/xml&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;从输入URL到页面加载完成的过程&lt;/strong&gt;&lt;/p&gt;
-  &lt;ol&gt;
-    &lt;li&gt;首先做DNS查询，如果这一步做了智能DNS解析的话，会提供访问速度最快的IP地址回来&lt;/li&gt;
-    &lt;li&gt;接下来是TCP握手，应用层会下发数据给传输层，这里TCP协议会指明两端的端口号，然后下发给网络层。网络层中的IP协议会确定IP地址，并且指示了数据传输中如何跳转路由器。然后包会再被封装到数据链路层中的数据帧结构中，最后就是物理层的传输&lt;/li&gt;
-    &lt;li&gt;TCP握手结束后会进行TLS握手，然后就开始正式的传输数据&lt;/li&gt;
-    &lt;li&gt;数据在进入服务端之前，可能还会先经过负责负载均衡的服务器，它的作用就是将请求合理的分发到多台服务器上，这时假设服务端会响应一个HTML文件&lt;/li&gt;
-    &lt;li&gt;首先浏览器会判断状态码是什么，如果是200就继续解析，如果是400或500的话就会报错，如果300的话会进行重定向，这里会有个重定向计数器，避免过多次的重定向，超过次数也会报错&lt;/li&gt;
-    &lt;li&gt;浏览器开始解析文件，如果是gzip格式的话会先解压，然后通过文件的编码格式直到如何去解码文件&lt;/li&gt;
-    &lt;li&gt;文件解码成功后会正式开始渲染流程，先根据HTML构建DOM树，有CSS的话会构建CSSOM树。如果遇到script标签，会判断是否存在async或者defer，前者会并行进行下载并执行JS，后者会先下载文件，等HTML解析完成后顺序执行，如果以上都没有，就会阻塞渲染流程直到JS执行完毕。遇到文件下载的会去下载文件&lt;/li&gt;
-    &lt;li&gt;初始的HTML被完全加载和解析后会触发DOMContentLoaded事件&lt;/li&gt;
-    &lt;li&gt;CSSOM树和DOM树构建完成后会开始生成Render树，这一步就是确定页面元素的布局、样式等&lt;/li&gt;
-    &lt;li&gt;在生成Render树的过程中，浏览器就开始调用GPU绘制，合成图层，将内容显示在屏幕上了&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;</content><author><name>mfuu</name></author><category term="网络" /><summary type="html">常见的状态码</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>mfuu</name></author><category term="网络" /><summary type="html">UDP 面向报文   UDP 是一个面向报文（报文可以理解为一段段的数据）的协议。意思是 UDP 只是报文的搬运工，不会对报文进行任何拆分和拼接操作。 具体来说 在发送端，应用层将数据传递给传输层的 UDP 协议，UDP 只会给数据增加一个 UDP 头标识下是 UDP 协议，然后就传递给网络层了 在接收端，网络层将数据传递给传输层，UDP 只去除 IP 报文头就传递给应用层，不会有任何拼接操作</summary></entry></feed>
