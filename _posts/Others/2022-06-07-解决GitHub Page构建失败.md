@@ -11,7 +11,7 @@ keywords: GitHub
 
 ### 错误日志
 
-```
+```nginx
 Running post deployment cleanup jobs… 🗑️
 /usr/bin/git worktree remove github-pages-deploy-action-temp-deployment-folder --force
 fatal: 'github-pages-deploy-action-temp-deployment-folder' is not a working tree

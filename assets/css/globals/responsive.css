@@ -66,7 +66,7 @@
     line-height: 1;
   }
   .collection-head.small .collection-title h1.collection-header {
-    font-size: 1.25em;
+    font-size: 1.55em;
   }
   .collection-head .collection-info .meta-info,
   .collection-head .collection-info .meta-info .octicon {
@@ -141,7 +141,7 @@
   }
 
   .tools-wrapper {
-    bottom: 7.4375em;
+    bottom: 5.4375em;
   }
 }
 

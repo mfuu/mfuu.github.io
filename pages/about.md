@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
+description: about mfuu
 keywords: MF
 comments: true
 menu: 关于
