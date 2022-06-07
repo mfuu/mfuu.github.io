@@ -3,7 +3,7 @@ layout: post
 title: HTTP与HTTPS
 categories: [网络]
 description: HTTP与HTTPS
-keywords: HTTP
+keywords: HTTP, HTTPS
 ---
 
 ### 常见的状态码

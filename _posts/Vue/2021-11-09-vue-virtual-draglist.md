@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 实现一个可拖拽排序的虚拟滚动列表
-categories: [vue, JavaScript]
-description: vue实现一个可拖拽排序的虚拟滚动列表
-keywords: vue, JavaScript
+categories: [Vue, JavaScript]
+description: Vue实现一个可拖拽排序的虚拟滚动列表
+keywords: Vue, JavaScript
 ---
 
 # 1. 背景

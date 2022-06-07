@@ -1,9 +1,9 @@
 ---
 layout: post
-title: vue—$nextTick原理
-categories: [vue]
-description: vue—$nextTick原理
-keywords: vue
+title: Vue—$nextTick原理
+categories: [Vue]
+description: Vue—$nextTick原理
+keywords: Vue
 ---
 
 

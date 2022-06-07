@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 解决 GitHub Page 构建失败的问题
-categories: [GitHub page]
+categories: [GitHub Page]
 description: GitHub Action：The process '/usr/bin/git' failed with exit code 128
-keywords: GitHub
+keywords: GitHub Page
 ---
 
 
