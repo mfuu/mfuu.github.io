@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 关于
 description: about mfuu
 keywords: MF
 comments: true

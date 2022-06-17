@@ -1,15 +1,15 @@
 <!-- 不蒜子访问统计 -->
 {% if site.components.busuanzi.enabled == true and page.visit-stat != 'hidden' and page.layout != 'mindmap' %}
-<script async src="{{ assets_base_url }}/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div>
-  <span id="busuanzi_container_site_pv" style="display:none">
-    <span id="busuanzi_value_site_pv"></span>浏览 
-  </span>  
-  <span id="busuanzi_container_site_uv" style="display:none">
-    &nbsp;/&nbsp; <span id="busuanzi_value_site_uv"></span>访客 
-  </span>
-  {% if site.components.busuanzi.start_date and false %}
-    &nbsp;/&nbsp; 统计始于{{ site.components.busuanzi.start_date }}
-  {% endif %}
-</div>
+  <script async src="{{ assets_base_url }}/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div>
+    <span id="busuanzi_container_site_pv" style="display:none">
+      <span id="busuanzi_value_site_pv"></span>浏览 
+    </span>  
+    <span id="busuanzi_container_site_uv" style="display:none">
+      &nbsp;/&nbsp; <span id="busuanzi_value_site_uv"></span>访客 
+    </span>
+    {% if site.components.busuanzi.start_date and false %}
+      &nbsp;/&nbsp; 统计始于{{ site.components.busuanzi.start_date }}
+    {% endif %}
+  </div>
 {% endif %}
