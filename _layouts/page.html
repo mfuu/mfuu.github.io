@@ -31,11 +31,11 @@ layout: default
 {% if page.categories %}
 <section class="container content">
   <div class="columns">
-    <div class="column one-third">
+    <div class="column one-third" style="float: right;">
       {% include sidebar-categories-nav.html %}
       {% include sidebar-ad.html %}
     </div>
-    <div class="column two-thirds" >
+    <div class="column two-thirds" style="float: right;">
       <article class="article-content markdown-body">
         {{ content }}
       </article>
