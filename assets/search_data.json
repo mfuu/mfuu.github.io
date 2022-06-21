@@ -197,11 +197,11 @@
     } ,
   
     {
-      "title"    : "解决 GitHub Page 构建失败的问题",
-      "category" : "GitHub Page",
+      "title"    : "Vue + ElementUI 实现表格编辑",
+      "category" : "Vue",
       
       "url"      : "/2022/06/21/Vue+ElementUI%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91/",
-      "keywords" : "GitHub Page"
+      "keywords" : "ElementUI Vue table 表格 编辑 输入框"
     } 
   
 ]
