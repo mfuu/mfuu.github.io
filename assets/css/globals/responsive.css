@@ -73,8 +73,8 @@
     font-size: 0.75em;
   }
   .site-header {
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
   .site-header h1, .site-header h1 .octicon {
     font-size: 1em;
@@ -82,10 +82,10 @@
   .site-header .site-header-nav {
     float: left;
     display: none;
-    margin-bottom: 0;
+    margin-bottom: -.5rem;
   }
   .site-header .site-header-nav .site-header-nav-item {
-    padding: 0 .5rem;
+    padding: 0 .5rem .5rem;
     margin-left: 1.25rem;
     margin-right: 0;
     font-size: 1rem;
