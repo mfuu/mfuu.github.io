@@ -32,6 +32,8 @@
   
   
   
+  
+  
 
   
     {
@@ -191,6 +193,14 @@
       "category" : "GitHub Page",
       
       "url"      : "/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/",
+      "keywords" : "GitHub Page"
+    } ,
+  
+    {
+      "title"    : "解决 GitHub Page 构建失败的问题",
+      "category" : "GitHub Page",
+      
+      "url"      : "/2022/06/21/Vue+ElementUI%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91/",
       "keywords" : "GitHub Page"
     } 
   
