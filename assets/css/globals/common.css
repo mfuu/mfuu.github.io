@@ -18,6 +18,29 @@
     -webkit-box-shadow: 0 0 0 5px rgba(0,0,0,.2) inset;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    --footer-height: 58px;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: var(--footer-height);
+}
+
+.clear::before {
+    content: '';
+    display: table;
+}
+
+.clear::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 .site-header,.site-header-actions .select-menu {
     position: relative
 }
@@ -284,6 +307,11 @@
 .site-search ul p {
     text-align: center;
     color: #aaa;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 80px;
 }
 
 .share {
