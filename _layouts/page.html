@@ -6,7 +6,7 @@ layout: default
 {% if site.cdn.jsdelivr.enabled %}
 {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: '@master' %}
 {% endif %}
-<section class="collection-head small" data-pattern-id="{{ page.title | truncate: 15, ''}}">
+<section class="collection-head small mobile-hidden" data-pattern-id="{{ page.title | truncate: 15, ''}}">
   <div class="container">
     <div class="columns">
       <div class="column two-thirds">
@@ -47,7 +47,7 @@ layout: default
 </section>
 {% else %}
 <section class="container content">
-  <div class="columns">
+  <div class="columns {{ page.class }}">
     <article class="article-content markdown-body">
       {{ content }}
     </article>
