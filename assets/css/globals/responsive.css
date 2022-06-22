@@ -78,6 +78,7 @@
     font-size: 0.75em;
   }
   .site-header {
+    text-align: center;
     padding-bottom: 10px;
     padding-top: 10px;
   }
@@ -85,23 +86,53 @@
     font-size: 1em;
   }
   .site-header .site-header-nav {
-    float: left;
     display: none;
     margin-bottom: -.5rem;
+    flex-direction: column;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 3px 3px 5px 0px #ddd;
+    -webkit-box-shadow: 3px 3px 5px 0px #ddd;
   }
   .site-header .site-header-nav .site-header-nav-item {
-    padding: .08rem 0 .5rem .5rem;
-    margin-left: 1.25rem;
-    margin-right: 0;
+    padding: 0 1.5rem;
+    margin: .4rem 0;
     font-size: 1rem;
     display: block;
-    text-align: right;
+    text-align: center;
+    position: relative;
   }
+  .site-header-nav-item.selected {
+    color: #424242;
+    border: 0;
+  }
+  .site-header-nav-item.selected:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #424242;
+  }
+  .site-header-oprate {
+    float: right;
+  }
+  .site-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
   .collapsed {
     float: left;
     display: block;
     width: 22px;
     height: 2em;
+    line-height: 1em;
     background-color: transparent;
     background-image: none;
     border: none;
@@ -111,18 +142,6 @@
   }
   .collapsed:active {
     border: 1px solid transparent;
-  }
-
-  .collapsed .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-    background-color: #563d7c;
-  }
-
-  .collapsed .icon-bar + .icon-bar {
-    margin-top: 4px;
   }
 
   .mini-repo-list-item .owner.css-truncate-target,
@@ -146,7 +165,7 @@
   }
 
   .tools-wrapper {
-    bottom: 5.4375em;
+    bottom: 7.4375em;
   }
 }
 

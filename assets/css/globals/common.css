@@ -127,12 +127,7 @@ body {
     margin: 0 .25em
 }
 
-.site-header .right {
-    display: flex;
-    align-items: center;
-}
-
-.site-header .right .octicon {
+.site-header .site-header-oprate .octicon {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 1.6em;
@@ -144,17 +139,17 @@ body {
     font-weight: 700
 }
 
-.site-header .right a {
+.site-header .site-header-oprate a {
     white-space: nowrap;
     color: #333
 }
 
-.site-header .right a:hover {
+.site-header .site-header-oprate a:hover {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
 }
 
-.site-header .right .avatar {
+.site-header .site-header-oprate .avatar {
     margin-top: -2px;
     margin-right: 9px;
     margin-bottom: -2px
@@ -195,6 +190,12 @@ body {
     margin-right: 1.25rem;
     font-size: 1rem;
     color: #777
+}
+
+.site-header-oprate {
+    float: right;
+    display: flex;
+    align-items: center;
 }
 
 .site-footer:after,.site-footer:before {
@@ -312,6 +313,10 @@ body {
 .sticky-nav {
     position: sticky;
     top: 80px;
+}
+
+.columns.about {
+    margin: 0 10px;
 }
 
 .share {
