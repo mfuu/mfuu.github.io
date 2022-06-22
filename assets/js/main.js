@@ -1,9 +1,10 @@
 function toggleMenu() {
   var nav = document.getElementsByClassName("site-header-nav")[0];
-  if (nav.style.display == "inline-flex") {
-    nav.style.display = "none";
+  var navHeight = nav.scrollHeight;
+  if (!nav.style.maxHeight || nav.style.maxHeight == "0px") {
+    nav.style.maxHeight = `${navHeight}px`;
   } else {
-    nav.style.display = "inline-flex";
+    nav.style.maxHeight = '0px';
   }
 }
 
