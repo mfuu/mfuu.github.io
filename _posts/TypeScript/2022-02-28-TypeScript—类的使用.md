@@ -3,7 +3,7 @@ layout: post
 title: TypeScript—类的使用
 categories: [TypeScript]
 description: TypeScript—类的使用
-keywords: TypeScript
+keywords: TypeScript, ts, 类
 ---
 
 ## 类的使用

@@ -3,7 +3,7 @@ layout: post
 title: TypeScript—泛型的使用
 categories: [TypeScript]
 description: TypeScript—泛型的使用
-keywords: TypeScript
+keywords: TypeScript, ts, 泛型
 ---
 
 

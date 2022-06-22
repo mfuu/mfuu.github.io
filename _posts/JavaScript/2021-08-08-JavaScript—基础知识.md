@@ -8,6 +8,7 @@ keywords: JavaScript
 
 
 ## 一.数据类型和检测方式
+
 ### 数据类型
 
 

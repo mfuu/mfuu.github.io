@@ -3,7 +3,7 @@ layout: post
 title: TypeScript—数据类型
 categories: [TypeScript]
 description: TypeScript—数据类型
-keywords: TypeScript
+keywords: TypeScript, ts, 数据类型
 ---
 
 ### 1. Boolean 类型

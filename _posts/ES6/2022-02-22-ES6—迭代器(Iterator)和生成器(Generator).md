@@ -3,7 +3,7 @@ layout: post
 title: ES6-迭代器(Iterator)和生成器(Generator)
 categories: [ES6]
 description: ES6-迭代器(Iterator)和生成器(Generator)
-keywords: ES6
+keywords: ES6, javascript, Iterator, Generator
 ---
 
 
