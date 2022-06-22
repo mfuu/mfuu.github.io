@@ -10,9 +10,14 @@
 }
 
 .footer {
-  background: #000;
-  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-height);
   width: 100%;
+  max-width: 100%;
+  background: #000;
 }
 
 .mobile-visible {
@@ -63,7 +68,7 @@
     padding: 0;
   }
   .collection-head .collection-header {
-    line-height: 1;
+    line-height: 1.225;
   }
   .collection-head.small .collection-title h1.collection-header {
     font-size: 1.55em;
@@ -85,7 +90,7 @@
     margin-bottom: -.5rem;
   }
   .site-header .site-header-nav .site-header-nav-item {
-    padding: 0 .5rem .5rem;
+    padding: .08rem 0 .5rem .5rem;
     margin-left: 1.25rem;
     margin-right: 0;
     font-size: 1rem;
