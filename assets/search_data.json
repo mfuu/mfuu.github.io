@@ -49,7 +49,7 @@
       "category" : "ES6",
       
       "url"      : "/2021/08/05/ES6-array/",
-      "keywords" : "ES6"
+      "keywords" : "ES6, array, javascript"
     } ,
   
     {
@@ -81,7 +81,7 @@
       "category" : "Vue",
       
       "url"      : "/2021/11/09/vue-virtual-draglist/",
-      "keywords" : "Vue, JavaScript"
+      "keywords" : "Vue, JavaScript, drag, drop, sort, draggable, sortable"
     } ,
   
     {
@@ -89,7 +89,7 @@
       "category" : "TypeScript",
       
       "url"      : "/2022/01/25/TypeScript-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/",
-      "keywords" : "TypeScript"
+      "keywords" : "TypeScript, ts, 数据类型"
     } ,
   
     {
@@ -97,7 +97,7 @@
       "category" : "JavaScript",
       
       "url"      : "/2022/02/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-Node/",
-      "keywords" : "Event Loop, JavaScript"
+      "keywords" : "Event Loop, JavaScript, 事件循环, Node"
     } ,
   
     {
@@ -105,7 +105,7 @@
       "category" : "JavaScript",
       
       "url"      : "/2022/02/12/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-%E6%B5%8F%E8%A7%88%E5%99%A8/",
-      "keywords" : "Event Loop, JavaScript"
+      "keywords" : "Event Loop, JavaScript, 事件循环"
     } ,
   
     {
@@ -129,7 +129,7 @@
       "category" : "ES6",
       
       "url"      : "/2022/02/22/ES6-%E8%BF%AD%E4%BB%A3%E5%99%A8(Iterator)%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8(Generator)/",
-      "keywords" : "ES6"
+      "keywords" : "ES6, javascript, Iterator, Generator"
     } ,
   
     {
@@ -137,7 +137,7 @@
       "category" : "TypeScript",
       
       "url"      : "/2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/",
-      "keywords" : "TypeScript"
+      "keywords" : "TypeScript, ts, 类"
     } ,
   
     {
@@ -145,7 +145,7 @@
       "category" : "TypeScript",
       
       "url"      : "/2022/03/01/TypeScript-%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/",
-      "keywords" : "TypeScript"
+      "keywords" : "TypeScript, ts, 泛型"
     } ,
   
     {
@@ -153,7 +153,7 @@
       "category" : "Vue",
       
       "url"      : "/2022/03/01/vue-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/",
-      "keywords" : "Vue"
+      "keywords" : "Vue, 双向绑定"
     } ,
   
     {
@@ -161,7 +161,7 @@
       "category" : "Vue",
       
       "url"      : "/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/",
-      "keywords" : "Vue"
+      "keywords" : "Vue, $nextTick"
     } ,
   
     {
@@ -169,7 +169,7 @@
       "category" : "Web",
       
       "url"      : "/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/",
-      "keywords" : "Web"
+      "keywords" : "Web, 浏览器存储, cookie, localStorage, sessionStorage, indexDB"
     } ,
   
     {
@@ -177,7 +177,7 @@
       "category" : "Web",
       
       "url"      : "/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/",
-      "keywords" : "Web"
+      "keywords" : "Web,浏览器渲染机制"
     } ,
   
     {
@@ -185,7 +185,7 @@
       "category" : "算法",
       
       "url"      : "/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/",
-      "keywords" : "算法"
+      "keywords" : "算法, 排序, 冒泡, 选择, 归并, 快速, 二叉树"
     } ,
   
     {
@@ -193,7 +193,7 @@
       "category" : "GitHub Page",
       
       "url"      : "/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/",
-      "keywords" : "GitHub Page"
+      "keywords" : "GitHub Page, Action, Workflow"
     } ,
   
     {
@@ -201,7 +201,7 @@
       "category" : "Vue",
       
       "url"      : "/2022/06/21/Vue+ElementUI%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91/",
-      "keywords" : "ElementUI Vue table 表格 编辑 输入框"
+      "keywords" : "ElementUI, Vue, table, 表格, 编辑, 输入框"
     } 
   
 ]
