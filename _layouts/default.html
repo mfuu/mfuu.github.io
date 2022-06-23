@@ -8,6 +8,6 @@ layout: compress
 {% endif %}
 {% assign assets_images_url = '<img src="' | append: assets_base_url | append: "/images" %}
 {% include header.html %}
-  <main class="clear">{{ content | replace: '<img src="/images', assets_images_url }}</main>
+  <main class="site-container">{{ content | replace: '<img src="/images', assets_images_url }}</main>
 {% include footer.html %}
 {% include progress.html %}

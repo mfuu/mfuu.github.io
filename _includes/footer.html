@@ -1,23 +1,26 @@
-    <footer class="footer container">
+    <footer class="site-footer">
 
       {% include footer-ad.html %}
 
-      <div class="site-footer" role="contentinfo">
-        <div class="copyright left">
-          © 2019
-          <a href="https://github.com/{{ site.github_username }}" title="{{ site.author}}">{{ site.author }}</a>
-        </div>
-
-        {% if false %}
-          <ul class="site-footer-links right mobile-hidden">
-            <li>
-              <a href="javascript:window.scrollTo(0,0)">TOP</a>
-            </li>
-          </ul>
+      <div class="contact">
+        <ul class="left">
           <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
             <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
           </a>
-        {% endif %}
+          <a class="rss" href="{{ site.url }}{{ site.subscribe_rss }}">
+            <span class="octicon octicon-rss" title="Subscribe"></span>
+          </a>
+        </ul>
+        <ul class="right">
+          <a href="javascript:window.scrollTo(0,0)" class="toTop" title="Scroll to top">TOP</a>
+        </ul>
+      </div>
+
+      <div class="footer" role="contentinfo">
+        <div class="copyright left">
+          © 2019
+          <span title="{{ site.author }}">{{ site.author }}</span>
+        </div>
 
         <div class="right text-align-right">
           <!-- <ul class="site-footer-links">
@@ -52,22 +55,16 @@
       });
     </script>
 
-    <!-- <script>
+    <script>
       jQuery(document).ready(function($) {
-        function footerPosition(){
-          $("footer").removeClass("fixed-bottom");
-          var contentHeight = document.body.scrollHeight;
-          var winHeight = window.innerHeight;
-          if(!(contentHeight > winHeight)){
-            $("footer").addClass("fixed-bottom");
-          } else {
-            $("footer").removeClass("fixed-bottom");
-          }
+        function setContainerStyle(){
+          var footerH = $("footer").height();
+          $('.site-container').css('paddingBottom', `${footerH}px`);
         }
-        footerPosition();
-        $(window).resize(footerPosition);
+        setContainerStyle();
+        $(window).resize(setContainerStyle());
       });
-    </script> -->
+    </script>
 
     {% if page.mermaid %}
     <script src="{{ assets_base_url }}/assets/js/mermaid.min.js"></script>
