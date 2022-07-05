@@ -166,7 +166,7 @@ $(document).ready(function(){
         position: 'inherit',
         width: 'inherit'
       });
-      $('.post-directory').css('overflow', 'hidden');
+      $('.post-directory').css('overflow', 'auto');
       $('.post-directory').scrollTop(0);
     }
 
