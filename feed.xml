@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-07-12T09:17:12+00:00</updated><id>/feed.xml</id><title type="html">MF</title><subtitle>A blog site that records everything</subtitle><author><name>mfuu</name></author><entry><title type="html">前端性能优化</title><link href="/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="alternate" type="text/html" title="前端性能优化" /><published>2022-07-11T00:00:00+00:00</published><updated>2022-07-11T00:00:00+00:00</updated><id>/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96</id><content type="html" xml:base="/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">&lt;h3 id=&quot;从-url-输入到页面完全展示整个过程性能消耗&quot;&gt;从 URL 输入，到页面完全展示，整个过程性能消耗&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-07-13T07:10:43+00:00</updated><id>/feed.xml</id><title type="html">MF</title><subtitle>A blog site that records everything</subtitle><author><name>mfuu</name></author><entry><title type="html">前端安全</title><link href="/2022/07/12/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="前端安全" /><published>2022-07-12T00:00:00+00:00</published><updated>2022-07-12T00:00:00+00:00</updated><id>/2022/07/12/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8</id><content type="html" xml:base="/2022/07/12/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/">&lt;h3 id=&quot;xss&quot;&gt;XSS&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;XSS(Cross-site scripting) 是一种网站应用程式的安全漏洞攻击，是代码注入的一种。它允许恶意使用者将程式代码注入到网页上，其他使用者在观看网页时就受到影响。这类攻击通常包含了 HTML 以及使用者端脚本语言&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;XSS 攻击分为三种：反射型，存储型，DOM-based&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;攻击方式&quot;&gt;攻击方式&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;XSS 通过修改 HTML 节点或者执行 JS 代码来攻击网站&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- http://wwww.xxx.com?name=&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上述 URL 输入可能会将 HTML 改为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;，这样页面中就凭空多了一段可执行脚本。这种攻击类型是反射型攻击，也可以说是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOM-based&lt;/code&gt; 攻击&lt;/p&gt;
+
+&lt;h4 id=&quot;防御方式&quot;&gt;防御方式&lt;/h4&gt;
+
+&lt;p&gt;最普遍的做法就是转义输入输出的内容，对于引号，尖括号，斜杠进行转义&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;amp;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;amp;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;lt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;gt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&quot;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;quto;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/'/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;##39;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/`/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;##96;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;##x2F;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;通过转义可以将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/code&gt; 变成 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;lt;script&amp;amp;gt;alert(1)&amp;amp;lt;&amp;amp;##x2F;script&amp;amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;对于富文本来说，不能通过上面的办法来转义所有字符，因为这样会把需要的格式也过滤掉。这种情况通常采用白名单过滤的方式，当然也可以通过黑名单过滤，但是考虑到需要过滤的标签和标签属性是在太多，更加推荐使用白名单的方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;lt;h1 id=&quot;title&quot;&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;lt;script&amp;gt;alert(&quot;xss&quot;);&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// &amp;lt;h1&amp;gt;XSS Demo&amp;lt;/h1&amp;gt;&amp;amp;lt;script&amp;amp;gt;alert(&quot;xss&quot;);&amp;amp;lt;/script&amp;amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;cookie-如何防范-xss-攻击&quot;&gt;cookie 如何防范 XSS 攻击&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;httpOnly&lt;/code&gt;: 这个属性可以防止 XSS，它会禁用 JavaScript 脚本来访问 cookie&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;secure&lt;/code&gt;: 这个属性告诉浏览器仅在请求为 https 时发送 cookie，具体内容可以查看&lt;a href=&quot;https://mfuu.github.io/2020/02/02/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/#cookie&quot;&gt;Cookie的使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;csrf&quot;&gt;CSRF&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CSRF(Cross-site request forgery) 就是利用用户的登录状态发起恶意请求
+CSRF - 跨站请求伪造，是一种常见的攻击方式。指 A 网站正常登录后，cookie 正常保存登录信息，网站 B 通过某种方式调用 A 网站接口进行操作，网站 A 的接口会在请求时自动带上 cookie&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;攻击方式-1&quot;&gt;攻击方式&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/178668200-422bd6f6-d167-4e27-b3a3-cec74dc06f3d.png&quot; alt=&quot;403560712-54fdb1994e6c50a3_fix732&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;防御方式-1&quot;&gt;防御方式&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用 token
+服务器产生一个 token 存在 session 中，同时将 token 发送给客户端，客户端提交表单时带上该 token，服务器验证 token 与 session 是否一致，一致就允许访问，否则拒绝访问&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;referer 验证
+referer 指的是页面请求来源，意思是，只接受本站的请求，服务器才做响应，如果不是就拦截&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SameSite Cookie&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用验证码
+对于重要请求，要求用户输入验证码，强制用户必须与应用进行交互，才能完成最终请求&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CSRF 攻击，仅仅是利用了 http 携带 cookie 的特性进行攻击，但是攻击站点还是无法得到被攻击站点的 cookie。与 XSS 不同，XSS 是直接通过拿到 Cookie 等信息进行攻击&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;CSRF 怎么获取用户的登录态&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;攻击全程不需要获取 cookie，只是在危险的网站欺骗用户去点击已登录的网站链接，利用已登录的网站自动发送 cookie 达到目的、因为 http 请求都会带着请求目标域下的 cookie，向同一个服务器发请求时会带上浏览器保存的 cookie，不管从哪个网站向目标网站发请求&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;点击劫持&quot;&gt;点击劫持&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;点击劫持就像是将一个危险网站设置透明，然后在其上方设置一个按钮，当你点击这个按钮的时候，就会触发底部恶意网站的某些事件&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;防御方式-2&quot;&gt;防御方式&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;设置 http 响应头 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X-Frame-Options&lt;/code&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X-Frame-Options&lt;/code&gt; 响应头是用来给浏览器指示允许一个页面可否在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;frame&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;object&amp;gt;&lt;/code&gt; 中展现的标记。网站可以使用此功能，来确保自己网站的内容没有被嵌到别人的网站中去&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用 CSP(Content Security Policy) 内容安全策略&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;xs-leaks&quot;&gt;XS-Leaks&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;XS-Leaks 即跨站泄露。
+XS-Leaks 利用了对 HTTP 缓存进行查询的机制，通过对资源缓存的判断进而推断出当前用户的相关信息。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;攻击方式-2&quot;&gt;攻击方式&lt;/h4&gt;
+
+&lt;p&gt;XS-Leaks 攻击的主要流程如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;删除特定网站的缓存资源&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;强制浏览器刷新网站&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;检查浏览器是否缓存了在 1 中删除的资源&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/178669781-3d826593-21c2-4e3f-a29e-0ba926bb3192.png&quot; alt=&quot;2522384929-9f77456b1e725da9_fix732&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;防御方式-3&quot;&gt;防御方式&lt;/h4&gt;
+
+&lt;p&gt;CSRF 的防御手段同样可以让 XS-Leaks 对带鉴权的请求访问无效，从而降低危险。当然有些时候这种攻击其实并不需要鉴权就能达成目的，因此 CSRF 的防御手段并不能做到完美抵御，所以在浏览器层面增加缓存分区就显得非常有必要了&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;设置 SameSite Cookie&lt;/li&gt;
+  &lt;li&gt;CSRF Token&lt;/li&gt;
+  &lt;li&gt;浏览器支持缓存分区&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>mfuu</name></author><category term="Web" /><summary type="html">XSS</summary></entry><entry><title type="html">前端性能优化</title><link href="/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="alternate" type="text/html" title="前端性能优化" /><published>2022-07-11T00:00:00+00:00</published><updated>2022-07-11T00:00:00+00:00</updated><id>/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96</id><content type="html" xml:base="/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">&lt;h3 id=&quot;从-url-输入到页面完全展示整个过程性能消耗&quot;&gt;从 URL 输入，到页面完全展示，整个过程性能消耗&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/178183059-bf1044f3-3024-40bf-9e18-ec442827a16c.png&quot; alt=&quot;13508001-cc861c4ce8993dc5&quot; /&gt;&lt;/p&gt;
 
@@ -1677,145 +1831,4 @@ npm run dev
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;分支策略&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>mfuu</name></author><category term="Git" /><category term="SVN" /><category term="面试题" /><summary type="html">区别</summary></entry><entry><title type="html">Git 常见指令</title><link href="/2022/03/03/Git-%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/" rel="alternate" type="text/html" title="Git 常见指令" /><published>2022-03-03T00:00:00+00:00</published><updated>2022-03-03T00:00:00+00:00</updated><id>/2022/03/03/Git%20%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4</id><content type="html" xml:base="/2022/03/03/Git-%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/">&lt;h3 id=&quot;git是什么&quot;&gt;Git是什么&lt;/h3&gt;
-
-&lt;p&gt;Git是&lt;strong&gt;分布式&lt;/strong&gt;版本控制系统，与 SVN 类似的&lt;strong&gt;集中式&lt;/strong&gt;版本控制系统相比，集中化版本控制系统虽然能够命令多个团队成员一起协作开发，但如果中央服务器宕机的话，谁也无法在宕机期间提交更新和协同开发。&lt;/p&gt;
-
-&lt;p&gt;但 Git 是分布式的版本控制系统，客户端不只是提取最新版本的快照，而是将整个代码仓库镜像复制下来。如果任何协同工作用的服务器发生故障，也可以用任何一个代码仓库来恢复。而且在协作服务器宕机期间，你也可以提交代码到本地仓库，当协作服务器正常工作后，再将本地仓库同步到远程仓库。&lt;/p&gt;
-
-&lt;h3 id=&quot;git的工作流程&quot;&gt;Git的工作流程&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/156485581-8f2e3d39-b9cd-4f6e-9329-40c2f9c50d90.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;workspace：工作区。工作成员进行开发时改动的地方。平常我们开发就是拷贝远程仓库的一个分支，基于该分支进行开发。在开发过程中就是对工作区的操作。&lt;/li&gt;
-  &lt;li&gt;Index：暂存区。当执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add&lt;/code&gt; 指令后，工作区的文件就会被移入暂存区。暂存区会记录移入文件的相关信息，不保存文件实体，通过 id 指向每个文件实体。暂存区标记了当前工作区中哪些内容是被 Git 管理的。&lt;/li&gt;
-  &lt;li&gt;Repository：本地仓库。位于自己的电脑上，通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt; 指令提交暂存区的内容，会进入到本地仓库。&lt;/li&gt;
-  &lt;li&gt;Remote：远程仓库。用来托管代码的服务器，远程仓库的内容能够被分布在多个地点的协作关系的本地仓库修改。本地仓库修改完后使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt; 指令提交到远程仓库。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Git 的工作流程一般为：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1.在工作区修改/添加/删除文件&lt;/li&gt;
-  &lt;li&gt;2.将工作区改动的文件放入暂存区&lt;/li&gt;
-  &lt;li&gt;3.将暂存区的文件提交到本地仓库&lt;/li&gt;
-  &lt;li&gt;4.将本地仓库的文件推送到远程仓库&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;git目录结构&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git&lt;/code&gt;目录结构&lt;/h3&gt;
-
-&lt;p&gt;Git目录 是项目存储所有历史和元信息的目录，包括所有的对象（commits、trees、blobs、tags）&lt;/p&gt;
-
-&lt;p&gt;每一个项目只能有一个 Git目录（这和 SVN、CVS 的每个子目录中都有此类目录相反），Git目录 是项目的根目录下名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.get&lt;/code&gt; 的隐藏目录。&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|—— HEAD
-|—— branches
-|—— config
-|—— description
-|—— index
-|—— hooks
-| |—— pre-commit.sample
-| |—— pre-push.sample
-| |__ ...
-|—— info
-| |__ exclude
-|—— objects
-| |__ info
-| |__ pack
-|__ refs
-  |—— heads
-  |__ tags
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;核心文件：config、objects、HEAD、index、refs&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;config：存储项目的一些配置信息，比如远程的 url、邮箱、用户名等，每次在控制台使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config ...&lt;/code&gt; 都会对该文件产生影响。git remote add 添加的远程分支信息就保存在这里。&lt;/li&gt;
-  &lt;li&gt;objects：存储 git 对象。git 对象分为 BLOB、tree、commit 三种类型。&lt;/li&gt;
-  &lt;li&gt;HEAD：指明本地的分支结果，如本地分支是 master，那么 HEAD 就指向 master，分支在 refs 中就会表示成 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;refs:refs/heads/master&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;index：存储缓冲区（stage）的内容，也就是 add 之后保存到的区域，内容包括指向文件的时间戳、文件名、sha1等。&lt;/li&gt;
-  &lt;li&gt;refs：存储指向 branch分支 的最近一次 commit 对象的指针，也就是 commit 对象的 sha-1 值，每个分支一个文件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;git命令&quot;&gt;Git命令&lt;/h3&gt;
-
-&lt;h4 id=&quot;工作区上的操作命令&quot;&gt;工作区上的操作命令&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;新建仓库
-    &lt;ul&gt;
-      &lt;li&gt;创建一个新的本地仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git init&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;从远程克隆项目：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone &amp;lt;url&amp;gt;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;提交
-    &lt;ul&gt;
-      &lt;li&gt;提交工作区所有文件到暂存区：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;提交工作区指定文件到暂存区：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add &amp;lt;file1&amp;gt; &amp;lt;file2&amp;gt; ...&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;提交工作区某个文件夹中所有文件到暂存区：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add [dir]&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;撤销
-    &lt;ul&gt;
-      &lt;li&gt;删除工作区文件，并且也从暂存区删除对应文件的记录：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git rm &amp;lt;file1&amp;gt; &amp;lt;file2&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;从暂存区中删除文件，但是工作区依然有该文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git rm --cached &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;取消暂存区已经暂存的文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reset HEAD &amp;lt;file&amp;gt; ...&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;撤销上一次对文件的操作：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout --&amp;lt;file&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;储藏当前变更，以便能够切换分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;查看当前所有的储藏：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash list&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;应用最新的储藏：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash apply&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;查看更新信息
-    &lt;ul&gt;
-      &lt;li&gt;查询当前工作区所有文件的状态：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git status&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;比较工作区中当前文件和暂存区之前的差异：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;比较指定文件在工作区和暂存区上的差异：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff &amp;lt;file-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;暂存区上的操作指令&quot;&gt;暂存区上的操作指令&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;提交文件到版本库
-    &lt;ul&gt;
-      &lt;li&gt;将暂存区中的文件提交到本地仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -m 'commit-info'&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;将所有文件暂存后一并提交，跳过 add 到暂存区的过程：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -a -m 'commit-info'&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;撤销上一次提交：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit --amend&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;查看信息
-    &lt;ul&gt;
-      &lt;li&gt;比较暂存区与上一版本的差异：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff --cached&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;比较指定文件在暂存区和本地仓库的不同：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff &amp;lt;file-name&amp;gt; --cached&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;查看提交历史：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git log&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;分支管理
-    &lt;ul&gt;
-      &lt;li&gt;创建分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;切换分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;新建分支并切换到新建分支上：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout -b &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;删除分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -d &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;将当前分支与指定分支合并：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git merge &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;显示本地仓库的所有分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;查看当前哪些分支没有合并到当前分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch --no-merged&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;把远程分支合并到当前分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git merge &amp;lt;remote/branch-name&amp;gt;&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;向远程分支推送内容：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;合并远程分支：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git pull&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;本地仓库上的操作指令&quot;&gt;本地仓库上的操作指令&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;查看本地仓库关联的远程仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;添加远程仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote add [remote-name] [url]&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;从远程仓库中抓取本地仓库中没有的更新：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git fetch [remote-name]&lt;/code&gt;,fetch 知识将远端数据拉到本地仓库，不会自动合并到当前工作分支&lt;/li&gt;
-  &lt;li&gt;将本地仓库分支推送到远程仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push [remote-name] [branch-name]&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;查看远程仓库信息：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote show origin&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;修改远程仓库在本地的简称：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote rename [old-name] [new-name]&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;移出远程仓库：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote rm [remote-name]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>mfuu</name></author><category term="Git" /><category term="面试题" /><summary type="html">Git是什么</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>mfuu</name></author><category term="Git" /><category term="SVN" /><category term="面试题" /><summary type="html">区别</summary></entry></feed>
