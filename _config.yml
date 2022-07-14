@@ -5,9 +5,9 @@ baseurl:
 url: 
 date_format: "ordinal"
 title: MF
-subtitle: "A blog site that records everything"
-description: "A blog site that records everything"
-keywords: blog
+subtitle: ""
+description: ""
+keywords: Jekyll, Blog, Ghithub Page
 timezone: 
 encoding: "utf-8"
 repository: mfuu/mfuu.github.io
