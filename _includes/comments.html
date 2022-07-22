@@ -36,6 +36,22 @@
   {% endif %}
 
   {% case site.comments_provider %}
+    {% when 'gitment' %}
+      <div id="container"></div>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/imsun.github.io/gitment/style/default.css">
+      <script src="https://cdn.jsdelivr.net/gh/imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+        var gitment = new Gitment({
+            id: '{{ page.url | truncate: 50, '' }}',
+            owner: '{{ site.gitment.owner }}',
+            repo: '{{ site.gitment.repo }}',
+            oauth: {
+                client_id: '{{ site.gitment.oauth.client_id }}',
+                client_secret: '{{ site.gitment.oauth.client_secret }}',
+            },
+        });
+        gitment.render('container');
+      </script>
     {% when 'gitalk' %}
       <div id="gitalk-container"></div>
       <link rel="stylesheet" href="{{ assets_base_url }}/assets/vendor/gitalk/gitalk.css">
@@ -48,7 +64,7 @@
           repo: '{{ site.gitalk.repo }}',
           owner: '{{ site.gitalk.owner }}',
           admin: ['{{ site.gitalk.owner }}'],
-          labels: ['gitalk'],
+          labels: ['{{ site.gitalk.label }}'],
           perPage: 50,
         });
         gitalk.render('gitalk-container');
@@ -58,8 +74,19 @@
         src="https://utteranc.es/client.js"
         repo="{{ site.utterances.repo }}"
         issue-term="title"
-        label="utterances"
+        label="{{ site.utterances.label }}"
         theme="{{ site.utterances.theme }}"
+        crossorigin="anonymous"
+        async
+      ></script>
+    {% when 'beaudar' %}
+      <script src="https://beaudar.lipk.org/client.js"
+        repo="{{ site.beaudar.repo }}"
+        issue-term="title"
+        label="{{ site.beaudar.label }}"
+        theme="{{ site.beaudar.theme }}"
+        comment-order="desc"
+        input-position="top"
         crossorigin="anonymous"
         async
       ></script>

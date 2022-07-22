@@ -36,6 +36,7 @@
 
   {% if page.title %}
     <meta property="og:title" content="{{ page.title }}">
+    <meta property="twitter:title" content="{{ page.title }}">
     {% if page.keywords %}
       {% assign keywords = page.keywords %}
     {% else %}
@@ -46,12 +47,15 @@
     {% if page.excerpt %}
       <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines}}">
       <meta name="og:description" content="{{ page.excerpt | strip_html | strip_newlines}}">
+      <meta name="twitter:description" content="{{ page.excerpt | strip_html | strip_newlines}}">
     {% else if page.description %}
       <meta name="description" content="{{ page.description | strip_html | strip_newlines}}">
       <meta name="og:description" content="{{ page.description | strip_html | strip_newlines}}">
+      <meta name="twitter:description" content="{{ page.description | strip_html | strip_newlines}}">
     {% else if content %}
       <meta name="description" content="{{ content | strip_html | strip_newlines | truncatewords: 100 }}">
       <meta name="og:description" content="{{ content | strip_html | strip_newlines | truncatewords: 100 }}">
+      <meta name="twitter:description" content="{{ content | strip_html | strip_newlines | truncatewords: 100 }}">
     {% endif %}
   {% else %}
     <meta name="keywords" content="{{ site.keywords }}">
@@ -70,6 +74,8 @@
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN" />
+  <meta property="twitter:url" content="{{ site.url }}{{ page.url | remove_first:'index.html' }}">
+  <meta property="twitter:site_name" content="{{ site.title }}">
 
   {% if page.date %}
     <meta property="article:published_time" content="{{ page.date | date: '%Y-%m-%d' }}">
