@@ -1,11 +1,6 @@
 ### _config.yml
 
 ```yml
-title # 网站标题
-subtitle # 副标题
-description # keywords description
-keywords # html keywords
-
 # cdn 加速
 cdn:
     jsdelivr:
@@ -16,27 +11,7 @@ components
 
 highlight_theme # markdown样式
 
-# 导航
-navs:
-  -
-    href: /
-    label: HOME
-
-  -
-    href: /categories/
-    label: categories
-
-  -
-    href: /archives/
-    label: archives
-
-paginate: 10 # 每页显示多少文章
-
-comments_provider # 评论组件
-  gitalk # https://github.com/gitalk/gitalk#install
-  utterances # https://utteranc.es/
-
-simple_jekyll_search # 搜索
+comments_provider # support provider:  disqus, gitment, gitalk, utterances, beaudar
 ```
 
 
