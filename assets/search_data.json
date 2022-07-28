@@ -253,6 +253,14 @@
     } ,
   
     {
+      "title"    : "Vue—slot 跨组件传递",
+      "category" : "Vue",
+      
+      "url"      : "https://mfuu.github.io//2022/07/28/vue-slot-%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
+      "keywords" : "Vue Slot"
+    } ,
+  
+    {
       "title"    : "GitHub",
       "category" : "",
       
