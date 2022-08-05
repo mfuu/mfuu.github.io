@@ -40,7 +40,7 @@
       "title"    : "常见面试题",
       "category" : "面试题",
       
-      "url"      : "https://mfuu.github.io//2020/02/02/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/",
+      "url"      : "https://mfuu.github.io/2020/02/02/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/",
       "keywords" : "面试题"
     } ,
   
@@ -48,7 +48,7 @@
       "title"    : "ES6-array",
       "category" : "ES6",
       
-      "url"      : "https://mfuu.github.io//2021/08/05/ES6-array/",
+      "url"      : "https://mfuu.github.io/2021/08/05/ES6-array/",
       "keywords" : "ES6, array, javascript"
     } ,
   
@@ -56,7 +56,7 @@
       "title"    : "JavaScript—基础知识",
       "category" : "JavaScript",
       
-      "url"      : "https://mfuu.github.io//2021/08/08/JavaScript-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "url"      : "https://mfuu.github.io/2021/08/08/JavaScript-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
       "keywords" : "JavaScript"
     } ,
   
@@ -64,7 +64,7 @@
       "title"    : "CSS-基础知识",
       "category" : "CSS",
       
-      "url"      : "https://mfuu.github.io//2021/10/15/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "url"      : "https://mfuu.github.io/2021/10/15/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
       "keywords" : "CSS"
     } ,
   
@@ -72,7 +72,7 @@
       "title"    : "HTML-基础知识",
       "category" : "HTML",
       
-      "url"      : "https://mfuu.github.io//2021/10/15/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "url"      : "https://mfuu.github.io/2021/10/15/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
       "keywords" : "HTML"
     } ,
   
@@ -80,7 +80,7 @@
       "title"    : "实现一个可拖拽排序的虚拟滚动列表",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2021/11/09/vue-virtual-draglist/",
+      "url"      : "https://mfuu.github.io/2021/11/09/vue-virtual-draglist/",
       "keywords" : "Vue, JavaScript, drag, drop, sort, draggable, sortable"
     } ,
   
@@ -88,7 +88,7 @@
       "title"    : "TypeScript—数据类型",
       "category" : "TypeScript",
       
-      "url"      : "https://mfuu.github.io//2022/01/25/TypeScript-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/",
+      "url"      : "https://mfuu.github.io/2022/01/25/TypeScript-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/",
       "keywords" : "TypeScript, ts, 数据类型"
     } ,
   
@@ -96,7 +96,7 @@
       "title"    : "深入理解JS事件循环机制（Node）",
       "category" : "JavaScript",
       
-      "url"      : "https://mfuu.github.io//2022/02/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-Node/",
+      "url"      : "https://mfuu.github.io/2022/02/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-Node/",
       "keywords" : "Event Loop, JavaScript, 事件循环, Node"
     } ,
   
@@ -104,7 +104,7 @@
       "title"    : "深入理解JS事件循环机制（浏览器）",
       "category" : "JavaScript",
       
-      "url"      : "https://mfuu.github.io//2022/02/12/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-%E6%B5%8F%E8%A7%88%E5%99%A8/",
+      "url"      : "https://mfuu.github.io/2022/02/12/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JS%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6-%E6%B5%8F%E8%A7%88%E5%99%A8/",
       "keywords" : "Event Loop, JavaScript, 事件循环"
     } ,
   
@@ -112,7 +112,7 @@
       "title"    : "HTTP与HTTPS",
       "category" : "网络",
       
-      "url"      : "https://mfuu.github.io//2022/02/15/HTTP%E4%B8%8EHTTPS/",
+      "url"      : "https://mfuu.github.io/2022/02/15/HTTP%E4%B8%8EHTTPS/",
       "keywords" : "HTTP, HTTPS"
     } ,
   
@@ -120,7 +120,7 @@
       "title"    : "TCP与UDP",
       "category" : "网络",
       
-      "url"      : "https://mfuu.github.io//2022/02/16/TCP%E4%B8%8EUDP/",
+      "url"      : "https://mfuu.github.io/2022/02/16/TCP%E4%B8%8EUDP/",
       "keywords" : "HTTP, TCP, UDP"
     } ,
   
@@ -128,7 +128,7 @@
       "title"    : "ES6-迭代器(Iterator)和生成器(Generator)",
       "category" : "ES6",
       
-      "url"      : "https://mfuu.github.io//2022/02/22/ES6-%E8%BF%AD%E4%BB%A3%E5%99%A8(Iterator)%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8(Generator)/",
+      "url"      : "https://mfuu.github.io/2022/02/22/ES6-%E8%BF%AD%E4%BB%A3%E5%99%A8(Iterator)%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8(Generator)/",
       "keywords" : "ES6, javascript, Iterator, Generator"
     } ,
   
@@ -136,7 +136,7 @@
       "title"    : "TypeScript—类的使用",
       "category" : "TypeScript",
       
-      "url"      : "https://mfuu.github.io//2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/",
+      "url"      : "https://mfuu.github.io/2022/02/28/TypeScript-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/",
       "keywords" : "TypeScript, ts, 类"
     } ,
   
@@ -144,7 +144,7 @@
       "title"    : "TypeScript—泛型的使用",
       "category" : "TypeScript",
       
-      "url"      : "https://mfuu.github.io//2022/03/01/TypeScript-%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/",
+      "url"      : "https://mfuu.github.io/2022/03/01/TypeScript-%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/",
       "keywords" : "TypeScript, ts, 泛型"
     } ,
   
@@ -152,7 +152,7 @@
       "title"    : "Vue—双向绑定原理",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2022/03/01/vue-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/",
+      "url"      : "https://mfuu.github.io/2022/03/01/vue-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/",
       "keywords" : "Vue, 双向绑定"
     } ,
   
@@ -160,7 +160,7 @@
       "title"    : "Vue—$nextTick原理",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/",
+      "url"      : "https://mfuu.github.io/2022/03/02/vue-$nextTick%E5%8E%9F%E7%90%86/",
       "keywords" : "Vue, $nextTick"
     } ,
   
@@ -168,7 +168,7 @@
       "title"    : "Git 常见指令",
       "category" : "Git",
       
-      "url"      : "https://mfuu.github.io//2022/03/03/Git-%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/",
+      "url"      : "https://mfuu.github.io/2022/03/03/Git-%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/",
       "keywords" : "Git"
     } ,
   
@@ -176,7 +176,7 @@
       "title"    : "Git 与 SVN 的区别",
       "category" : "Git",
       
-      "url"      : "https://mfuu.github.io//2022/03/04/Git-%E4%B8%8E-SVN-%E7%9A%84%E5%8C%BA%E5%88%AB/",
+      "url"      : "https://mfuu.github.io/2022/03/04/Git-%E4%B8%8E-SVN-%E7%9A%84%E5%8C%BA%E5%88%AB/",
       "keywords" : "Git, SVN"
     } ,
   
@@ -184,7 +184,7 @@
       "title"    : "Vue—创建到销毁全过程",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2022/03/05/vue-%E5%88%9B%E5%BB%BA%E5%88%B0%E9%94%80%E6%AF%81%E5%85%A8%E8%BF%87%E7%A8%8B/",
+      "url"      : "https://mfuu.github.io/2022/03/05/vue-%E5%88%9B%E5%BB%BA%E5%88%B0%E9%94%80%E6%AF%81%E5%85%A8%E8%BF%87%E7%A8%8B/",
       "keywords" : "Vue"
     } ,
   
@@ -192,7 +192,7 @@
       "title"    : "浏览器存储",
       "category" : "Web",
       
-      "url"      : "https://mfuu.github.io//2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/",
+      "url"      : "https://mfuu.github.io/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/",
       "keywords" : "Web, 浏览器存储, cookie, localStorage, sessionStorage, indexDB"
     } ,
   
@@ -200,7 +200,7 @@
       "title"    : "浏览器渲染机制",
       "category" : "Web",
       
-      "url"      : "https://mfuu.github.io//2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/",
+      "url"      : "https://mfuu.github.io/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/",
       "keywords" : "Web,浏览器渲染机制"
     } ,
   
@@ -208,7 +208,7 @@
       "title"    : "常见的算法",
       "category" : "算法",
       
-      "url"      : "https://mfuu.github.io//2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/",
+      "url"      : "https://mfuu.github.io/2022/03/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/",
       "keywords" : "算法, 排序, 冒泡, 选择, 归并, 快速, 二叉树"
     } ,
   
@@ -216,7 +216,7 @@
       "title"    : "解决 GitHub Page 构建失败的问题",
       "category" : "GitHub Page",
       
-      "url"      : "https://mfuu.github.io//2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/",
+      "url"      : "https://mfuu.github.io/2022/06/07/%E8%A7%A3%E5%86%B3GitHub-Page%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5/",
       "keywords" : "GitHub Page, Action, Workflow"
     } ,
   
@@ -224,7 +224,7 @@
       "title"    : "Vue + ElementUI 实现表格编辑",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2022/06/21/Vue+ElementUI%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91/",
+      "url"      : "https://mfuu.github.io/2022/06/21/Vue+ElementUI%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91/",
       "keywords" : "ElementUI, Vue, table, 表格, 编辑, 输入框"
     } ,
   
@@ -232,7 +232,7 @@
       "title"    : "Svelte学习——创建项目",
       "category" : "Svelte",
       
-      "url"      : "https://mfuu.github.io//2022/06/24/Svelte-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/",
+      "url"      : "https://mfuu.github.io/2022/06/24/Svelte-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/",
       "keywords" : "Svelte, JavaScript"
     } ,
   
@@ -240,7 +240,7 @@
       "title"    : "前端性能优化",
       "category" : "Web",
       
-      "url"      : "https://mfuu.github.io//2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/",
+      "url"      : "https://mfuu.github.io/2022/07/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/",
       "keywords" : "Web, 前端性能优化"
     } ,
   
@@ -248,7 +248,7 @@
       "title"    : "前端安全",
       "category" : "Web",
       
-      "url"      : "https://mfuu.github.io//2022/07/12/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/",
+      "url"      : "https://mfuu.github.io/2022/07/12/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/",
       "keywords" : "Web, 前端安全"
     } ,
   
@@ -256,7 +256,7 @@
       "title"    : "Vue—slot 跨组件传递",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io//2022/07/28/vue-slot-%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
+      "url"      : "https://mfuu.github.io/2022/07/28/vue-slot-%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
       "keywords" : "Vue Slot"
     } ,
   
@@ -264,7 +264,7 @@
       "title"    : "GitHub",
       "category" : "",
       
-      "url"      : "https://mfuu.github.io//wiki/github/",
+      "url"      : "https://mfuu.github.io/wiki/github/",
       "keywords" : "GitHub"
     } 
   
