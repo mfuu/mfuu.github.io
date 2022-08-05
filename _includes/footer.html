@@ -59,7 +59,7 @@
       jQuery(document).ready(function($) {
         function setContainerStyle(){
           var footerH = $("footer").height();
-          $('.site-container').css('paddingBottom', `${footerH}px`);
+          $('.site-container').css('paddingBottom', `${footerH + 20}px`);
         }
         setContainerStyle();
         $(window).resize(setContainerStyle());
