@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://mfuu.github.io/
+url: https://mfuu.github.io
 date_format: "ordinal"
 title: MF
 subtitle: "Day Day Up"
