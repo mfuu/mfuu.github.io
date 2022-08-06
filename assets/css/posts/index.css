@@ -127,3 +127,11 @@
     background-color: #777;
     border-radius: 10px;
 }
+
+.post-directory .toc-item .toc-child {
+    display: none;
+}
+
+.post-directory .toc-item.on .toc-child {
+    display: block;
+}
