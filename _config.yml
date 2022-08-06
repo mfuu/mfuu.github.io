@@ -32,7 +32,7 @@ components:
     # My Popular Repositories
     side_bar_repo:
         enabled: true
-        limit: 5
+        limit: 3
     # 文章字数统计
     word_count:
         enabled: true
@@ -106,7 +106,7 @@ markdown: kramdown
 kramdown:
     input: GFM
 highlighter: rouge
-paginate: 10
+paginate: 5
 lsi: false
 quiet: false
 permalink: /:year/:month/:day/:title/

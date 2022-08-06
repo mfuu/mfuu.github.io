@@ -3,6 +3,7 @@ layout: default
 class: home
 css: ['pages/index.css']
 comments: false
+repo: false
 menu: 首页
 ---
 
@@ -49,7 +50,11 @@ menu: 首页
 <!-- /.banner -->
 <section class="container content">
   <div class="columns">
-    <div class="column two-thirds" >
+    {% if page.repo %}
+    <div class="column two-thirds">
+    {% else %}
+    <div class="column">
+    {% endif %}
       <ol class="repo-list">
         {% for post in site.posts %}
           {% if paginator.page == 1 %}
@@ -110,11 +115,13 @@ menu: 首页
         {% endfor %}
       </ol>
     </div>
-    <div class="column one-third">
-      {% include sidebar-categories-cloud.html %}
-      {% include sidebar-ad.html %}
-      {% include popular-repo.html %}
-    </div>
+    {% if page.repo %}
+      <div class="column one-third">
+        {% include sidebar-categories-cloud.html %}
+        {% include sidebar-ad.html %}
+        {% include popular-repo.html %}
+      </div>
+    {% endif %}
   </div>
   <div class="pagination text-align-right">
     <div class="btn-group">
