@@ -224,6 +224,7 @@ body {
     float: right;
     display: flex;
     align-items: center;
+    padding: 0 10px;
 }
 
 .site-footer:after,.site-footer:before {
@@ -378,10 +379,6 @@ body {
 .sticky-nav {
     position: sticky;
     top: 80px;
-}
-
-.columns.about {
-    margin: 0 10px;
 }
 
 .share {
