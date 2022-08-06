@@ -32,7 +32,6 @@ layout: default
 <section class="container content">
   <div class="columns">
     <div class="column one-third" style="float: right;">
-      {% include sidebar-categories-cloud.html %}
       {% include sidebar-categories-nav.html %}
       {% include sidebar-ad.html %}
     </div>
@@ -49,11 +48,20 @@ layout: default
 {% else %}
 <section class="container content">
   <div class="columns {{ page.class }}">
-    <article class="article-content markdown-body">
-      {{ content }}
-    </article>
-    <div class="comment">
-      {% include comments.html %}
+    <div class="column one-third" style="float: right;">
+      {% include sidebar-categories-cloud.html %}
+      {% include sidebar-ad.html %}
+      {% if page.repo %}
+        {% include popular-repo.html %}
+      {% endif %}
+    </div>
+    <div class="column two-thirds" style="float: right;">
+      <article class="article-content markdown-body">
+        {{ content }}
+      </article>
+      <div class="comment">
+        {% include comments.html %}
+      </div>
     </div>
   </div>
 </section>

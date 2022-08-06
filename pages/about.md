@@ -4,6 +4,7 @@ title: 关于
 description: about mfuu
 keywords: MF
 comments: true
+repo: true
 menu: 关于
 class: about
 permalink: /about/

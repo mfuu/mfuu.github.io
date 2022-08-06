@@ -17,7 +17,7 @@ repository: mfuu/mfuu.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
-        enabled: true
+        enabled: false
 # 可选组件配置
 components:
     # 分享
@@ -29,6 +29,10 @@ components:
     busuanzi:
         enabled: true
         start_date: 2019-06-10
+    # My Popular Repositories
+    side_bar_repo:
+        enabled: false
+        limit: 5
     # 文章字数统计
     word_count:
         enabled: true
@@ -124,7 +128,7 @@ collections:
 #      Comments    #
 # ---------------- #
 # support provider:  disqus, gitment, gitalk, utterances, beaudar
-comments_provider: gitalk
+comments_provider: beaudar
 # disqus 配置参考：https://disqus.com
 disqus:
     username: 
@@ -148,6 +152,7 @@ utterances:
     theme: github-light
     label: utterances
 # beaudar 配置参考：https://beaudar.lipk.org/
+# 需要修改根目录下 beaudar.json 配置
 beaudar:
     repo: mfuu/mfuu.github.io
     theme: github-light
