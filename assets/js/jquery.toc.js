@@ -143,6 +143,13 @@ $(document).ready(function(){
     }
     $('.toc-item .jumper').removeClass('on');
     $('.toc-item .jumper').eq(highlightIndex-1).addClass('on');
+    $('.toc').children('.toc-item').each((index, dom) => {
+      if ($(dom).has('.jumper.on').length) {
+        $(dom).addClass('on');
+      } else {
+        $(dom).removeClass('on');
+      }
+    });
   }
   highlightTocSection();
 
