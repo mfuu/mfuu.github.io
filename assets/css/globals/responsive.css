@@ -169,7 +169,12 @@
   .markdown-body h5 {
     font-size: 1em
   }
-
+  .share{
+    flex-wrap: wrap-reverse !important;
+  }
+  .share .license-wrapper{
+    margin-top: 1rem;
+  }
   .tools-wrapper {
     bottom: 7.4375em;
   }

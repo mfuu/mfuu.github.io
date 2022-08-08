@@ -67,7 +67,7 @@ menu: 首页
                     {{ content | markdownify | strip_html | truncate: 200 | escape }}
                   </p>
                 </div>
-                <div class="repo-list-meta flex">
+                <div class="repo-list-meta flex align-items-center">
                   <div class="mr-auto">
                     <span class="meta-info">
                       <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
@@ -127,12 +127,12 @@ menu: 首页
     <div class="btn-group">
       {% if paginator.previous_page %}
         {% if paginator.previous_page == 1 %}
-          <a href="{{ site.url }}/" class="btn btn-outline">&laquo;</a>
+          <a href="{{ site.url }}/" class="octicon octicon-arrow-left btn btn-outline"></a>
         {% else %}
-          <a href="{{ site.url }}/page{{paginator.previous_page}}"  class="btn btn-outline">&laquo;</a>
+          <a href="{{ site.url }}/page{{paginator.previous_page}}"  class="octicon octicon-arrow-left btn btn-outline"></a>
         {% endif %}
       {% else %}
-        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
+        <a disabled href="javascript:;" class="octicon octicon-arrow-left btn btn-outline"></a>
       {% endif %}
       {% if paginator.page == 1 %}
         <a href="javascript:;" class="active btn btn-outline">1</a>
@@ -147,9 +147,9 @@ menu: 首页
         {% endif %}
       {% endfor %}
       {% if paginator.next_page %}
-        <a href="{{ site.url }}/page{{paginator.next_page}}"  class="btn btn-outline">&raquo;</a>
+        <a href="{{ site.url }}/page{{paginator.next_page}}"  class="octicon octicon-arrow-right btn btn-outline"></a>
       {% else %}
-        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
+        <button disabled="disabled" href="javascript:;" class="octicon octicon-arrow-right btn btn-outline"></button>
       {% endif %}
     </div>
   </div>

@@ -48,10 +48,18 @@ layout: default
       {% include content-header-ad.html %}
       <article class="article-content markdown-body">
         {{ content }}
-        <!-- {% include copyright.html %} -->
       </article>
-      <div class="share">
-        {% include sns-share.html %}
+      <div class="post-tail-wrapper">
+        <div class="post-meta mb-3">
+          <span class="octicon octicon-file-directory mr-1"></span>
+          {% for cat in page.categories %}
+          <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+          {% endfor %}
+        </div>
+        <div class="share flex align-items-center justify-content-between">
+          <div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div>
+          {% include sns-share.html %}
+        </div>
       </div>
       {% include content-footer-ad.html %}
       <div class="comment">

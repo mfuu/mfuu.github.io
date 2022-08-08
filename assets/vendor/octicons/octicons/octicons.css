@@ -14,7 +14,7 @@
 .mega-octicon is optimized for 32px but can be used larger.
 
 */
-.octicon, .mega-octicon {
+.mega-octicon, [class*=octicon-] {
   font: normal normal normal 16px/1 octicons;
   display: inline-block;
   text-decoration: none;
