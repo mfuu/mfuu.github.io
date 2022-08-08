@@ -29,6 +29,10 @@ body {
     min-height: 100%;
 }
 
+a[disabled] {
+    pointer-events: none;
+}
+
 .clear::before {
     content: '';
     display: table;
@@ -81,8 +85,24 @@ body {
     cursor: default
 }
 
+.pagination .btn {
+    line-height: 20px;
+}
+
 .flex {
     display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.mr-1, .mx-1 {
+    margin-right: 0.25rem!important;
 }
 
 .mr-auto {
@@ -158,7 +178,7 @@ body {
 .site-header .site-header-oprate .octicon {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 1.6em;
+    font-size: 1rem;
     font-weight: 400;
     vertical-align: top;
 }
@@ -344,7 +364,8 @@ body {
 .site-search .octicon-search {
     position: absolute;
     right: 0px;
-    font-size: 22px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: all 0.5s;
     z-index: 1;
 }
@@ -381,9 +402,34 @@ body {
     top: 80px;
 }
 
+.post-tail-wrapper {
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px double #f3f3f3;
+    font-size: 0.85rem;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    word-spacing: 1px;
+}
+
+.post-tail-wrapper .post-meta a:not(:hover) {
+    border-bottom: 1px solid #dee2e6;
+}
+
 .share {
-    margin: 20px 0;
+    padding-bottom: 0.5rem;
+    margin-top: 1rem;
     text-align: right;
+}
+
+.license-wrapper {
+    color: #6c757d;
+}
+
+.license-wrapper>a {
+    color: #34343c;
 }
 
 .markdown-body {
