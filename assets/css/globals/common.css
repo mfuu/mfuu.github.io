@@ -93,6 +93,10 @@ a[disabled] {
     display: flex;
 }
 
+.inline-flex {
+    display: inline-flex;
+}
+
 .align-items-center {
     align-items: center;
 }
