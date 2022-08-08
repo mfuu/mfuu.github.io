@@ -412,6 +412,7 @@ a[disabled] {
 .post-meta {
     font-size: 0.85rem;
     word-spacing: 1px;
+    color: #6c757d;
 }
 
 .post-tail-wrapper .post-meta a:not(:hover) {
