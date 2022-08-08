@@ -9,7 +9,7 @@ menu: 分类
 permalink: /categories/
 ---
 
-<section class="container posts-content">
+<section class="categories posts-content">
   {% assign sorted_categories = site.categories | sort %}
   {% for category in sorted_categories %}
     <h3 id="{{ category[0] }}">{{ category | first }}</h3>
