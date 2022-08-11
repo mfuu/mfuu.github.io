@@ -25,7 +25,7 @@
     resultsContainer: document.getElementById('search_results'),
     json: '{{ site.url }}/assets/search_data.json?v={{ "now" | date: "%s"}}',
     searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>',
-    noResultsText: '<p>No results found</p>',
+    noResultsText: '<li class="empty">No results found</li>',
     limit: '{{ site.simple_jekyll_search.limit }}',
     fuzzy: false,
     exclude: ['Welcome']

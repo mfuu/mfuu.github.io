@@ -396,9 +396,17 @@ a[disabled] {
     padding: 3px 10px;
 }
 
-.site-search ul p {
+.site-search .empty {
     text-align: center;
     color: #aaa;
+    padding: 1rem;
+}
+
+#search_box.mobile-search-hidden + #search_results {
+    width: 0;
+    border: 0;
+    padding: 0;
+    opacity: 0;
 }
 
 .sticky-nav {
