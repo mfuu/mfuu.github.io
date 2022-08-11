@@ -149,6 +149,12 @@
     padding: 0;
     opacity: 0;
   }
+  .site-search .mobile-search-hidden + #search_results {
+    width: 0;
+    border: 0;
+    padding: 0;
+    opacity: 0;
+}
 
   .mini-repo-list-item .owner.css-truncate-target,
   .mini-repo-list-item .repo-and-owner.css-truncate-target {
@@ -187,5 +193,11 @@
   .collection-head .collection-info .meta-info {
     display: block;
     margin-top: 15px
+  }
+}
+
+@media (min-width:50em) {
+  .site-search .octicon-search {
+    right: 5px !important;
   }
 }
