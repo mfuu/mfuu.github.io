@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 实现一个可拖拽排序的虚拟滚动列表
+title: Vue—实现一个可拖拽排序的虚拟滚动列表
 categories: [Vue, JavaScript]
-description: Vue实现一个可拖拽排序的虚拟滚动列表
+description: Vue—实现一个可拖拽排序的虚拟滚动列表
 keywords: Vue, JavaScript, drag, drop, sort, draggable, sortable
 ---
 
