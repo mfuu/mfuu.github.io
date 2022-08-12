@@ -51,7 +51,7 @@
     } ,
   
     {
-      "title"    : "ES6-array",
+      "title"    : "ES6—array",
       "category" : "ES6",
       
       "url"      : "https://mfuu.github.io/2021/08/05/ES6-array/",
@@ -67,23 +67,23 @@
     } ,
   
     {
-      "title"    : "CSS-基础知识",
+      "title"    : "CSS—基础知识",
       "category" : "CSS",
       
-      "url"      : "https://mfuu.github.io/2021/10/15/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "url"      : "https://mfuu.github.io/2021/10/15/CSS-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
       "keywords" : "CSS"
     } ,
   
     {
-      "title"    : "HTML-基础知识",
+      "title"    : "HTML—基础知识",
       "category" : "HTML",
       
-      "url"      : "https://mfuu.github.io/2021/10/15/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "url"      : "https://mfuu.github.io/2021/10/15/HTML-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
       "keywords" : "HTML"
     } ,
   
     {
-      "title"    : "实现一个可拖拽排序的虚拟滚动列表",
+      "title"    : "Vue—实现一个可拖拽排序的虚拟滚动列表",
       "category" : "Vue",
       
       "url"      : "https://mfuu.github.io/2021/11/09/vue-virtual-draglist/",
@@ -131,7 +131,7 @@
     } ,
   
     {
-      "title"    : "ES6-迭代器(Iterator)和生成器(Generator)",
+      "title"    : "ES6—迭代器(Iterator)和生成器(Generator)",
       "category" : "ES6",
       
       "url"      : "https://mfuu.github.io/2022/02/22/ES6-%E8%BF%AD%E4%BB%A3%E5%99%A8(Iterator)%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8(Generator)/",
@@ -235,7 +235,7 @@
     } ,
   
     {
-      "title"    : "Svelte学习—创建项目",
+      "title"    : "Svelte—创建项目",
       "category" : "Svelte",
       
       "url"      : "https://mfuu.github.io/2022/06/24/Svelte-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/",
@@ -262,7 +262,7 @@
       "title"    : "Vue—slot 跨组件传递",
       "category" : "Vue",
       
-      "url"      : "https://mfuu.github.io/2022/07/28/vue-slot-%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
+      "url"      : "https://mfuu.github.io/2022/07/28/vue-slot%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
       "keywords" : "Vue Slot"
     } ,
   
