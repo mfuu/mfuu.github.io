@@ -263,7 +263,15 @@
       "category" : "Vue",
       
       "url"      : "https://mfuu.github.io/2022/07/28/vue-slot%E8%B7%A8%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92/",
-      "keywords" : "Vue Slot"
+      "keywords" : "Vue, Slot, 插槽, 跨组件"
+    } ,
+  
+    {
+      "title"    : "Vue—依赖收集原理",
+      "category" : "Vue",
+      
+      "url"      : "https://mfuu.github.io/2022/08/16/vue-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86/",
+      "keywords" : "Vue, 依赖收集"
     } ,
   
     {
