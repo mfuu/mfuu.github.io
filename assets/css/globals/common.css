@@ -850,6 +850,22 @@ div[class~=language-ts]:before {
     content: "ts";
 }
 
+div[class~=language-javaScript]:before {
+    content: "javaScript";
+}
+
+div[class~=language-typeScript]:before {
+    content: "typeScript";
+}
+
+div[class~=language-jsx]:before {
+    content: "jsx";
+}
+
+div[class~=language-tsx]:before {
+    content: "tsx";
+}
+
 div[class~=language-html]:before {
     content: "html";
 }
@@ -888,6 +904,26 @@ div[class~=language-swift]:before {
 
 div[class~=language-java]:before {
     content: "java";
+}
+
+div[class~=language-c]:before {
+    content: "c";
+}
+
+div[class~=language-php]:before {
+    content: "php";
+}
+
+div[class~=language-go]:before {
+    content: "go";
+}
+
+div[class~=language-rust]:before {
+    content: "Rust";
+}
+
+div[class~=language-shell]:before {
+    content: "shell";
 }
 
 
