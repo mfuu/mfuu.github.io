@@ -49,7 +49,10 @@ compress_html:
   clippings: all
   comments: ["<!--", "-->"]
 # 代码高亮风格，支持theme列表可见 assets/css/markdown
-highlight_theme: github
+# 预览地址 http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html
+highlight_theme: native
+# 支持一键复制
+clipboard: true
 
 # ---------------- #
 #      Author      #
@@ -103,9 +106,11 @@ subscribe_rss: /feed.xml
 #      Jekyll      #
 # ---------------- #
 markdown: kramdown
+highlighter: rouge
 kramdown:
     input: GFM
-highlighter: rouge
+    syntax_highlighter: rouge
+
 paginate: 5
 lsi: false
 quiet: false
