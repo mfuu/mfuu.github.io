@@ -771,7 +771,7 @@ a[disabled] {
 .markdown-body .highlight pre,.markdown-body pre {
     padding: 2rem 1.25rem 1rem;
     overflow: auto;
-    font-size: 85%;
+    font-size: 80%;
     line-height: 1.45;
     border-radius: 6px;
 }
@@ -829,8 +829,44 @@ a[disabled] {
     box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
 }
 
+/* clipboard */
+#clipboard-copy {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    height: 28px;
+}
+
+#clipboard-copy.btn {
+    color: #24292f;
+    background-color: #f6f8fa;
+    border-color: rgba(27,31,36,0.15);
+    box-shadow: 0 1px 0 rgb(27 31 36 / 4%), inset 0 1px 0 rgb(255 255 255 / 25%);
+    transition-property: color,background-color,box-shadow,border-color;
+}
+
+#clipboard-copy .clipboard-success {
+    display: none;
+    color: #1a7f37;
+}
+
+#clipboard-copy.tooltipped .clipboard-success {
+    display: block;
+}
+
+#clipboard-copy.tooltipped .clipboard-trigger {
+    display: none;
+}
+
+.mg-8 {
+    margin: 8px;
+}
+
 div[class*=language-] {
     position: relative;
+    border-radius: 6px;
 }
 
 div[class*=language-]:before {
@@ -840,6 +876,18 @@ div[class*=language-]:before {
     right: 1em;
     font-size: .75rem;
     color: #80c0bf;
+}
+
+div[class*=language-]:hover:before {
+    display: none;
+}
+
+div[class*=language-]:hover #clipboard-copy {
+    display: block;
+}
+
+div[class~=language-vue]:before {
+    content: "vue";
 }
 
 div[class~=language-js]:before {
