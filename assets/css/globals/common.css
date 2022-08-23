@@ -847,6 +847,10 @@ a[disabled] {
     transition-property: color,background-color,box-shadow,border-color;
 }
 
+#clipboard-copy .octicon {
+    vertical-align: top;
+}
+
 #clipboard-copy .clipboard-success {
     display: none;
     color: #1a7f37;
