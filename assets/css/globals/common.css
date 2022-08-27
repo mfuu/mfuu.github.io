@@ -829,6 +829,10 @@ a[disabled] {
     box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
 }
 
+.collection-head .collection-info .meta-info .octicon {
+    margin-right: 0.2em;
+}
+
 /* clipboard */
 #clipboard-copy {
     display: none;
