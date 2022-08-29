@@ -1,50 +1,21 @@
 ### _config.yml
 
 ```yml
-# cdn 加速
+# cdn acceleration
 cdn:
     jsdelivr:
-        enabled: true
+        enabled: false
 
-components
-  share # 文章分享
+components:
 
-highlight_theme # markdown样式
+highlight_theme: native # markdown style
+clipboard: true # code copy
 
-comments_provider # support provider:  disqus, gitment, gitalk, utterances, beaudar
+comments_provider: beaudar # support provider:  disqus, gitment, gitalk, utterances, beaudar
 ```
 
 
-### Categories
-
-```
-│  favicon.ico
-│  index.html
-│  README.md
-│  _config.yml
-│  
-├─.github
-│  │  FUNDING.yml
-│  │  
-│  └─workflows
-│          ci.yml
-│          
-├─assets
-|
-├─images
-|
-├─pages
-│      
-├─_data
-│      
-├─_includes
-│      
-├─_layouts
-│      
-├─_posts
-```
-
-### posts
+### article header format
 
 ```
 ---
@@ -56,5 +27,5 @@ keywords: keyword1, keyword2
 pinned: true
 ---
 
-Content here
+Markdown content here
 ```
