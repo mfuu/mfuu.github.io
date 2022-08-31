@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://mfuu.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mfuu.github.io/" rel="alternate" type="text/html" /><updated>2022-08-29T08:55:05+00:00</updated><id>https://mfuu.github.io/feed.xml</id><title type="html">MF</title><subtitle></subtitle><author><name>mfuu</name></author><entry><title type="html">Vue—依赖收集原理</title><link href="https://mfuu.github.io/2022/08/16/vue-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86/" rel="alternate" type="text/html" title="Vue—依赖收集原理" /><published>2022-08-16T00:00:00+00:00</published><updated>2022-08-16T00:00:00+00:00</updated><id>https://mfuu.github.io/2022/08/16/vue%E2%80%94%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86</id><content type="html" xml:base="https://mfuu.github.io/2022/08/16/vue-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86/">&lt;h2 id=&quot;响应式系统&quot;&gt;响应式系统&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://mfuu.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mfuu.github.io/" rel="alternate" type="text/html" /><updated>2022-08-31T12:58:02+00:00</updated><id>https://mfuu.github.io/feed.xml</id><title type="html">MF</title><subtitle></subtitle><author><name>mfuu</name></author><entry><title type="html">Vue2 与 Vue3</title><link href="https://mfuu.github.io/2022/08/29/vue2%E4%B8%8Evue3/" rel="alternate" type="text/html" title="Vue2 与 Vue3" /><published>2022-08-29T00:00:00+00:00</published><updated>2022-08-29T00:00:00+00:00</updated><id>https://mfuu.github.io/2022/08/29/vue2%E4%B8%8Evue3</id><content type="html" xml:base="https://mfuu.github.io/2022/08/29/vue2%E4%B8%8Evue3/">&lt;h2 id=&quot;vue2x-与-vue3x-对比&quot;&gt;Vue2.x 与 Vue3.x 对比&lt;/h2&gt;
+
+&lt;h3 id=&quot;生命周期&quot;&gt;生命周期&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Vue2.x&lt;/th&gt;
+      &lt;th&gt;Vue3.x&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeCreate&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeMount&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onBeforeMount&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mounted&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onMounted&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeUpdate&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onBeforeUpdate&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updated&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onUpdated&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeDestroy&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onBeforeUnmount&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;destroyed&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onUnmounted&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;errorCaptured&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onErrorCaptured&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;整体来看变化不大，除了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeCreate&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt; 用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup&lt;/code&gt; 代替外，其余的基本都是变更名称，但功能本质上未发生变化&lt;/p&gt;
+
+&lt;h3 id=&quot;diff-算法&quot;&gt;Diff 算法&lt;/h3&gt;</content><author><name>mfuu</name></author><category term="Vue" /><summary type="html">Vue2.x 与 Vue3.x 对比</summary></entry><entry><title type="html">Vue—依赖收集原理</title><link href="https://mfuu.github.io/2022/08/16/vue-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86/" rel="alternate" type="text/html" title="Vue—依赖收集原理" /><published>2022-08-16T00:00:00+00:00</published><updated>2022-08-16T00:00:00+00:00</updated><id>https://mfuu.github.io/2022/08/16/vue%E2%80%94%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86</id><content type="html" xml:base="https://mfuu.github.io/2022/08/16/vue-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86%E5%8E%9F%E7%90%86/">&lt;h2 id=&quot;响应式系统&quot;&gt;响应式系统&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/184789313-90d6672a-4aa6-4b6a-a133-9d370eda4c00.png&quot; alt=&quot;3663528165-5b40c9f1524cc&quot; /&gt;&lt;/p&gt;
 
@@ -1659,171 +1712,4 @@ npm run dev
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;fetch source&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>mfuu</name></author><category term="Web" /><summary type="html">cookie，localStorage，sessionStorage，indexDB</summary></entry><entry><title type="html">浏览器渲染机制</title><link href="https://mfuu.github.io/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/" rel="alternate" type="text/html" title="浏览器渲染机制" /><published>2022-03-10T00:00:00+00:00</published><updated>2022-03-10T00:00:00+00:00</updated><id>https://mfuu.github.io/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6</id><content type="html" xml:base="https://mfuu.github.io/2022/03/10/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/">&lt;p&gt;浏览器的渲染机制一般分为以下几个步骤：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;处理 HTML 并构建 DOM 树&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;处理 CSS 构建 CSSOM 树&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;将 DOM 树与 CSSOM 树合并成一个渲染树&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;根据渲染树来布局，计算每个节点的位置&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;调用 GPU 绘制，合成图层，显示在屏幕上&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51625532/157193329-4754aed0-a2ce-4336-a9bc-63c879725162.png&quot; alt=&quot;CSSOM&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在构建 CSSOM 树时，会阻塞渲染，直到 CSSOM 树构建完成。并且构建 CSSOM 树是一个十分消耗性能的过程，所以应该尽量保证层级扁平，减少过度层叠，越是具体的 CSS 选择器，执行速度越慢&lt;/p&gt;
-
-&lt;p&gt;当 HTML 解析到 script 标签时，会暂停构建 DOM，完成后才会从暂停的地方重新开始。也就是说，如果你想首屏渲染的越快，就越不应该在首屏就加载 JS 文件，并且 CSS 也会影响 JS 的执行，只有当解析完样式表才会执行 JS，所以也可以认为这种情况下，CSS 也会暂停构建 DOM&lt;/p&gt;
-
-&lt;h3 id=&quot;load-和-domcontentloaded-区别&quot;&gt;Load 和 DOMContentLoaded 区别&lt;/h3&gt;
-
-&lt;p&gt;Load 事件触发代表页面中的 DOM、CSS、JS、图片已经全部加载完毕&lt;/p&gt;
-
-&lt;p&gt;DOMContentLoaded 事件触发代表初始的 HTML 被完全加载和解析，不需要等待 CSS、JS、图片加载&lt;/p&gt;
-
-&lt;h3 id=&quot;图层&quot;&gt;图层&lt;/h3&gt;
-
-&lt;p&gt;一般来说，可以把普通文档流看成一个图层。特定的属性可以生成一个新的图层。不同的图层渲染互不影响，所以对于某些频繁需要渲染的建议单独生成一个新图层，提高性能。但也不能生成过多的图层，会引起反作用&lt;/p&gt;
-
-&lt;p&gt;通过以下几个常用的属性可以生成新图层：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;3D 变换：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;translate3d&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;translate2d&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;will-change&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;video&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iframe&lt;/code&gt;标签&lt;/li&gt;
-  &lt;li&gt;通过动画实现的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;opacity&lt;/code&gt; 动画转换&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;position: fixed&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;重绘repaint和回流reflow&quot;&gt;重绘（Repaint）和回流（Reflow）&lt;/h3&gt;
-
-&lt;p&gt;重绘和回流是渲染步骤中的一小节，但是这两个步骤对于性能影响很大&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;重绘是当节点需要更改外观而不会影响布局，比如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;color&lt;/code&gt; 属性值变更&lt;/li&gt;
-  &lt;li&gt;回流是布局或几何属性需要改变&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;回流必定会发生重绘，重绘不一定会引发回流。回流所需的成本比重绘高的多，改变深层次的节点很可能导致父节点的一系列回流&lt;/p&gt;
-
-&lt;p&gt;所以以下几个动作可能会导致性能问题：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;改变 window 大小&lt;/li&gt;
-  &lt;li&gt;改变字体&lt;/li&gt;
-  &lt;li&gt;添加或删除样式&lt;/li&gt;
-  &lt;li&gt;文字改变&lt;/li&gt;
-  &lt;li&gt;定位或浮动&lt;/li&gt;
-  &lt;li&gt;盒模型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;重绘和回流与 EventLoop 有关：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;当 EventLoop 执行完 Microtasks 后，会判断 document 是否需要更新。因为浏览器是 60Hz 的刷新率，每 16ms 才会更新一次&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;然后判断是否有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resize&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scroll&lt;/code&gt;，有的话会去触发事件，所以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resize&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scroll&lt;/code&gt; 事件也是至少 16ms 才会触发一次，并且自带节流功能&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;判断是否触发了 media query&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;更新动画并且发送事件&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;判断是否有全屏操作事件&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requestAnimationFrame&lt;/code&gt; 回调&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IntersectionObserver&lt;/code&gt; 回调，该方法用于判断元素是否可见，可以用于懒加载，但是兼容性不好&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;ol&gt;
-      &lt;li&gt;更新界面&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;9.以上就是一帧中可能会做的事。如果在一帧中有空闲时间，就会去执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requestIdleCallback&lt;/code&gt; 回调&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;减少重绘与回流&quot;&gt;减少重绘与回流&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trasnlate&lt;/code&gt; 替代 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;top&lt;/code&gt;&lt;/p&gt;
-
-    &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;block&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;.block&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 引起回流&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.block&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;visibility&lt;/code&gt; 替换 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt;，因为前者只会引起重绘，后者会引发回流&lt;/li&gt;
-  &lt;li&gt;把 DOM 离线后修改。比如：先把 DOM 给 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt; （有一次 Reflow），然后进行修改，修改完成后再把它显示出来&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;不要把 DOM 节点的属性值放在一个循环里当成循环里的变量&lt;/p&gt;
-
-    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 获取 offsetTop 会导致回流，因为需要去获取正确的值&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.block&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;offsetTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;避免使用 table 布局，可能很小的改动都会造成整个 table 重新布局&lt;/li&gt;
-  &lt;li&gt;动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requestAnimationFrame&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;CSS 选择符从右往左匹配查找，避免 DOM 深度过深&lt;/li&gt;
-  &lt;li&gt;将频繁运行的动画变为图层，图层能够阻止该节点回流影响别的元素。比如对于 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;video&lt;/code&gt; 标签，浏览器会自动将该节点变为图层&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;参考文章：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;https://html.spec.whatwg.org/multipage/webappapis.html#webappapis&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>mfuu</name></author><category term="Web" /><summary type="html">浏览器的渲染机制一般分为以下几个步骤： 处理 HTML 并构建 DOM 树 处理 CSS 构建 CSSOM 树 将 DOM 树与 CSSOM 树合并成一个渲染树 根据渲染树来布局，计算每个节点的位置 调用 GPU 绘制，合成图层，显示在屏幕上</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>mfuu</name></author><category term="Web" /><summary type="html">cookie，localStorage，sessionStorage，indexDB</summary></entry></feed>
