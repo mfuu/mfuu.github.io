@@ -4,7 +4,6 @@ title: Vue—可拖拽排序的虚拟滚动列表
 categories: [Vue, JavaScript]
 description: Vue—可拖拽排序的虚拟滚动列表
 keywords: Vue, JavaScript, drag, drop, sort, draggable, sortable
-pinned: true
 ---
 
 ## 背景
@@ -18,17 +17,20 @@ pinned: true
 1. 一次性全部渲染
 2. 时间分片
 3. 虚拟列表
+
 #### 优化思路
 
 1. 将列表数据使用Object.freeze()处理。一般来说列表数据在请求完之后是不会做变动的，这样处理之后vue不会再做getter和setter转换，数据将不再是响应式的，一定程度上减少了性能消耗；
 2. 减少计算属性computed和dom的判断处理；
 3. 减少dom渲染。
+
 #### 常用的做法
 
 1. 时间分片（它的本质就是将长任务分割为一个个执行时间很短的任务，然后再一个个地执行）
 2. 虚拟列表（从源头解决问题，dom太多就减少dom）
 
 ### 列表渲染的实现
+
 #### 一次性全部渲染
 
 不做任何操作，直接将列表数据全部渲染，这里模拟的10w条纯文本测试数据，看下layout时间：
@@ -284,4 +286,5 @@ mousedown(e) {
 
 
 **源码地址：**[https://github.com/mfuu/vue-virtual-drag-list](https://github.com/mfuu/vue-virtual-drag-list)
+
 **npm地址：**[https://www.npmjs.com/package/vue-virtual-draglist](https://www.npmjs.com/package/vue-virtual-draglist)
