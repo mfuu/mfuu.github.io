@@ -4,6 +4,7 @@ title: Vue—可拖拽排序的虚拟滚动列表
 categories: [Vue, JavaScript]
 description: Vue—可拖拽排序的虚拟滚动列表
 keywords: Vue, JavaScript, drag, drop, sort, draggable, sortable
+pinned: true
 ---
 
 ## 背景
