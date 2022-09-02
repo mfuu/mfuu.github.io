@@ -83,7 +83,7 @@
     } ,
   
     {
-      "title"    : "Vue—实现一个可拖拽排序的虚拟滚动列表",
+      "title"    : "Vue—可拖拽排序的虚拟滚动列表",
       "category" : "Vue",
       
       "url"      : "https://mfuu.github.io/2021/11/09/vue-virtual-draglist/",
