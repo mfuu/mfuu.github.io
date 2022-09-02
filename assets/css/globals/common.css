@@ -320,11 +320,11 @@ a[disabled] {
     height: 24px;
     width: 24px;
     font-size: 24px;
-    color: #ccc
+    color: #fff;
 }
 
 .site-footer .octicon-mark-github:hover {
-    color: #bbb
+    color: #bbb;
 }
 
 .site-footer .octicon-rss {
