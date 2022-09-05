@@ -11,7 +11,7 @@ components:
 highlight_theme: native # markdown style
 clipboard: true # code copy
 
-comments_provider: beaudar # support provider:  disqus, gitment, gitalk, utterances, beaudar
+comments_provider: beaudar # support: disqus, gitment, gitalk, utterances, beaudar
 ```
 
 
