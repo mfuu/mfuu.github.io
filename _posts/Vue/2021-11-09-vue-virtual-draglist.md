@@ -139,10 +139,7 @@ onItemResized(uniqueKey, size) {
 
 ```js
 handleScroll(event) {
-  const { virtualDragList } = this.$refs
-  const clientHeight = Math.ceil(this.$el.clientHeight)
-  const scrollTop = Math.ceil(virtualDragList.scrollTop)
-  const scrollHeight = Math.ceil(virtualDragList.scrollHeight)
+  ...
   // 如果不存在滚动元素 || 滚动高度小于0 || 超出最大滚动距离
   if (scrollTop < 0 || (scrollTop + clientHeight > scrollHeight + 1) || !scrollHeight) {
     return
@@ -156,19 +153,6 @@ handleScroll(event) {
   } else if (this.direction === 'BEHIND') {
     this.handleBehind(overs)
   }
-}
-handleFront(overs) {
-  if (overs > this.start) {
-    return
-  }
-  const start = Math.max(overs - Math.round(this.keeps / 3), 0)
-  this.checkRange(start, this.getEndByStart(start))
-},
-handleBehind(overs) {
-  if (overs < this.start + Math.round(this.keeps / 3)) {
-    return
-  }
-  this.checkRange(overs, this.getEndByStart(overs))
 }
 ```
 ### 二分法获取当前节点之前滚动的数量
@@ -226,10 +210,10 @@ export const Slots = Vue.component('virtual-draglist-slots', {
 handleScroll(event) {
   ...
   if (this.direction === 'FRONT') {
-    this.handleFront(overs)
+    ...
     if (!!this.list.length && scrollTop <= 0) this.$emit('top')
   } else if (this.direction === 'BEHIND') {
-    this.handleBehind(overs)
+    ...
     if (clientHeight + scrollTop >= scrollHeight) this.$emit('bottom')
   }
 }
@@ -244,24 +228,18 @@ mousedown(e) {
   // 仅设置了draggable=true的元素才可拖动
   const draggable = e.target.getAttribute('draggable')
   if (!draggable) return
-  // 记录初始拖拽元素
-  const { target, item } = this.getTarget(e)
-  this.$parent.dragState.oldNode = target
-  this.$parent.dragState.oldItem = item
+  ...
   document.onmousemove = (evt) => {
     evt.preventDefault()
-    this.setMask('move', evt.clientX, evt.clientY)
+    ...
     const { target = null, item = null } = this.getTarget(evt)
     // 记录拖拽目标元素
-    this.$parent.dragState.newNode = target
-    this.$parent.dragState.newIitem = item
-    const { oldNode, newNode, oldItem, newIitem } = this.$parent.dragState
+    this.dragState.newNode = target
+    this.dragState.newIitem = item
+    const { oldNode, newNode, oldItem, newIitem } = this.dragState
     // 拖拽前后不一致，改变拖拽节点位置
     if (oldItem != newIitem) {
-      const oldIndex = this.dataSource.indexOf(oldItem)
-      const newIndex = this.dataSource.indexOf(newIitem)
-      this.$parent.dragState.oldIndex = oldIndex
-      this.$parent.dragState.newIndex = newIndex
+      ...
     }
   }
   document.onmouseup = () => {
@@ -273,8 +251,7 @@ mousedown(e) {
       let newArr = [...this.dataSource]
       newArr.splice(oldIndex, 1)
       newArr.splice(newIndex, 0, oldItem)
-      this.$parent.list = newArr
-      this.$parent.$emit('ondragend', newArr)
+      ...
     }
   }
 }
