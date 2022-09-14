@@ -22,7 +22,6 @@
 		}
 	});
 	clipboardSnippets.on('success', function(e) {
-    console.log(e);
 		e.clearSelection();
 		showTooltip(e.trigger, 'Copied!');
 	});
