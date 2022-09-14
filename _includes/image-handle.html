@@ -1,4 +1,3 @@
-<!-- image lazy-loading & popup -->
 <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script>
 
 <script defer>
@@ -27,7 +26,7 @@ $(`${IMG_SCOPE} p > img[data-src],${IMG_SCOPE} img[data-src].preview-img`).each(
   function() {
     let nextTag = $(this).next();
     const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
-    const src = $(this).attr('data-src'); // created by lozad.js
+    const src = $(this).attr('data-src');
 
     $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
   }
